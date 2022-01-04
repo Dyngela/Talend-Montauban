@@ -1,0 +1,9 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<expression:EMFExpression xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:expression="http:///expression.ecore" id="tMap_3=>" expression="Numeric.sequence(&quot;s1&quot;,1,1)">
+  <variables name="row4.DOCCAT" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row4.DOCLIEN" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row4.DOCCOMPT" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row4.DOCLIB" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row4.DOCEMPL" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row4.DOCNOM" value="null" talendType="id_String" nullable="true"/>
+</expression:EMFExpression>
