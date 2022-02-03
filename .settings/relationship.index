@@ -299,14 +299,6 @@
     "id" : "TalendStringUtil",
     "version" : "Latest",
     "type" : "routine"
-  }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - contact",
-    "version" : "Latest",
-    "type" : "schema"
-  }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - document",
-    "version" : "Latest",
-    "type" : "schema"
   } ]
 }, {
   "baseItem" : {
@@ -2655,19 +2647,7 @@
     "version" : "Latest",
     "type" : "routine"
   }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - article",
-    "version" : "Latest",
-    "type" : "schema"
-  }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - devise",
-    "version" : "Latest",
-    "type" : "schema"
-  }, {
     "id" : "_dCKHQDWSEeyIE71ZEeEi5A - famille",
-    "version" : "Latest",
-    "type" : "schema"
-  }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - paramarticle",
     "version" : "Latest",
     "type" : "schema"
   }, {
@@ -2675,15 +2655,7 @@
     "version" : "Latest",
     "type" : "schema"
   }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - remise",
-    "version" : "Latest",
-    "type" : "schema"
-  }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - sousfamille",
-    "version" : "Latest",
-    "type" : "schema"
-  }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - tarif",
+    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - sous_famille",
     "version" : "Latest",
     "type" : "schema"
   } ]
