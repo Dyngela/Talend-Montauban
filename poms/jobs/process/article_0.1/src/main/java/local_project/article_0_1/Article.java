@@ -260,6 +260,26 @@ public class Article implements TalendJob {
 		}
 	}
 
+	public void tDBClose_1_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tDBClose_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tDBConnection_1_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tDBConnection_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
 	public void tFileInputDelimited_2_error(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
@@ -320,14 +340,24 @@ public class Article implements TalendJob {
 		tFileInputDelimited_3_onSubJobError(exception, errorComponent, globalMap);
 	}
 
-	public void tFileInputDelimited_10_error(Exception exception, String errorComponent,
+	public void tFileInputDelimited_11_error(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
 		end_Hash.put(errorComponent, System.currentTimeMillis());
 
 		status = "failure";
 
-		tFileInputDelimited_10_onSubJobError(exception, errorComponent, globalMap);
+		tFileInputDelimited_11_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tMap_10_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_11_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tMap_9_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap)
@@ -337,7 +367,7 @@ public class Article implements TalendJob {
 
 		status = "failure";
 
-		tFileInputDelimited_10_onSubJobError(exception, errorComponent, globalMap);
+		tFileInputDelimited_11_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tDBOutput_9_error(Exception exception, String errorComponent,
@@ -347,7 +377,7 @@ public class Article implements TalendJob {
 
 		status = "failure";
 
-		tFileInputDelimited_10_onSubJobError(exception, errorComponent, globalMap);
+		tFileInputDelimited_11_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tFileInputDelimited_4_error(Exception exception, String errorComponent,
@@ -375,43 +405,9 @@ public class Article implements TalendJob {
 
 		end_Hash.put(errorComponent, System.currentTimeMillis());
 
-		try {
-
-			if (this.execStat) {
-				runStat.updateStatOnConnection("OnComponentError2", 0, "error");
-			}
-
-			errorCode = null;
-			tDBRollback_2Process(globalMap);
-			if (!"failure".equals(status)) {
-				status = "end";
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		status = "failure";
 
 		tFileInputDelimited_4_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tDBCommit_2_error(Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap) throws TalendException {
-
-		end_Hash.put(errorComponent, System.currentTimeMillis());
-
-		status = "failure";
-
-		tDBCommit_2_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tDBRollback_2_error(Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap) throws TalendException {
-
-		end_Hash.put(errorComponent, System.currentTimeMillis());
-
-		status = "failure";
-
-		tDBRollback_2_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tFileInputDelimited_9_error(Exception exception, String errorComponent,
@@ -421,7 +417,27 @@ public class Article implements TalendJob {
 
 		status = "failure";
 
-		tFileInputDelimited_10_onSubJobError(exception, errorComponent, globalMap);
+		tFileInputDelimited_11_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tFileInputDelimited_12_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_11_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tLogRow_1_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tLogRow_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tPostjob_1_error(Exception exception, String errorComponent,
@@ -434,16 +450,6 @@ public class Article implements TalendJob {
 		tPostjob_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
-	public void tDBClose_1_error(Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap) throws TalendException {
-
-		end_Hash.put(errorComponent, System.currentTimeMillis());
-
-		status = "failure";
-
-		tDBClose_1_onSubJobError(exception, errorComponent, globalMap);
-	}
-
 	public void tPrejob_1_error(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
@@ -454,16 +460,6 @@ public class Article implements TalendJob {
 		tPrejob_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
-	public void tDBConnection_1_error(Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap) throws TalendException {
-
-		end_Hash.put(errorComponent, System.currentTimeMillis());
-
-		status = "failure";
-
-		tDBConnection_1_onSubJobError(exception, errorComponent, globalMap);
-	}
-
 	public void tAdvancedHash_row11_error(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
@@ -471,7 +467,33 @@ public class Article implements TalendJob {
 
 		status = "failure";
 
-		tFileInputDelimited_10_onSubJobError(exception, errorComponent, globalMap);
+		tFileInputDelimited_11_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tAdvancedHash_row12_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_11_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tDBClose_1_onSubJobError(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
+	public void tDBConnection_1_onSubJobError(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception), "");
+
 	}
 
 	public void tFileInputDelimited_2_onSubJobError(Exception exception, String errorComponent,
@@ -490,7 +512,7 @@ public class Article implements TalendJob {
 
 	}
 
-	public void tFileInputDelimited_10_onSubJobError(Exception exception, String errorComponent,
+	public void tFileInputDelimited_11_onSubJobError(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
 		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread.currentThread().getId() + "", "FATAL", "",
@@ -506,15 +528,7 @@ public class Article implements TalendJob {
 
 	}
 
-	public void tDBCommit_2_onSubJobError(Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap) throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
-	public void tDBRollback_2_onSubJobError(Exception exception, String errorComponent,
+	public void tLogRow_1_onSubJobError(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
 		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread.currentThread().getId() + "", "FATAL", "",
@@ -530,14 +544,6 @@ public class Article implements TalendJob {
 
 	}
 
-	public void tDBClose_1_onSubJobError(Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap) throws TalendException {
-
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception), "");
-
-	}
-
 	public void tPrejob_1_onSubJobError(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
@@ -546,12 +552,285 @@ public class Article implements TalendJob {
 
 	}
 
-	public void tDBConnection_1_onSubJobError(Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap) throws TalendException {
+	public void tDBClose_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+		globalMap.put("tDBClose_1_SUBPROCESS_STATE", 0);
 
-		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread.currentThread().getId() + "", "FATAL", "",
-				exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception), "");
+		final boolean execStat = this.execStat;
 
+		String iterateId = "";
+
+		String currentComponent = "";
+		java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+		try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { // start the resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tDBClose_1 begin ] start
+				 */
+
+				ok_Hash.put("tDBClose_1", false);
+				start_Hash.put("tDBClose_1", System.currentTimeMillis());
+
+				currentComponent = "tDBClose_1";
+
+				int tos_count_tDBClose_1 = 0;
+
+				/**
+				 * [tDBClose_1 begin ] stop
+				 */
+
+				/**
+				 * [tDBClose_1 main ] start
+				 */
+
+				currentComponent = "tDBClose_1";
+
+				java.sql.Connection conn_tDBClose_1 = (java.sql.Connection) globalMap.get("conn_tDBConnection_1");
+				if (conn_tDBClose_1 != null && !conn_tDBClose_1.isClosed()) {
+					conn_tDBClose_1.close();
+				}
+
+				tos_count_tDBClose_1++;
+
+				/**
+				 * [tDBClose_1 main ] stop
+				 */
+
+				/**
+				 * [tDBClose_1 process_data_begin ] start
+				 */
+
+				currentComponent = "tDBClose_1";
+
+				/**
+				 * [tDBClose_1 process_data_begin ] stop
+				 */
+
+				/**
+				 * [tDBClose_1 process_data_end ] start
+				 */
+
+				currentComponent = "tDBClose_1";
+
+				/**
+				 * [tDBClose_1 process_data_end ] stop
+				 */
+
+				/**
+				 * [tDBClose_1 end ] start
+				 */
+
+				currentComponent = "tDBClose_1";
+
+				ok_Hash.put("tDBClose_1", true);
+				end_Hash.put("tDBClose_1", System.currentTimeMillis());
+
+				/**
+				 * [tDBClose_1 end ] stop
+				 */
+			} // end the resume
+
+		} catch (java.lang.Exception e) {
+
+			TalendException te = new TalendException(e, currentComponent, globalMap);
+
+			throw te;
+		} catch (java.lang.Error error) {
+
+			runStat.stopThreadStat();
+
+			throw error;
+		} finally {
+
+			try {
+
+				/**
+				 * [tDBClose_1 finally ] start
+				 */
+
+				currentComponent = "tDBClose_1";
+
+				/**
+				 * [tDBClose_1 finally ] stop
+				 */
+			} catch (java.lang.Exception e) {
+				// ignore
+			} catch (java.lang.Error error) {
+				// ignore
+			}
+			resourceMap = null;
+		}
+
+		globalMap.put("tDBClose_1_SUBPROCESS_STATE", 1);
+	}
+
+	public void tDBConnection_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+		globalMap.put("tDBConnection_1_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+
+		String currentComponent = "";
+		java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+		try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { // start the resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tDBConnection_1 begin ] start
+				 */
+
+				ok_Hash.put("tDBConnection_1", false);
+				start_Hash.put("tDBConnection_1", System.currentTimeMillis());
+
+				currentComponent = "tDBConnection_1";
+
+				int tos_count_tDBConnection_1 = 0;
+
+				String dbProperties_tDBConnection_1 = "";
+				String url_tDBConnection_1 = "jdbc:postgresql://" + "192.168.1.116" + ":" + "5432" + "/" + "syg";
+
+				if (dbProperties_tDBConnection_1 != null && !"".equals(dbProperties_tDBConnection_1.trim())) {
+					url_tDBConnection_1 = url_tDBConnection_1 + "?" + dbProperties_tDBConnection_1;
+				}
+				String dbUser_tDBConnection_1 = "postgres";
+
+				final String decryptedPassword_tDBConnection_1 = routines.system.PasswordEncryptUtil.decryptPassword(
+						"enc:routine.encryption.key.v1:Wt661RLbvugOLkmREJG3KD9c85VYWK3C44IhMSOBgL5javW2Fw==");
+				String dbPwd_tDBConnection_1 = decryptedPassword_tDBConnection_1;
+
+				java.sql.Connection conn_tDBConnection_1 = null;
+
+				java.util.Enumeration<java.sql.Driver> drivers_tDBConnection_1 = java.sql.DriverManager.getDrivers();
+				java.util.Set<String> redShiftDriverNames_tDBConnection_1 = new java.util.HashSet<String>(
+						java.util.Arrays.asList("com.amazon.redshift.jdbc.Driver", "com.amazon.redshift.jdbc41.Driver",
+								"com.amazon.redshift.jdbc42.Driver"));
+				while (drivers_tDBConnection_1.hasMoreElements()) {
+					java.sql.Driver d_tDBConnection_1 = drivers_tDBConnection_1.nextElement();
+					if (redShiftDriverNames_tDBConnection_1.contains(d_tDBConnection_1.getClass().getName())) {
+						try {
+							java.sql.DriverManager.deregisterDriver(d_tDBConnection_1);
+							java.sql.DriverManager.registerDriver(d_tDBConnection_1);
+						} catch (java.lang.Exception e_tDBConnection_1) {
+							// do nothing
+						}
+					}
+				}
+				String driverClass_tDBConnection_1 = "org.postgresql.Driver";
+				java.lang.Class jdbcclazz_tDBConnection_1 = java.lang.Class.forName(driverClass_tDBConnection_1);
+				globalMap.put("driverClass_tDBConnection_1", driverClass_tDBConnection_1);
+
+				conn_tDBConnection_1 = java.sql.DriverManager.getConnection(url_tDBConnection_1, dbUser_tDBConnection_1,
+						dbPwd_tDBConnection_1);
+
+				globalMap.put("conn_tDBConnection_1", conn_tDBConnection_1);
+				if (null != conn_tDBConnection_1) {
+
+					conn_tDBConnection_1.setAutoCommit(false);
+				}
+
+				globalMap.put("schema_" + "tDBConnection_1", "");
+
+				globalMap.put("conn_" + "tDBConnection_1", conn_tDBConnection_1);
+
+				/**
+				 * [tDBConnection_1 begin ] stop
+				 */
+
+				/**
+				 * [tDBConnection_1 main ] start
+				 */
+
+				currentComponent = "tDBConnection_1";
+
+				tos_count_tDBConnection_1++;
+
+				/**
+				 * [tDBConnection_1 main ] stop
+				 */
+
+				/**
+				 * [tDBConnection_1 process_data_begin ] start
+				 */
+
+				currentComponent = "tDBConnection_1";
+
+				/**
+				 * [tDBConnection_1 process_data_begin ] stop
+				 */
+
+				/**
+				 * [tDBConnection_1 process_data_end ] start
+				 */
+
+				currentComponent = "tDBConnection_1";
+
+				/**
+				 * [tDBConnection_1 process_data_end ] stop
+				 */
+
+				/**
+				 * [tDBConnection_1 end ] start
+				 */
+
+				currentComponent = "tDBConnection_1";
+
+				ok_Hash.put("tDBConnection_1", true);
+				end_Hash.put("tDBConnection_1", System.currentTimeMillis());
+
+				/**
+				 * [tDBConnection_1 end ] stop
+				 */
+			} // end the resume
+
+		} catch (java.lang.Exception e) {
+
+			TalendException te = new TalendException(e, currentComponent, globalMap);
+
+			throw te;
+		} catch (java.lang.Error error) {
+
+			runStat.stopThreadStat();
+
+			throw error;
+		} finally {
+
+			try {
+
+				/**
+				 * [tDBConnection_1 finally ] start
+				 */
+
+				currentComponent = "tDBConnection_1";
+
+				/**
+				 * [tDBConnection_1 finally ] stop
+				 */
+			} catch (java.lang.Exception e) {
+				// ignore
+			} catch (java.lang.Error error) {
+				// ignore
+			}
+			resourceMap = null;
+		}
+
+		globalMap.put("tDBConnection_1_SUBPROCESS_STATE", 1);
 	}
 
 	public static class copyOfmainStruct implements routines.system.IPersistableRow<copyOfmainStruct> {
@@ -3827,7 +4106,7 @@ public class Article implements TalendJob {
 				runStat.updateStatOnConnection("OnSubjobOk2", 0, "ok");
 			}
 
-			tFileInputDelimited_10Process(globalMap);
+			tFileInputDelimited_11Process(globalMap);
 
 		} catch (java.lang.Exception e) {
 
@@ -4167,7 +4446,7 @@ public class Article implements TalendJob {
 
 	}
 
-	public static class row9Struct implements routines.system.IPersistableRow<row9Struct> {
+	public static class out2Struct implements routines.system.IPersistableRow<out2Struct> {
 		final static byte[] commonByteArrayLock_LOCAL_PROJECT_Article = new byte[0];
 		static byte[] commonByteArray_LOCAL_PROJECT_Article = new byte[0];
 
@@ -4331,7 +4610,7 @@ public class Article implements TalendJob {
 		/**
 		 * Compare keys
 		 */
-		public int compareTo(row9Struct other) {
+		public int compareTo(out2Struct other) {
 
 			int returnValue = -1;
 
@@ -4361,51 +4640,824 @@ public class Article implements TalendJob {
 
 	}
 
-	public static class after_tFileInputDelimited_10Struct
-			implements routines.system.IPersistableRow<after_tFileInputDelimited_10Struct> {
+	public static class row10Struct implements routines.system.IPersistableRow<row10Struct> {
 		final static byte[] commonByteArrayLock_LOCAL_PROJECT_Article = new byte[0];
 		static byte[] commonByteArray_LOCAL_PROJECT_Article = new byte[0];
 
-		public String RCREF;
+		public String CREF;
 
-		public String getRCREF() {
-			return this.RCREF;
+		public String getCREF() {
+			return this.CREF;
 		}
 
-		public String RCTYP;
+		public String CNOM;
 
-		public String getRCTYP() {
-			return this.RCTYP;
+		public String getCNOM() {
+			return this.CNOM;
 		}
 
-		public String RCFAM;
+		public String CRUE;
 
-		public String getRCFAM() {
-			return this.RCFAM;
+		public String getCRUE() {
+			return this.CRUE;
 		}
 
-		public String RCSFAM;
+		public String CAUX;
 
-		public String getRCSFAM() {
-			return this.RCSFAM;
+		public String getCAUX() {
+			return this.CAUX;
 		}
 
-		public String RCFIL;
+		public String CCPTL;
 
-		public String getRCFIL() {
-			return this.RCFIL;
+		public String getCCPTL() {
+			return this.CCPTL;
 		}
 
-		public String RCTAR;
+		public String CVIL;
 
-		public String getRCTAR() {
-			return this.RCTAR;
+		public String getCVIL() {
+			return this.CVIL;
 		}
 
-		public String RCREM;
+		public String FILL01;
 
-		public String getRCREM() {
-			return this.RCREM;
+		public String getFILL01() {
+			return this.FILL01;
+		}
+
+		public String CQUAL;
+
+		public String getCQUAL() {
+			return this.CQUAL;
+		}
+
+		public String CCOM1;
+
+		public String getCCOM1() {
+			return this.CCOM1;
+		}
+
+		public String CCREP;
+
+		public String getCCREP() {
+			return this.CCREP;
+		}
+
+		public String CREMFI;
+
+		public String getCREMFI() {
+			return this.CREMFI;
+		}
+
+		public String CECHE;
+
+		public String getCECHE() {
+			return this.CECHE;
+		}
+
+		public String CECHJ;
+
+		public String getCECHJ() {
+			return this.CECHJ;
+		}
+
+		public String CPAI;
+
+		public String getCPAI() {
+			return this.CPAI;
+		}
+
+		public String CCHAN;
+
+		public String getCCHAN() {
+			return this.CCHAN;
+		}
+
+		public String CECHJ2;
+
+		public String getCECHJ2() {
+			return this.CECHJ2;
+		}
+
+		public String CMOD;
+
+		public String getCMOD() {
+			return this.CMOD;
+		}
+
+		public String CBQ1;
+
+		public String getCBQ1() {
+			return this.CBQ1;
+		}
+
+		public String CBQ2;
+
+		public String getCBQ2() {
+			return this.CBQ2;
+		}
+
+		public String CBQ3;
+
+		public String getCBQ3() {
+			return this.CBQ3;
+		}
+
+		public String CBQ4;
+
+		public String getCBQ4() {
+			return this.CBQ4;
+		}
+
+		public String CBQ5;
+
+		public String getCBQ5() {
+			return this.CBQ5;
+		}
+
+		public String CBQ6;
+
+		public String getCBQ6() {
+			return this.CBQ6;
+		}
+
+		public String CFACT;
+
+		public String getCFACT() {
+			return this.CFACT;
+		}
+
+		public String CBL;
+
+		public String getCBL() {
+			return this.CBL;
+		}
+
+		public String CESC;
+
+		public String getCESC() {
+			return this.CESC;
+		}
+
+		public String VARAD1;
+
+		public String getVARAD1() {
+			return this.VARAD1;
+		}
+
+		public String VARAD2;
+
+		public String getVARAD2() {
+			return this.VARAD2;
+		}
+
+		public String VARAD3;
+
+		public String getVARAD3() {
+			return this.VARAD3;
+		}
+
+		public String VARAD4;
+
+		public String getVARAD4() {
+			return this.VARAD4;
+		}
+
+		public String VARAD5;
+
+		public String getVARAD5() {
+			return this.VARAD5;
+		}
+
+		public String VARAD6;
+
+		public String getVARAD6() {
+			return this.VARAD6;
+		}
+
+		public String VARA1;
+
+		public String getVARA1() {
+			return this.VARA1;
+		}
+
+		public String VARA2;
+
+		public String getVARA2() {
+			return this.VARA2;
+		}
+
+		public String VARA3;
+
+		public String getVARA3() {
+			return this.VARA3;
+		}
+
+		public String VARA4;
+
+		public String getVARA4() {
+			return this.VARA4;
+		}
+
+		public String VARA5;
+
+		public String getVARA5() {
+			return this.VARA5;
+		}
+
+		public String VARB1;
+
+		public String getVARB1() {
+			return this.VARB1;
+		}
+
+		public String VARB2;
+
+		public String getVARB2() {
+			return this.VARB2;
+		}
+
+		public String VARB3;
+
+		public String getVARB3() {
+			return this.VARB3;
+		}
+
+		public String VARB4;
+
+		public String getVARB4() {
+			return this.VARB4;
+		}
+
+		public String VARB5;
+
+		public String getVARB5() {
+			return this.VARB5;
+		}
+
+		public String VARN1;
+
+		public String getVARN1() {
+			return this.VARN1;
+		}
+
+		public String VARN2;
+
+		public String getVARN2() {
+			return this.VARN2;
+		}
+
+		public String VARN3;
+
+		public String getVARN3() {
+			return this.VARN3;
+		}
+
+		public String VARN4;
+
+		public String getVARN4() {
+			return this.VARN4;
+		}
+
+		public String VARN5;
+
+		public String getVARN5() {
+			return this.VARN5;
+		}
+
+		public String CDATCRE;
+
+		public String getCDATCRE() {
+			return this.CDATCRE;
+		}
+
+		public String CTEL1;
+
+		public String getCTEL1() {
+			return this.CTEL1;
+		}
+
+		public String CTEL2;
+
+		public String getCTEL2() {
+			return this.CTEL2;
+		}
+
+		public String CTEX1;
+
+		public String getCTEX1() {
+			return this.CTEX1;
+		}
+
+		public String CTEX2;
+
+		public String getCTEX2() {
+			return this.CTEX2;
+		}
+
+		public String CDELMOY;
+
+		public String getCDELMOY() {
+			return this.CDELMOY;
+		}
+
+		public String CAFFAIRE;
+
+		public String getCAFFAIRE() {
+			return this.CAFFAIRE;
+		}
+
+		public String CCPTFACT;
+
+		public String getCCPTFACT() {
+			return this.CCPTFACT;
+		}
+
+		public String CINTERNET;
+
+		public String getCINTERNET() {
+			return this.CINTERNET;
+		}
+
+		public String CIBAN1;
+
+		public String getCIBAN1() {
+			return this.CIBAN1;
+		}
+
+		public String CBIC_old;
+
+		public String getCBIC_old() {
+			return this.CBIC_old;
+		}
+
+		public String CFIDEL;
+
+		public String getCFIDEL() {
+			return this.CFIDEL;
+		}
+
+		public String CRFA;
+
+		public String getCRFA() {
+			return this.CRFA;
+		}
+
+		public String CCOMREG;
+
+		public String getCCOMREG() {
+			return this.CCOMREG;
+		}
+
+		public String CAPE2;
+
+		public String getCAPE2() {
+			return this.CAPE2;
+		}
+
+		public String CIBAN72;
+
+		public String getCIBAN72() {
+			return this.CIBAN72;
+		}
+
+		public String CIBAN8;
+
+		public String getCIBAN8() {
+			return this.CIBAN8;
+		}
+
+		public String CIBAN9;
+
+		public String getCIBAN9() {
+			return this.CIBAN9;
+		}
+
+		public String CBIC;
+
+		public String getCBIC() {
+			return this.CBIC;
+		}
+
+		public String CTRANSP;
+
+		public String getCTRANSP() {
+			return this.CTRANSP;
+		}
+
+		public String CFACTMAIL;
+
+		public String getCFACTMAIL() {
+			return this.CFACTMAIL;
+		}
+
+		public String CBLMAIL;
+
+		public String getCBLMAIL() {
+			return this.CBLMAIL;
+		}
+
+		public String CFACTWEB;
+
+		public String getCFACTWEB() {
+			return this.CFACTWEB;
+		}
+
+		public String CBLWEB;
+
+		public String getCBLWEB() {
+			return this.CBLWEB;
+		}
+
+		public String CPUBLIPOSTAGE;
+
+		public String getCPUBLIPOSTAGE() {
+			return this.CPUBLIPOSTAGE;
+		}
+
+		public String CFACT_EDI;
+
+		public String getCFACT_EDI() {
+			return this.CFACT_EDI;
+		}
+
+		public String CFACT_CHORUS;
+
+		public String getCFACT_CHORUS() {
+			return this.CFACT_CHORUS;
+		}
+
+		public String CFACTORING;
+
+		public String getCFACTORING() {
+			return this.CFACTORING;
+		}
+
+		public String CCHORUS_SERVICE;
+
+		public String getCCHORUS_SERVICE() {
+			return this.CCHORUS_SERVICE;
+		}
+
+		public String CFIL14;
+
+		public String getCFIL14() {
+			return this.CFIL14;
+		}
+
+		public String CTAR;
+
+		public String getCTAR() {
+			return this.CTAR;
+		}
+
+		public String FIL02;
+
+		public String getFIL02() {
+			return this.FIL02;
+		}
+
+		public String CREJ;
+
+		public String getCREJ() {
+			return this.CREJ;
+		}
+
+		public String CSECT;
+
+		public String getCSECT() {
+			return this.CSECT;
+		}
+
+		public String CTOUR;
+
+		public String getCTOUR() {
+			return this.CTOUR;
+		}
+
+		public String CCAN1;
+
+		public String getCCAN1() {
+			return this.CCAN1;
+		}
+
+		public String CCAN2;
+
+		public String getCCAN2() {
+			return this.CCAN2;
+		}
+
+		public String CCAN3;
+
+		public String getCCAN3() {
+			return this.CCAN3;
+		}
+
+		public String CDATF;
+
+		public String getCDATF() {
+			return this.CDATF;
+		}
+
+		public String CCAT;
+
+		public String getCCAT() {
+			return this.CCAT;
+		}
+
+		public String CRESP;
+
+		public String getCRESP() {
+			return this.CRESP;
+		}
+
+		public String CAPE;
+
+		public String getCAPE() {
+			return this.CAPE;
+		}
+
+		public String CPREMC;
+
+		public String getCPREMC() {
+			return this.CPREMC;
+		}
+
+		public String CDERNC;
+
+		public String getCDERNC() {
+			return this.CDERNC;
+		}
+
+		public String CPROCC;
+
+		public String getCPROCC() {
+			return this.CPROCC;
+		}
+
+		public String CTYPEC;
+
+		public String getCTYPEC() {
+			return this.CTYPEC;
+		}
+
+		public String CSIRET;
+
+		public String getCSIRET() {
+			return this.CSIRET;
+		}
+
+		public String CORIGIN;
+
+		public String getCORIGIN() {
+			return this.CORIGIN;
+		}
+
+		public String CMOTCOUR;
+
+		public String getCMOTCOUR() {
+			return this.CMOTCOUR;
+		}
+
+		public String CCOMPTA;
+
+		public String getCCOMPTA() {
+			return this.CCOMPTA;
+		}
+
+		public String CAFFMEMO;
+
+		public String getCAFFMEMO() {
+			return this.CAFFMEMO;
+		}
+
+		public String CFIL2;
+
+		public String getCFIL2() {
+			return this.CFIL2;
+		}
+
+		public String CPNAFF;
+
+		public String getCPNAFF() {
+			return this.CPNAFF;
+		}
+
+		public String CDEVTAR;
+
+		public String getCDEVTAR() {
+			return this.CDEVTAR;
+		}
+
+		public String CMINCOM;
+
+		public String getCMINCOM() {
+			return this.CMINCOM;
+		}
+
+		public String CRELEVE;
+
+		public String getCRELEVE() {
+			return this.CRELEVE;
+		}
+
+		public String CRELIQ;
+
+		public String getCRELIQ() {
+			return this.CRELIQ;
+		}
+
+		public String CMAJ;
+
+		public String getCMAJ() {
+			return this.CMAJ;
+		}
+
+		public String CECH;
+
+		public String getCECH() {
+			return this.CECH;
+		}
+
+		public String CETIQ;
+
+		public String getCETIQ() {
+			return this.CETIQ;
+		}
+
+		public String CCOEF;
+
+		public String getCCOEF() {
+			return this.CCOEF;
+		}
+
+		public String CARROND;
+
+		public String getCARROND() {
+			return this.CARROND;
+		}
+
+		public String CENCOUR;
+
+		public String getCENCOUR() {
+			return this.CENCOUR;
+		}
+
+		public String CNIVREL;
+
+		public String getCNIVREL() {
+			return this.CNIVREL;
+		}
+
+		public String CBLOCAG;
+
+		public String getCBLOCAG() {
+			return this.CBLOCAG;
+		}
+
+		public String CDATREL;
+
+		public String getCDATREL() {
+			return this.CDATREL;
+		}
+
+		public String CRESCO;
+
+		public String getCRESCO() {
+			return this.CRESCO;
+		}
+
+		public String CRESFI;
+
+		public String getCRESFI() {
+			return this.CRESFI;
+		}
+
+		public String CSFAC;
+
+		public String getCSFAC() {
+			return this.CSFAC;
+		}
+
+		public String CDATENC;
+
+		public String getCDATENC() {
+			return this.CDATENC;
+		}
+
+		public String CDATSFA;
+
+		public String getCDATSFA() {
+			return this.CDATSFA;
+		}
+
+		public String CCONTR;
+
+		public String getCCONTR() {
+			return this.CCONTR;
+		}
+
+		public String CDEREL;
+
+		public String getCDEREL() {
+			return this.CDEREL;
+		}
+
+		public String CPAYS;
+
+		public String getCPAYS() {
+			return this.CPAYS;
+		}
+
+		public String CBLTOT;
+
+		public String getCBLTOT() {
+			return this.CBLTOT;
+		}
+
+		public String CBLLIG;
+
+		public String getCBLLIG() {
+			return this.CBLLIG;
+		}
+
+		public String CENCDIS;
+
+		public String getCENCDIS() {
+			return this.CENCDIS;
+		}
+
+		public String CNCEE;
+
+		public String getCNCEE() {
+			return this.CNCEE;
+		}
+
+		public String CNSFAC;
+
+		public String getCNSFAC() {
+			return this.CNSFAC;
+		}
+
+		public String CPSRDAT;
+
+		public String getCPSRDAT() {
+			return this.CPSRDAT;
+		}
+
+		public String CEPNASR;
+
+		public String getCEPNASR() {
+			return this.CEPNASR;
+		}
+
+		public String CCODTAR;
+
+		public String getCCODTAR() {
+			return this.CCODTAR;
+		}
+
+		public String CDEVISE;
+
+		public String getCDEVISE() {
+			return this.CDEVISE;
+		}
+
+		public String iban2;
+
+		public String getIban2() {
+			return this.iban2;
+		}
+
+		public String iban3;
+
+		public String getIban3() {
+			return this.iban3;
+		}
+
+		public String iban4;
+
+		public String getIban4() {
+			return this.iban4;
+		}
+
+		public String iban5;
+
+		public String getIban5() {
+			return this.iban5;
+		}
+
+		public String iban6;
+
+		public String getIban6() {
+			return this.iban6;
+		}
+
+		public String iban7;
+
+		public String getIban7() {
+			return this.iban7;
 		}
 
 		private String readString(ObjectInputStream dis) throws IOException {
@@ -4446,19 +5498,277 @@ public class Article implements TalendJob {
 
 					int length = 0;
 
-					this.RCREF = readString(dis);
+					this.CREF = readString(dis);
 
-					this.RCTYP = readString(dis);
+					this.CNOM = readString(dis);
 
-					this.RCFAM = readString(dis);
+					this.CRUE = readString(dis);
 
-					this.RCSFAM = readString(dis);
+					this.CAUX = readString(dis);
 
-					this.RCFIL = readString(dis);
+					this.CCPTL = readString(dis);
 
-					this.RCTAR = readString(dis);
+					this.CVIL = readString(dis);
 
-					this.RCREM = readString(dis);
+					this.FILL01 = readString(dis);
+
+					this.CQUAL = readString(dis);
+
+					this.CCOM1 = readString(dis);
+
+					this.CCREP = readString(dis);
+
+					this.CREMFI = readString(dis);
+
+					this.CECHE = readString(dis);
+
+					this.CECHJ = readString(dis);
+
+					this.CPAI = readString(dis);
+
+					this.CCHAN = readString(dis);
+
+					this.CECHJ2 = readString(dis);
+
+					this.CMOD = readString(dis);
+
+					this.CBQ1 = readString(dis);
+
+					this.CBQ2 = readString(dis);
+
+					this.CBQ3 = readString(dis);
+
+					this.CBQ4 = readString(dis);
+
+					this.CBQ5 = readString(dis);
+
+					this.CBQ6 = readString(dis);
+
+					this.CFACT = readString(dis);
+
+					this.CBL = readString(dis);
+
+					this.CESC = readString(dis);
+
+					this.VARAD1 = readString(dis);
+
+					this.VARAD2 = readString(dis);
+
+					this.VARAD3 = readString(dis);
+
+					this.VARAD4 = readString(dis);
+
+					this.VARAD5 = readString(dis);
+
+					this.VARAD6 = readString(dis);
+
+					this.VARA1 = readString(dis);
+
+					this.VARA2 = readString(dis);
+
+					this.VARA3 = readString(dis);
+
+					this.VARA4 = readString(dis);
+
+					this.VARA5 = readString(dis);
+
+					this.VARB1 = readString(dis);
+
+					this.VARB2 = readString(dis);
+
+					this.VARB3 = readString(dis);
+
+					this.VARB4 = readString(dis);
+
+					this.VARB5 = readString(dis);
+
+					this.VARN1 = readString(dis);
+
+					this.VARN2 = readString(dis);
+
+					this.VARN3 = readString(dis);
+
+					this.VARN4 = readString(dis);
+
+					this.VARN5 = readString(dis);
+
+					this.CDATCRE = readString(dis);
+
+					this.CTEL1 = readString(dis);
+
+					this.CTEL2 = readString(dis);
+
+					this.CTEX1 = readString(dis);
+
+					this.CTEX2 = readString(dis);
+
+					this.CDELMOY = readString(dis);
+
+					this.CAFFAIRE = readString(dis);
+
+					this.CCPTFACT = readString(dis);
+
+					this.CINTERNET = readString(dis);
+
+					this.CIBAN1 = readString(dis);
+
+					this.CBIC_old = readString(dis);
+
+					this.CFIDEL = readString(dis);
+
+					this.CRFA = readString(dis);
+
+					this.CCOMREG = readString(dis);
+
+					this.CAPE2 = readString(dis);
+
+					this.CIBAN72 = readString(dis);
+
+					this.CIBAN8 = readString(dis);
+
+					this.CIBAN9 = readString(dis);
+
+					this.CBIC = readString(dis);
+
+					this.CTRANSP = readString(dis);
+
+					this.CFACTMAIL = readString(dis);
+
+					this.CBLMAIL = readString(dis);
+
+					this.CFACTWEB = readString(dis);
+
+					this.CBLWEB = readString(dis);
+
+					this.CPUBLIPOSTAGE = readString(dis);
+
+					this.CFACT_EDI = readString(dis);
+
+					this.CFACT_CHORUS = readString(dis);
+
+					this.CFACTORING = readString(dis);
+
+					this.CCHORUS_SERVICE = readString(dis);
+
+					this.CFIL14 = readString(dis);
+
+					this.CTAR = readString(dis);
+
+					this.FIL02 = readString(dis);
+
+					this.CREJ = readString(dis);
+
+					this.CSECT = readString(dis);
+
+					this.CTOUR = readString(dis);
+
+					this.CCAN1 = readString(dis);
+
+					this.CCAN2 = readString(dis);
+
+					this.CCAN3 = readString(dis);
+
+					this.CDATF = readString(dis);
+
+					this.CCAT = readString(dis);
+
+					this.CRESP = readString(dis);
+
+					this.CAPE = readString(dis);
+
+					this.CPREMC = readString(dis);
+
+					this.CDERNC = readString(dis);
+
+					this.CPROCC = readString(dis);
+
+					this.CTYPEC = readString(dis);
+
+					this.CSIRET = readString(dis);
+
+					this.CORIGIN = readString(dis);
+
+					this.CMOTCOUR = readString(dis);
+
+					this.CCOMPTA = readString(dis);
+
+					this.CAFFMEMO = readString(dis);
+
+					this.CFIL2 = readString(dis);
+
+					this.CPNAFF = readString(dis);
+
+					this.CDEVTAR = readString(dis);
+
+					this.CMINCOM = readString(dis);
+
+					this.CRELEVE = readString(dis);
+
+					this.CRELIQ = readString(dis);
+
+					this.CMAJ = readString(dis);
+
+					this.CECH = readString(dis);
+
+					this.CETIQ = readString(dis);
+
+					this.CCOEF = readString(dis);
+
+					this.CARROND = readString(dis);
+
+					this.CENCOUR = readString(dis);
+
+					this.CNIVREL = readString(dis);
+
+					this.CBLOCAG = readString(dis);
+
+					this.CDATREL = readString(dis);
+
+					this.CRESCO = readString(dis);
+
+					this.CRESFI = readString(dis);
+
+					this.CSFAC = readString(dis);
+
+					this.CDATENC = readString(dis);
+
+					this.CDATSFA = readString(dis);
+
+					this.CCONTR = readString(dis);
+
+					this.CDEREL = readString(dis);
+
+					this.CPAYS = readString(dis);
+
+					this.CBLTOT = readString(dis);
+
+					this.CBLLIG = readString(dis);
+
+					this.CENCDIS = readString(dis);
+
+					this.CNCEE = readString(dis);
+
+					this.CNSFAC = readString(dis);
+
+					this.CPSRDAT = readString(dis);
+
+					this.CEPNASR = readString(dis);
+
+					this.CCODTAR = readString(dis);
+
+					this.CDEVISE = readString(dis);
+
+					this.iban2 = readString(dis);
+
+					this.iban3 = readString(dis);
+
+					this.iban4 = readString(dis);
+
+					this.iban5 = readString(dis);
+
+					this.iban6 = readString(dis);
+
+					this.iban7 = readString(dis);
 
 				} catch (IOException e) {
 					throw new RuntimeException(e);
@@ -4474,31 +5784,547 @@ public class Article implements TalendJob {
 
 				// String
 
-				writeString(this.RCREF, dos);
+				writeString(this.CREF, dos);
 
 				// String
 
-				writeString(this.RCTYP, dos);
+				writeString(this.CNOM, dos);
 
 				// String
 
-				writeString(this.RCFAM, dos);
+				writeString(this.CRUE, dos);
 
 				// String
 
-				writeString(this.RCSFAM, dos);
+				writeString(this.CAUX, dos);
 
 				// String
 
-				writeString(this.RCFIL, dos);
+				writeString(this.CCPTL, dos);
 
 				// String
 
-				writeString(this.RCTAR, dos);
+				writeString(this.CVIL, dos);
 
 				// String
 
-				writeString(this.RCREM, dos);
+				writeString(this.FILL01, dos);
+
+				// String
+
+				writeString(this.CQUAL, dos);
+
+				// String
+
+				writeString(this.CCOM1, dos);
+
+				// String
+
+				writeString(this.CCREP, dos);
+
+				// String
+
+				writeString(this.CREMFI, dos);
+
+				// String
+
+				writeString(this.CECHE, dos);
+
+				// String
+
+				writeString(this.CECHJ, dos);
+
+				// String
+
+				writeString(this.CPAI, dos);
+
+				// String
+
+				writeString(this.CCHAN, dos);
+
+				// String
+
+				writeString(this.CECHJ2, dos);
+
+				// String
+
+				writeString(this.CMOD, dos);
+
+				// String
+
+				writeString(this.CBQ1, dos);
+
+				// String
+
+				writeString(this.CBQ2, dos);
+
+				// String
+
+				writeString(this.CBQ3, dos);
+
+				// String
+
+				writeString(this.CBQ4, dos);
+
+				// String
+
+				writeString(this.CBQ5, dos);
+
+				// String
+
+				writeString(this.CBQ6, dos);
+
+				// String
+
+				writeString(this.CFACT, dos);
+
+				// String
+
+				writeString(this.CBL, dos);
+
+				// String
+
+				writeString(this.CESC, dos);
+
+				// String
+
+				writeString(this.VARAD1, dos);
+
+				// String
+
+				writeString(this.VARAD2, dos);
+
+				// String
+
+				writeString(this.VARAD3, dos);
+
+				// String
+
+				writeString(this.VARAD4, dos);
+
+				// String
+
+				writeString(this.VARAD5, dos);
+
+				// String
+
+				writeString(this.VARAD6, dos);
+
+				// String
+
+				writeString(this.VARA1, dos);
+
+				// String
+
+				writeString(this.VARA2, dos);
+
+				// String
+
+				writeString(this.VARA3, dos);
+
+				// String
+
+				writeString(this.VARA4, dos);
+
+				// String
+
+				writeString(this.VARA5, dos);
+
+				// String
+
+				writeString(this.VARB1, dos);
+
+				// String
+
+				writeString(this.VARB2, dos);
+
+				// String
+
+				writeString(this.VARB3, dos);
+
+				// String
+
+				writeString(this.VARB4, dos);
+
+				// String
+
+				writeString(this.VARB5, dos);
+
+				// String
+
+				writeString(this.VARN1, dos);
+
+				// String
+
+				writeString(this.VARN2, dos);
+
+				// String
+
+				writeString(this.VARN3, dos);
+
+				// String
+
+				writeString(this.VARN4, dos);
+
+				// String
+
+				writeString(this.VARN5, dos);
+
+				// String
+
+				writeString(this.CDATCRE, dos);
+
+				// String
+
+				writeString(this.CTEL1, dos);
+
+				// String
+
+				writeString(this.CTEL2, dos);
+
+				// String
+
+				writeString(this.CTEX1, dos);
+
+				// String
+
+				writeString(this.CTEX2, dos);
+
+				// String
+
+				writeString(this.CDELMOY, dos);
+
+				// String
+
+				writeString(this.CAFFAIRE, dos);
+
+				// String
+
+				writeString(this.CCPTFACT, dos);
+
+				// String
+
+				writeString(this.CINTERNET, dos);
+
+				// String
+
+				writeString(this.CIBAN1, dos);
+
+				// String
+
+				writeString(this.CBIC_old, dos);
+
+				// String
+
+				writeString(this.CFIDEL, dos);
+
+				// String
+
+				writeString(this.CRFA, dos);
+
+				// String
+
+				writeString(this.CCOMREG, dos);
+
+				// String
+
+				writeString(this.CAPE2, dos);
+
+				// String
+
+				writeString(this.CIBAN72, dos);
+
+				// String
+
+				writeString(this.CIBAN8, dos);
+
+				// String
+
+				writeString(this.CIBAN9, dos);
+
+				// String
+
+				writeString(this.CBIC, dos);
+
+				// String
+
+				writeString(this.CTRANSP, dos);
+
+				// String
+
+				writeString(this.CFACTMAIL, dos);
+
+				// String
+
+				writeString(this.CBLMAIL, dos);
+
+				// String
+
+				writeString(this.CFACTWEB, dos);
+
+				// String
+
+				writeString(this.CBLWEB, dos);
+
+				// String
+
+				writeString(this.CPUBLIPOSTAGE, dos);
+
+				// String
+
+				writeString(this.CFACT_EDI, dos);
+
+				// String
+
+				writeString(this.CFACT_CHORUS, dos);
+
+				// String
+
+				writeString(this.CFACTORING, dos);
+
+				// String
+
+				writeString(this.CCHORUS_SERVICE, dos);
+
+				// String
+
+				writeString(this.CFIL14, dos);
+
+				// String
+
+				writeString(this.CTAR, dos);
+
+				// String
+
+				writeString(this.FIL02, dos);
+
+				// String
+
+				writeString(this.CREJ, dos);
+
+				// String
+
+				writeString(this.CSECT, dos);
+
+				// String
+
+				writeString(this.CTOUR, dos);
+
+				// String
+
+				writeString(this.CCAN1, dos);
+
+				// String
+
+				writeString(this.CCAN2, dos);
+
+				// String
+
+				writeString(this.CCAN3, dos);
+
+				// String
+
+				writeString(this.CDATF, dos);
+
+				// String
+
+				writeString(this.CCAT, dos);
+
+				// String
+
+				writeString(this.CRESP, dos);
+
+				// String
+
+				writeString(this.CAPE, dos);
+
+				// String
+
+				writeString(this.CPREMC, dos);
+
+				// String
+
+				writeString(this.CDERNC, dos);
+
+				// String
+
+				writeString(this.CPROCC, dos);
+
+				// String
+
+				writeString(this.CTYPEC, dos);
+
+				// String
+
+				writeString(this.CSIRET, dos);
+
+				// String
+
+				writeString(this.CORIGIN, dos);
+
+				// String
+
+				writeString(this.CMOTCOUR, dos);
+
+				// String
+
+				writeString(this.CCOMPTA, dos);
+
+				// String
+
+				writeString(this.CAFFMEMO, dos);
+
+				// String
+
+				writeString(this.CFIL2, dos);
+
+				// String
+
+				writeString(this.CPNAFF, dos);
+
+				// String
+
+				writeString(this.CDEVTAR, dos);
+
+				// String
+
+				writeString(this.CMINCOM, dos);
+
+				// String
+
+				writeString(this.CRELEVE, dos);
+
+				// String
+
+				writeString(this.CRELIQ, dos);
+
+				// String
+
+				writeString(this.CMAJ, dos);
+
+				// String
+
+				writeString(this.CECH, dos);
+
+				// String
+
+				writeString(this.CETIQ, dos);
+
+				// String
+
+				writeString(this.CCOEF, dos);
+
+				// String
+
+				writeString(this.CARROND, dos);
+
+				// String
+
+				writeString(this.CENCOUR, dos);
+
+				// String
+
+				writeString(this.CNIVREL, dos);
+
+				// String
+
+				writeString(this.CBLOCAG, dos);
+
+				// String
+
+				writeString(this.CDATREL, dos);
+
+				// String
+
+				writeString(this.CRESCO, dos);
+
+				// String
+
+				writeString(this.CRESFI, dos);
+
+				// String
+
+				writeString(this.CSFAC, dos);
+
+				// String
+
+				writeString(this.CDATENC, dos);
+
+				// String
+
+				writeString(this.CDATSFA, dos);
+
+				// String
+
+				writeString(this.CCONTR, dos);
+
+				// String
+
+				writeString(this.CDEREL, dos);
+
+				// String
+
+				writeString(this.CPAYS, dos);
+
+				// String
+
+				writeString(this.CBLTOT, dos);
+
+				// String
+
+				writeString(this.CBLLIG, dos);
+
+				// String
+
+				writeString(this.CENCDIS, dos);
+
+				// String
+
+				writeString(this.CNCEE, dos);
+
+				// String
+
+				writeString(this.CNSFAC, dos);
+
+				// String
+
+				writeString(this.CPSRDAT, dos);
+
+				// String
+
+				writeString(this.CEPNASR, dos);
+
+				// String
+
+				writeString(this.CCODTAR, dos);
+
+				// String
+
+				writeString(this.CDEVISE, dos);
+
+				// String
+
+				writeString(this.iban2, dos);
+
+				// String
+
+				writeString(this.iban3, dos);
+
+				// String
+
+				writeString(this.iban4, dos);
+
+				// String
+
+				writeString(this.iban5, dos);
+
+				// String
+
+				writeString(this.iban6, dos);
+
+				// String
+
+				writeString(this.iban7, dos);
 
 			} catch (IOException e) {
 				throw new RuntimeException(e);
@@ -4511,13 +6337,142 @@ public class Article implements TalendJob {
 			StringBuilder sb = new StringBuilder();
 			sb.append(super.toString());
 			sb.append("[");
-			sb.append("RCREF=" + RCREF);
-			sb.append(",RCTYP=" + RCTYP);
-			sb.append(",RCFAM=" + RCFAM);
-			sb.append(",RCSFAM=" + RCSFAM);
-			sb.append(",RCFIL=" + RCFIL);
-			sb.append(",RCTAR=" + RCTAR);
-			sb.append(",RCREM=" + RCREM);
+			sb.append("CREF=" + CREF);
+			sb.append(",CNOM=" + CNOM);
+			sb.append(",CRUE=" + CRUE);
+			sb.append(",CAUX=" + CAUX);
+			sb.append(",CCPTL=" + CCPTL);
+			sb.append(",CVIL=" + CVIL);
+			sb.append(",FILL01=" + FILL01);
+			sb.append(",CQUAL=" + CQUAL);
+			sb.append(",CCOM1=" + CCOM1);
+			sb.append(",CCREP=" + CCREP);
+			sb.append(",CREMFI=" + CREMFI);
+			sb.append(",CECHE=" + CECHE);
+			sb.append(",CECHJ=" + CECHJ);
+			sb.append(",CPAI=" + CPAI);
+			sb.append(",CCHAN=" + CCHAN);
+			sb.append(",CECHJ2=" + CECHJ2);
+			sb.append(",CMOD=" + CMOD);
+			sb.append(",CBQ1=" + CBQ1);
+			sb.append(",CBQ2=" + CBQ2);
+			sb.append(",CBQ3=" + CBQ3);
+			sb.append(",CBQ4=" + CBQ4);
+			sb.append(",CBQ5=" + CBQ5);
+			sb.append(",CBQ6=" + CBQ6);
+			sb.append(",CFACT=" + CFACT);
+			sb.append(",CBL=" + CBL);
+			sb.append(",CESC=" + CESC);
+			sb.append(",VARAD1=" + VARAD1);
+			sb.append(",VARAD2=" + VARAD2);
+			sb.append(",VARAD3=" + VARAD3);
+			sb.append(",VARAD4=" + VARAD4);
+			sb.append(",VARAD5=" + VARAD5);
+			sb.append(",VARAD6=" + VARAD6);
+			sb.append(",VARA1=" + VARA1);
+			sb.append(",VARA2=" + VARA2);
+			sb.append(",VARA3=" + VARA3);
+			sb.append(",VARA4=" + VARA4);
+			sb.append(",VARA5=" + VARA5);
+			sb.append(",VARB1=" + VARB1);
+			sb.append(",VARB2=" + VARB2);
+			sb.append(",VARB3=" + VARB3);
+			sb.append(",VARB4=" + VARB4);
+			sb.append(",VARB5=" + VARB5);
+			sb.append(",VARN1=" + VARN1);
+			sb.append(",VARN2=" + VARN2);
+			sb.append(",VARN3=" + VARN3);
+			sb.append(",VARN4=" + VARN4);
+			sb.append(",VARN5=" + VARN5);
+			sb.append(",CDATCRE=" + CDATCRE);
+			sb.append(",CTEL1=" + CTEL1);
+			sb.append(",CTEL2=" + CTEL2);
+			sb.append(",CTEX1=" + CTEX1);
+			sb.append(",CTEX2=" + CTEX2);
+			sb.append(",CDELMOY=" + CDELMOY);
+			sb.append(",CAFFAIRE=" + CAFFAIRE);
+			sb.append(",CCPTFACT=" + CCPTFACT);
+			sb.append(",CINTERNET=" + CINTERNET);
+			sb.append(",CIBAN1=" + CIBAN1);
+			sb.append(",CBIC_old=" + CBIC_old);
+			sb.append(",CFIDEL=" + CFIDEL);
+			sb.append(",CRFA=" + CRFA);
+			sb.append(",CCOMREG=" + CCOMREG);
+			sb.append(",CAPE2=" + CAPE2);
+			sb.append(",CIBAN72=" + CIBAN72);
+			sb.append(",CIBAN8=" + CIBAN8);
+			sb.append(",CIBAN9=" + CIBAN9);
+			sb.append(",CBIC=" + CBIC);
+			sb.append(",CTRANSP=" + CTRANSP);
+			sb.append(",CFACTMAIL=" + CFACTMAIL);
+			sb.append(",CBLMAIL=" + CBLMAIL);
+			sb.append(",CFACTWEB=" + CFACTWEB);
+			sb.append(",CBLWEB=" + CBLWEB);
+			sb.append(",CPUBLIPOSTAGE=" + CPUBLIPOSTAGE);
+			sb.append(",CFACT_EDI=" + CFACT_EDI);
+			sb.append(",CFACT_CHORUS=" + CFACT_CHORUS);
+			sb.append(",CFACTORING=" + CFACTORING);
+			sb.append(",CCHORUS_SERVICE=" + CCHORUS_SERVICE);
+			sb.append(",CFIL14=" + CFIL14);
+			sb.append(",CTAR=" + CTAR);
+			sb.append(",FIL02=" + FIL02);
+			sb.append(",CREJ=" + CREJ);
+			sb.append(",CSECT=" + CSECT);
+			sb.append(",CTOUR=" + CTOUR);
+			sb.append(",CCAN1=" + CCAN1);
+			sb.append(",CCAN2=" + CCAN2);
+			sb.append(",CCAN3=" + CCAN3);
+			sb.append(",CDATF=" + CDATF);
+			sb.append(",CCAT=" + CCAT);
+			sb.append(",CRESP=" + CRESP);
+			sb.append(",CAPE=" + CAPE);
+			sb.append(",CPREMC=" + CPREMC);
+			sb.append(",CDERNC=" + CDERNC);
+			sb.append(",CPROCC=" + CPROCC);
+			sb.append(",CTYPEC=" + CTYPEC);
+			sb.append(",CSIRET=" + CSIRET);
+			sb.append(",CORIGIN=" + CORIGIN);
+			sb.append(",CMOTCOUR=" + CMOTCOUR);
+			sb.append(",CCOMPTA=" + CCOMPTA);
+			sb.append(",CAFFMEMO=" + CAFFMEMO);
+			sb.append(",CFIL2=" + CFIL2);
+			sb.append(",CPNAFF=" + CPNAFF);
+			sb.append(",CDEVTAR=" + CDEVTAR);
+			sb.append(",CMINCOM=" + CMINCOM);
+			sb.append(",CRELEVE=" + CRELEVE);
+			sb.append(",CRELIQ=" + CRELIQ);
+			sb.append(",CMAJ=" + CMAJ);
+			sb.append(",CECH=" + CECH);
+			sb.append(",CETIQ=" + CETIQ);
+			sb.append(",CCOEF=" + CCOEF);
+			sb.append(",CARROND=" + CARROND);
+			sb.append(",CENCOUR=" + CENCOUR);
+			sb.append(",CNIVREL=" + CNIVREL);
+			sb.append(",CBLOCAG=" + CBLOCAG);
+			sb.append(",CDATREL=" + CDATREL);
+			sb.append(",CRESCO=" + CRESCO);
+			sb.append(",CRESFI=" + CRESFI);
+			sb.append(",CSFAC=" + CSFAC);
+			sb.append(",CDATENC=" + CDATENC);
+			sb.append(",CDATSFA=" + CDATSFA);
+			sb.append(",CCONTR=" + CCONTR);
+			sb.append(",CDEREL=" + CDEREL);
+			sb.append(",CPAYS=" + CPAYS);
+			sb.append(",CBLTOT=" + CBLTOT);
+			sb.append(",CBLLIG=" + CBLLIG);
+			sb.append(",CENCDIS=" + CENCDIS);
+			sb.append(",CNCEE=" + CNCEE);
+			sb.append(",CNSFAC=" + CNSFAC);
+			sb.append(",CPSRDAT=" + CPSRDAT);
+			sb.append(",CEPNASR=" + CEPNASR);
+			sb.append(",CCODTAR=" + CCODTAR);
+			sb.append(",CDEVISE=" + CDEVISE);
+			sb.append(",iban2=" + iban2);
+			sb.append(",iban3=" + iban3);
+			sb.append(",iban4=" + iban4);
+			sb.append(",iban5=" + iban5);
+			sb.append(",iban6=" + iban6);
+			sb.append(",iban7=" + iban7);
 			sb.append("]");
 
 			return sb.toString();
@@ -4526,7 +6481,7 @@ public class Article implements TalendJob {
 		/**
 		 * Compare keys
 		 */
-		public int compareTo(after_tFileInputDelimited_10Struct other) {
+		public int compareTo(row10Struct other) {
 
 			int returnValue = -1;
 
@@ -4556,8 +6511,2073 @@ public class Article implements TalendJob {
 
 	}
 
-	public void tFileInputDelimited_10Process(final java.util.Map<String, Object> globalMap) throws TalendException {
-		globalMap.put("tFileInputDelimited_10_SUBPROCESS_STATE", 0);
+	public static class after_tFileInputDelimited_11Struct
+			implements routines.system.IPersistableRow<after_tFileInputDelimited_11Struct> {
+		final static byte[] commonByteArrayLock_LOCAL_PROJECT_Article = new byte[0];
+		static byte[] commonByteArray_LOCAL_PROJECT_Article = new byte[0];
+		protected static final int DEFAULT_HASHCODE = 1;
+		protected static final int PRIME = 31;
+		protected int hashCode = DEFAULT_HASHCODE;
+		public boolean hashCodeDirty = true;
+
+		public String loopKey;
+
+		public String CREF;
+
+		public String getCREF() {
+			return this.CREF;
+		}
+
+		public String CNOM;
+
+		public String getCNOM() {
+			return this.CNOM;
+		}
+
+		public String CRUE;
+
+		public String getCRUE() {
+			return this.CRUE;
+		}
+
+		public String CAUX;
+
+		public String getCAUX() {
+			return this.CAUX;
+		}
+
+		public String CCPTL;
+
+		public String getCCPTL() {
+			return this.CCPTL;
+		}
+
+		public String CVIL;
+
+		public String getCVIL() {
+			return this.CVIL;
+		}
+
+		public String FILL01;
+
+		public String getFILL01() {
+			return this.FILL01;
+		}
+
+		public String CQUAL;
+
+		public String getCQUAL() {
+			return this.CQUAL;
+		}
+
+		public String CCOM1;
+
+		public String getCCOM1() {
+			return this.CCOM1;
+		}
+
+		public String CCREP;
+
+		public String getCCREP() {
+			return this.CCREP;
+		}
+
+		public String CREMFI;
+
+		public String getCREMFI() {
+			return this.CREMFI;
+		}
+
+		public String CECHE;
+
+		public String getCECHE() {
+			return this.CECHE;
+		}
+
+		public String CECHJ;
+
+		public String getCECHJ() {
+			return this.CECHJ;
+		}
+
+		public String CPAI;
+
+		public String getCPAI() {
+			return this.CPAI;
+		}
+
+		public String CCHAN;
+
+		public String getCCHAN() {
+			return this.CCHAN;
+		}
+
+		public String CECHJ2;
+
+		public String getCECHJ2() {
+			return this.CECHJ2;
+		}
+
+		public String CMOD;
+
+		public String getCMOD() {
+			return this.CMOD;
+		}
+
+		public String CBQ1;
+
+		public String getCBQ1() {
+			return this.CBQ1;
+		}
+
+		public String CBQ2;
+
+		public String getCBQ2() {
+			return this.CBQ2;
+		}
+
+		public String CBQ3;
+
+		public String getCBQ3() {
+			return this.CBQ3;
+		}
+
+		public String CBQ4;
+
+		public String getCBQ4() {
+			return this.CBQ4;
+		}
+
+		public String CBQ5;
+
+		public String getCBQ5() {
+			return this.CBQ5;
+		}
+
+		public String CBQ6;
+
+		public String getCBQ6() {
+			return this.CBQ6;
+		}
+
+		public String CFACT;
+
+		public String getCFACT() {
+			return this.CFACT;
+		}
+
+		public String CBL;
+
+		public String getCBL() {
+			return this.CBL;
+		}
+
+		public String CESC;
+
+		public String getCESC() {
+			return this.CESC;
+		}
+
+		public String VARAD1;
+
+		public String getVARAD1() {
+			return this.VARAD1;
+		}
+
+		public String VARAD2;
+
+		public String getVARAD2() {
+			return this.VARAD2;
+		}
+
+		public String VARAD3;
+
+		public String getVARAD3() {
+			return this.VARAD3;
+		}
+
+		public String VARAD4;
+
+		public String getVARAD4() {
+			return this.VARAD4;
+		}
+
+		public String VARAD5;
+
+		public String getVARAD5() {
+			return this.VARAD5;
+		}
+
+		public String VARAD6;
+
+		public String getVARAD6() {
+			return this.VARAD6;
+		}
+
+		public String VARA1;
+
+		public String getVARA1() {
+			return this.VARA1;
+		}
+
+		public String VARA2;
+
+		public String getVARA2() {
+			return this.VARA2;
+		}
+
+		public String VARA3;
+
+		public String getVARA3() {
+			return this.VARA3;
+		}
+
+		public String VARA4;
+
+		public String getVARA4() {
+			return this.VARA4;
+		}
+
+		public String VARA5;
+
+		public String getVARA5() {
+			return this.VARA5;
+		}
+
+		public String VARB1;
+
+		public String getVARB1() {
+			return this.VARB1;
+		}
+
+		public String VARB2;
+
+		public String getVARB2() {
+			return this.VARB2;
+		}
+
+		public String VARB3;
+
+		public String getVARB3() {
+			return this.VARB3;
+		}
+
+		public String VARB4;
+
+		public String getVARB4() {
+			return this.VARB4;
+		}
+
+		public String VARB5;
+
+		public String getVARB5() {
+			return this.VARB5;
+		}
+
+		public String VARN1;
+
+		public String getVARN1() {
+			return this.VARN1;
+		}
+
+		public String VARN2;
+
+		public String getVARN2() {
+			return this.VARN2;
+		}
+
+		public String VARN3;
+
+		public String getVARN3() {
+			return this.VARN3;
+		}
+
+		public String VARN4;
+
+		public String getVARN4() {
+			return this.VARN4;
+		}
+
+		public String VARN5;
+
+		public String getVARN5() {
+			return this.VARN5;
+		}
+
+		public String CDATCRE;
+
+		public String getCDATCRE() {
+			return this.CDATCRE;
+		}
+
+		public String CTEL1;
+
+		public String getCTEL1() {
+			return this.CTEL1;
+		}
+
+		public String CTEL2;
+
+		public String getCTEL2() {
+			return this.CTEL2;
+		}
+
+		public String CTEX1;
+
+		public String getCTEX1() {
+			return this.CTEX1;
+		}
+
+		public String CTEX2;
+
+		public String getCTEX2() {
+			return this.CTEX2;
+		}
+
+		public String CDELMOY;
+
+		public String getCDELMOY() {
+			return this.CDELMOY;
+		}
+
+		public String CAFFAIRE;
+
+		public String getCAFFAIRE() {
+			return this.CAFFAIRE;
+		}
+
+		public String CCPTFACT;
+
+		public String getCCPTFACT() {
+			return this.CCPTFACT;
+		}
+
+		public String CINTERNET;
+
+		public String getCINTERNET() {
+			return this.CINTERNET;
+		}
+
+		public String CIBAN1;
+
+		public String getCIBAN1() {
+			return this.CIBAN1;
+		}
+
+		public String CBIC_old;
+
+		public String getCBIC_old() {
+			return this.CBIC_old;
+		}
+
+		public String CFIDEL;
+
+		public String getCFIDEL() {
+			return this.CFIDEL;
+		}
+
+		public String CRFA;
+
+		public String getCRFA() {
+			return this.CRFA;
+		}
+
+		public String CCOMREG;
+
+		public String getCCOMREG() {
+			return this.CCOMREG;
+		}
+
+		public String CAPE2;
+
+		public String getCAPE2() {
+			return this.CAPE2;
+		}
+
+		public String CIBAN72;
+
+		public String getCIBAN72() {
+			return this.CIBAN72;
+		}
+
+		public String CIBAN8;
+
+		public String getCIBAN8() {
+			return this.CIBAN8;
+		}
+
+		public String CIBAN9;
+
+		public String getCIBAN9() {
+			return this.CIBAN9;
+		}
+
+		public String CBIC;
+
+		public String getCBIC() {
+			return this.CBIC;
+		}
+
+		public String CTRANSP;
+
+		public String getCTRANSP() {
+			return this.CTRANSP;
+		}
+
+		public String CFACTMAIL;
+
+		public String getCFACTMAIL() {
+			return this.CFACTMAIL;
+		}
+
+		public String CBLMAIL;
+
+		public String getCBLMAIL() {
+			return this.CBLMAIL;
+		}
+
+		public String CFACTWEB;
+
+		public String getCFACTWEB() {
+			return this.CFACTWEB;
+		}
+
+		public String CBLWEB;
+
+		public String getCBLWEB() {
+			return this.CBLWEB;
+		}
+
+		public String CPUBLIPOSTAGE;
+
+		public String getCPUBLIPOSTAGE() {
+			return this.CPUBLIPOSTAGE;
+		}
+
+		public String CFACT_EDI;
+
+		public String getCFACT_EDI() {
+			return this.CFACT_EDI;
+		}
+
+		public String CFACT_CHORUS;
+
+		public String getCFACT_CHORUS() {
+			return this.CFACT_CHORUS;
+		}
+
+		public String CFACTORING;
+
+		public String getCFACTORING() {
+			return this.CFACTORING;
+		}
+
+		public String CCHORUS_SERVICE;
+
+		public String getCCHORUS_SERVICE() {
+			return this.CCHORUS_SERVICE;
+		}
+
+		public String CFIL14;
+
+		public String getCFIL14() {
+			return this.CFIL14;
+		}
+
+		public String CTAR;
+
+		public String getCTAR() {
+			return this.CTAR;
+		}
+
+		public String FIL02;
+
+		public String getFIL02() {
+			return this.FIL02;
+		}
+
+		public String CREJ;
+
+		public String getCREJ() {
+			return this.CREJ;
+		}
+
+		public String CSECT;
+
+		public String getCSECT() {
+			return this.CSECT;
+		}
+
+		public String CTOUR;
+
+		public String getCTOUR() {
+			return this.CTOUR;
+		}
+
+		public String CCAN1;
+
+		public String getCCAN1() {
+			return this.CCAN1;
+		}
+
+		public String CCAN2;
+
+		public String getCCAN2() {
+			return this.CCAN2;
+		}
+
+		public String CCAN3;
+
+		public String getCCAN3() {
+			return this.CCAN3;
+		}
+
+		public String CDATF;
+
+		public String getCDATF() {
+			return this.CDATF;
+		}
+
+		public String CCAT;
+
+		public String getCCAT() {
+			return this.CCAT;
+		}
+
+		public String CRESP;
+
+		public String getCRESP() {
+			return this.CRESP;
+		}
+
+		public String CAPE;
+
+		public String getCAPE() {
+			return this.CAPE;
+		}
+
+		public String CPREMC;
+
+		public String getCPREMC() {
+			return this.CPREMC;
+		}
+
+		public String CDERNC;
+
+		public String getCDERNC() {
+			return this.CDERNC;
+		}
+
+		public String CPROCC;
+
+		public String getCPROCC() {
+			return this.CPROCC;
+		}
+
+		public String CTYPEC;
+
+		public String getCTYPEC() {
+			return this.CTYPEC;
+		}
+
+		public String CSIRET;
+
+		public String getCSIRET() {
+			return this.CSIRET;
+		}
+
+		public String CORIGIN;
+
+		public String getCORIGIN() {
+			return this.CORIGIN;
+		}
+
+		public String CMOTCOUR;
+
+		public String getCMOTCOUR() {
+			return this.CMOTCOUR;
+		}
+
+		public String CCOMPTA;
+
+		public String getCCOMPTA() {
+			return this.CCOMPTA;
+		}
+
+		public String CAFFMEMO;
+
+		public String getCAFFMEMO() {
+			return this.CAFFMEMO;
+		}
+
+		public String CFIL2;
+
+		public String getCFIL2() {
+			return this.CFIL2;
+		}
+
+		public String CPNAFF;
+
+		public String getCPNAFF() {
+			return this.CPNAFF;
+		}
+
+		public String CDEVTAR;
+
+		public String getCDEVTAR() {
+			return this.CDEVTAR;
+		}
+
+		public String CMINCOM;
+
+		public String getCMINCOM() {
+			return this.CMINCOM;
+		}
+
+		public String CRELEVE;
+
+		public String getCRELEVE() {
+			return this.CRELEVE;
+		}
+
+		public String CRELIQ;
+
+		public String getCRELIQ() {
+			return this.CRELIQ;
+		}
+
+		public String CMAJ;
+
+		public String getCMAJ() {
+			return this.CMAJ;
+		}
+
+		public String CECH;
+
+		public String getCECH() {
+			return this.CECH;
+		}
+
+		public String CETIQ;
+
+		public String getCETIQ() {
+			return this.CETIQ;
+		}
+
+		public String CCOEF;
+
+		public String getCCOEF() {
+			return this.CCOEF;
+		}
+
+		public String CARROND;
+
+		public String getCARROND() {
+			return this.CARROND;
+		}
+
+		public String CENCOUR;
+
+		public String getCENCOUR() {
+			return this.CENCOUR;
+		}
+
+		public String CNIVREL;
+
+		public String getCNIVREL() {
+			return this.CNIVREL;
+		}
+
+		public String CBLOCAG;
+
+		public String getCBLOCAG() {
+			return this.CBLOCAG;
+		}
+
+		public String CDATREL;
+
+		public String getCDATREL() {
+			return this.CDATREL;
+		}
+
+		public String CRESCO;
+
+		public String getCRESCO() {
+			return this.CRESCO;
+		}
+
+		public String CRESFI;
+
+		public String getCRESFI() {
+			return this.CRESFI;
+		}
+
+		public String CSFAC;
+
+		public String getCSFAC() {
+			return this.CSFAC;
+		}
+
+		public String CDATENC;
+
+		public String getCDATENC() {
+			return this.CDATENC;
+		}
+
+		public String CDATSFA;
+
+		public String getCDATSFA() {
+			return this.CDATSFA;
+		}
+
+		public String CCONTR;
+
+		public String getCCONTR() {
+			return this.CCONTR;
+		}
+
+		public String CDEREL;
+
+		public String getCDEREL() {
+			return this.CDEREL;
+		}
+
+		public String CPAYS;
+
+		public String getCPAYS() {
+			return this.CPAYS;
+		}
+
+		public String CBLTOT;
+
+		public String getCBLTOT() {
+			return this.CBLTOT;
+		}
+
+		public String CBLLIG;
+
+		public String getCBLLIG() {
+			return this.CBLLIG;
+		}
+
+		public String CENCDIS;
+
+		public String getCENCDIS() {
+			return this.CENCDIS;
+		}
+
+		public String CNCEE;
+
+		public String getCNCEE() {
+			return this.CNCEE;
+		}
+
+		public String CNSFAC;
+
+		public String getCNSFAC() {
+			return this.CNSFAC;
+		}
+
+		public String CPSRDAT;
+
+		public String getCPSRDAT() {
+			return this.CPSRDAT;
+		}
+
+		public String CEPNASR;
+
+		public String getCEPNASR() {
+			return this.CEPNASR;
+		}
+
+		public String CCODTAR;
+
+		public String getCCODTAR() {
+			return this.CCODTAR;
+		}
+
+		public String CDEVISE;
+
+		public String getCDEVISE() {
+			return this.CDEVISE;
+		}
+
+		public String iban2;
+
+		public String getIban2() {
+			return this.iban2;
+		}
+
+		public String iban3;
+
+		public String getIban3() {
+			return this.iban3;
+		}
+
+		public String iban4;
+
+		public String getIban4() {
+			return this.iban4;
+		}
+
+		public String iban5;
+
+		public String getIban5() {
+			return this.iban5;
+		}
+
+		public String iban6;
+
+		public String getIban6() {
+			return this.iban6;
+		}
+
+		public String iban7;
+
+		public String getIban7() {
+			return this.iban7;
+		}
+
+		@Override
+		public int hashCode() {
+			if (this.hashCodeDirty) {
+				final int prime = PRIME;
+				int result = DEFAULT_HASHCODE;
+
+				result = prime * result + ((this.CREF == null) ? 0 : this.CREF.hashCode());
+
+				this.hashCode = result;
+				this.hashCodeDirty = false;
+			}
+			return this.hashCode;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final after_tFileInputDelimited_11Struct other = (after_tFileInputDelimited_11Struct) obj;
+
+			if (this.CREF == null) {
+				if (other.CREF != null)
+					return false;
+
+			} else if (!this.CREF.equals(other.CREF))
+
+				return false;
+
+			return true;
+		}
+
+		public void copyDataTo(after_tFileInputDelimited_11Struct other) {
+
+			other.CREF = this.CREF;
+			other.CNOM = this.CNOM;
+			other.CRUE = this.CRUE;
+			other.CAUX = this.CAUX;
+			other.CCPTL = this.CCPTL;
+			other.CVIL = this.CVIL;
+			other.FILL01 = this.FILL01;
+			other.CQUAL = this.CQUAL;
+			other.CCOM1 = this.CCOM1;
+			other.CCREP = this.CCREP;
+			other.CREMFI = this.CREMFI;
+			other.CECHE = this.CECHE;
+			other.CECHJ = this.CECHJ;
+			other.CPAI = this.CPAI;
+			other.CCHAN = this.CCHAN;
+			other.CECHJ2 = this.CECHJ2;
+			other.CMOD = this.CMOD;
+			other.CBQ1 = this.CBQ1;
+			other.CBQ2 = this.CBQ2;
+			other.CBQ3 = this.CBQ3;
+			other.CBQ4 = this.CBQ4;
+			other.CBQ5 = this.CBQ5;
+			other.CBQ6 = this.CBQ6;
+			other.CFACT = this.CFACT;
+			other.CBL = this.CBL;
+			other.CESC = this.CESC;
+			other.VARAD1 = this.VARAD1;
+			other.VARAD2 = this.VARAD2;
+			other.VARAD3 = this.VARAD3;
+			other.VARAD4 = this.VARAD4;
+			other.VARAD5 = this.VARAD5;
+			other.VARAD6 = this.VARAD6;
+			other.VARA1 = this.VARA1;
+			other.VARA2 = this.VARA2;
+			other.VARA3 = this.VARA3;
+			other.VARA4 = this.VARA4;
+			other.VARA5 = this.VARA5;
+			other.VARB1 = this.VARB1;
+			other.VARB2 = this.VARB2;
+			other.VARB3 = this.VARB3;
+			other.VARB4 = this.VARB4;
+			other.VARB5 = this.VARB5;
+			other.VARN1 = this.VARN1;
+			other.VARN2 = this.VARN2;
+			other.VARN3 = this.VARN3;
+			other.VARN4 = this.VARN4;
+			other.VARN5 = this.VARN5;
+			other.CDATCRE = this.CDATCRE;
+			other.CTEL1 = this.CTEL1;
+			other.CTEL2 = this.CTEL2;
+			other.CTEX1 = this.CTEX1;
+			other.CTEX2 = this.CTEX2;
+			other.CDELMOY = this.CDELMOY;
+			other.CAFFAIRE = this.CAFFAIRE;
+			other.CCPTFACT = this.CCPTFACT;
+			other.CINTERNET = this.CINTERNET;
+			other.CIBAN1 = this.CIBAN1;
+			other.CBIC_old = this.CBIC_old;
+			other.CFIDEL = this.CFIDEL;
+			other.CRFA = this.CRFA;
+			other.CCOMREG = this.CCOMREG;
+			other.CAPE2 = this.CAPE2;
+			other.CIBAN72 = this.CIBAN72;
+			other.CIBAN8 = this.CIBAN8;
+			other.CIBAN9 = this.CIBAN9;
+			other.CBIC = this.CBIC;
+			other.CTRANSP = this.CTRANSP;
+			other.CFACTMAIL = this.CFACTMAIL;
+			other.CBLMAIL = this.CBLMAIL;
+			other.CFACTWEB = this.CFACTWEB;
+			other.CBLWEB = this.CBLWEB;
+			other.CPUBLIPOSTAGE = this.CPUBLIPOSTAGE;
+			other.CFACT_EDI = this.CFACT_EDI;
+			other.CFACT_CHORUS = this.CFACT_CHORUS;
+			other.CFACTORING = this.CFACTORING;
+			other.CCHORUS_SERVICE = this.CCHORUS_SERVICE;
+			other.CFIL14 = this.CFIL14;
+			other.CTAR = this.CTAR;
+			other.FIL02 = this.FIL02;
+			other.CREJ = this.CREJ;
+			other.CSECT = this.CSECT;
+			other.CTOUR = this.CTOUR;
+			other.CCAN1 = this.CCAN1;
+			other.CCAN2 = this.CCAN2;
+			other.CCAN3 = this.CCAN3;
+			other.CDATF = this.CDATF;
+			other.CCAT = this.CCAT;
+			other.CRESP = this.CRESP;
+			other.CAPE = this.CAPE;
+			other.CPREMC = this.CPREMC;
+			other.CDERNC = this.CDERNC;
+			other.CPROCC = this.CPROCC;
+			other.CTYPEC = this.CTYPEC;
+			other.CSIRET = this.CSIRET;
+			other.CORIGIN = this.CORIGIN;
+			other.CMOTCOUR = this.CMOTCOUR;
+			other.CCOMPTA = this.CCOMPTA;
+			other.CAFFMEMO = this.CAFFMEMO;
+			other.CFIL2 = this.CFIL2;
+			other.CPNAFF = this.CPNAFF;
+			other.CDEVTAR = this.CDEVTAR;
+			other.CMINCOM = this.CMINCOM;
+			other.CRELEVE = this.CRELEVE;
+			other.CRELIQ = this.CRELIQ;
+			other.CMAJ = this.CMAJ;
+			other.CECH = this.CECH;
+			other.CETIQ = this.CETIQ;
+			other.CCOEF = this.CCOEF;
+			other.CARROND = this.CARROND;
+			other.CENCOUR = this.CENCOUR;
+			other.CNIVREL = this.CNIVREL;
+			other.CBLOCAG = this.CBLOCAG;
+			other.CDATREL = this.CDATREL;
+			other.CRESCO = this.CRESCO;
+			other.CRESFI = this.CRESFI;
+			other.CSFAC = this.CSFAC;
+			other.CDATENC = this.CDATENC;
+			other.CDATSFA = this.CDATSFA;
+			other.CCONTR = this.CCONTR;
+			other.CDEREL = this.CDEREL;
+			other.CPAYS = this.CPAYS;
+			other.CBLTOT = this.CBLTOT;
+			other.CBLLIG = this.CBLLIG;
+			other.CENCDIS = this.CENCDIS;
+			other.CNCEE = this.CNCEE;
+			other.CNSFAC = this.CNSFAC;
+			other.CPSRDAT = this.CPSRDAT;
+			other.CEPNASR = this.CEPNASR;
+			other.CCODTAR = this.CCODTAR;
+			other.CDEVISE = this.CDEVISE;
+			other.iban2 = this.iban2;
+			other.iban3 = this.iban3;
+			other.iban4 = this.iban4;
+			other.iban5 = this.iban5;
+			other.iban6 = this.iban6;
+			other.iban7 = this.iban7;
+
+		}
+
+		public void copyKeysDataTo(after_tFileInputDelimited_11Struct other) {
+
+			other.CREF = this.CREF;
+
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_LOCAL_PROJECT_Article.length) {
+					if (length < 1024 && commonByteArray_LOCAL_PROJECT_Article.length == 0) {
+						commonByteArray_LOCAL_PROJECT_Article = new byte[1024];
+					} else {
+						commonByteArray_LOCAL_PROJECT_Article = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_LOCAL_PROJECT_Article, 0, length);
+				strReturn = new String(commonByteArray_LOCAL_PROJECT_Article, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_LOCAL_PROJECT_Article) {
+
+				try {
+
+					int length = 0;
+
+					this.CREF = readString(dis);
+
+					this.CNOM = readString(dis);
+
+					this.CRUE = readString(dis);
+
+					this.CAUX = readString(dis);
+
+					this.CCPTL = readString(dis);
+
+					this.CVIL = readString(dis);
+
+					this.FILL01 = readString(dis);
+
+					this.CQUAL = readString(dis);
+
+					this.CCOM1 = readString(dis);
+
+					this.CCREP = readString(dis);
+
+					this.CREMFI = readString(dis);
+
+					this.CECHE = readString(dis);
+
+					this.CECHJ = readString(dis);
+
+					this.CPAI = readString(dis);
+
+					this.CCHAN = readString(dis);
+
+					this.CECHJ2 = readString(dis);
+
+					this.CMOD = readString(dis);
+
+					this.CBQ1 = readString(dis);
+
+					this.CBQ2 = readString(dis);
+
+					this.CBQ3 = readString(dis);
+
+					this.CBQ4 = readString(dis);
+
+					this.CBQ5 = readString(dis);
+
+					this.CBQ6 = readString(dis);
+
+					this.CFACT = readString(dis);
+
+					this.CBL = readString(dis);
+
+					this.CESC = readString(dis);
+
+					this.VARAD1 = readString(dis);
+
+					this.VARAD2 = readString(dis);
+
+					this.VARAD3 = readString(dis);
+
+					this.VARAD4 = readString(dis);
+
+					this.VARAD5 = readString(dis);
+
+					this.VARAD6 = readString(dis);
+
+					this.VARA1 = readString(dis);
+
+					this.VARA2 = readString(dis);
+
+					this.VARA3 = readString(dis);
+
+					this.VARA4 = readString(dis);
+
+					this.VARA5 = readString(dis);
+
+					this.VARB1 = readString(dis);
+
+					this.VARB2 = readString(dis);
+
+					this.VARB3 = readString(dis);
+
+					this.VARB4 = readString(dis);
+
+					this.VARB5 = readString(dis);
+
+					this.VARN1 = readString(dis);
+
+					this.VARN2 = readString(dis);
+
+					this.VARN3 = readString(dis);
+
+					this.VARN4 = readString(dis);
+
+					this.VARN5 = readString(dis);
+
+					this.CDATCRE = readString(dis);
+
+					this.CTEL1 = readString(dis);
+
+					this.CTEL2 = readString(dis);
+
+					this.CTEX1 = readString(dis);
+
+					this.CTEX2 = readString(dis);
+
+					this.CDELMOY = readString(dis);
+
+					this.CAFFAIRE = readString(dis);
+
+					this.CCPTFACT = readString(dis);
+
+					this.CINTERNET = readString(dis);
+
+					this.CIBAN1 = readString(dis);
+
+					this.CBIC_old = readString(dis);
+
+					this.CFIDEL = readString(dis);
+
+					this.CRFA = readString(dis);
+
+					this.CCOMREG = readString(dis);
+
+					this.CAPE2 = readString(dis);
+
+					this.CIBAN72 = readString(dis);
+
+					this.CIBAN8 = readString(dis);
+
+					this.CIBAN9 = readString(dis);
+
+					this.CBIC = readString(dis);
+
+					this.CTRANSP = readString(dis);
+
+					this.CFACTMAIL = readString(dis);
+
+					this.CBLMAIL = readString(dis);
+
+					this.CFACTWEB = readString(dis);
+
+					this.CBLWEB = readString(dis);
+
+					this.CPUBLIPOSTAGE = readString(dis);
+
+					this.CFACT_EDI = readString(dis);
+
+					this.CFACT_CHORUS = readString(dis);
+
+					this.CFACTORING = readString(dis);
+
+					this.CCHORUS_SERVICE = readString(dis);
+
+					this.CFIL14 = readString(dis);
+
+					this.CTAR = readString(dis);
+
+					this.FIL02 = readString(dis);
+
+					this.CREJ = readString(dis);
+
+					this.CSECT = readString(dis);
+
+					this.CTOUR = readString(dis);
+
+					this.CCAN1 = readString(dis);
+
+					this.CCAN2 = readString(dis);
+
+					this.CCAN3 = readString(dis);
+
+					this.CDATF = readString(dis);
+
+					this.CCAT = readString(dis);
+
+					this.CRESP = readString(dis);
+
+					this.CAPE = readString(dis);
+
+					this.CPREMC = readString(dis);
+
+					this.CDERNC = readString(dis);
+
+					this.CPROCC = readString(dis);
+
+					this.CTYPEC = readString(dis);
+
+					this.CSIRET = readString(dis);
+
+					this.CORIGIN = readString(dis);
+
+					this.CMOTCOUR = readString(dis);
+
+					this.CCOMPTA = readString(dis);
+
+					this.CAFFMEMO = readString(dis);
+
+					this.CFIL2 = readString(dis);
+
+					this.CPNAFF = readString(dis);
+
+					this.CDEVTAR = readString(dis);
+
+					this.CMINCOM = readString(dis);
+
+					this.CRELEVE = readString(dis);
+
+					this.CRELIQ = readString(dis);
+
+					this.CMAJ = readString(dis);
+
+					this.CECH = readString(dis);
+
+					this.CETIQ = readString(dis);
+
+					this.CCOEF = readString(dis);
+
+					this.CARROND = readString(dis);
+
+					this.CENCOUR = readString(dis);
+
+					this.CNIVREL = readString(dis);
+
+					this.CBLOCAG = readString(dis);
+
+					this.CDATREL = readString(dis);
+
+					this.CRESCO = readString(dis);
+
+					this.CRESFI = readString(dis);
+
+					this.CSFAC = readString(dis);
+
+					this.CDATENC = readString(dis);
+
+					this.CDATSFA = readString(dis);
+
+					this.CCONTR = readString(dis);
+
+					this.CDEREL = readString(dis);
+
+					this.CPAYS = readString(dis);
+
+					this.CBLTOT = readString(dis);
+
+					this.CBLLIG = readString(dis);
+
+					this.CENCDIS = readString(dis);
+
+					this.CNCEE = readString(dis);
+
+					this.CNSFAC = readString(dis);
+
+					this.CPSRDAT = readString(dis);
+
+					this.CEPNASR = readString(dis);
+
+					this.CCODTAR = readString(dis);
+
+					this.CDEVISE = readString(dis);
+
+					this.iban2 = readString(dis);
+
+					this.iban3 = readString(dis);
+
+					this.iban4 = readString(dis);
+
+					this.iban5 = readString(dis);
+
+					this.iban6 = readString(dis);
+
+					this.iban7 = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.CREF, dos);
+
+				// String
+
+				writeString(this.CNOM, dos);
+
+				// String
+
+				writeString(this.CRUE, dos);
+
+				// String
+
+				writeString(this.CAUX, dos);
+
+				// String
+
+				writeString(this.CCPTL, dos);
+
+				// String
+
+				writeString(this.CVIL, dos);
+
+				// String
+
+				writeString(this.FILL01, dos);
+
+				// String
+
+				writeString(this.CQUAL, dos);
+
+				// String
+
+				writeString(this.CCOM1, dos);
+
+				// String
+
+				writeString(this.CCREP, dos);
+
+				// String
+
+				writeString(this.CREMFI, dos);
+
+				// String
+
+				writeString(this.CECHE, dos);
+
+				// String
+
+				writeString(this.CECHJ, dos);
+
+				// String
+
+				writeString(this.CPAI, dos);
+
+				// String
+
+				writeString(this.CCHAN, dos);
+
+				// String
+
+				writeString(this.CECHJ2, dos);
+
+				// String
+
+				writeString(this.CMOD, dos);
+
+				// String
+
+				writeString(this.CBQ1, dos);
+
+				// String
+
+				writeString(this.CBQ2, dos);
+
+				// String
+
+				writeString(this.CBQ3, dos);
+
+				// String
+
+				writeString(this.CBQ4, dos);
+
+				// String
+
+				writeString(this.CBQ5, dos);
+
+				// String
+
+				writeString(this.CBQ6, dos);
+
+				// String
+
+				writeString(this.CFACT, dos);
+
+				// String
+
+				writeString(this.CBL, dos);
+
+				// String
+
+				writeString(this.CESC, dos);
+
+				// String
+
+				writeString(this.VARAD1, dos);
+
+				// String
+
+				writeString(this.VARAD2, dos);
+
+				// String
+
+				writeString(this.VARAD3, dos);
+
+				// String
+
+				writeString(this.VARAD4, dos);
+
+				// String
+
+				writeString(this.VARAD5, dos);
+
+				// String
+
+				writeString(this.VARAD6, dos);
+
+				// String
+
+				writeString(this.VARA1, dos);
+
+				// String
+
+				writeString(this.VARA2, dos);
+
+				// String
+
+				writeString(this.VARA3, dos);
+
+				// String
+
+				writeString(this.VARA4, dos);
+
+				// String
+
+				writeString(this.VARA5, dos);
+
+				// String
+
+				writeString(this.VARB1, dos);
+
+				// String
+
+				writeString(this.VARB2, dos);
+
+				// String
+
+				writeString(this.VARB3, dos);
+
+				// String
+
+				writeString(this.VARB4, dos);
+
+				// String
+
+				writeString(this.VARB5, dos);
+
+				// String
+
+				writeString(this.VARN1, dos);
+
+				// String
+
+				writeString(this.VARN2, dos);
+
+				// String
+
+				writeString(this.VARN3, dos);
+
+				// String
+
+				writeString(this.VARN4, dos);
+
+				// String
+
+				writeString(this.VARN5, dos);
+
+				// String
+
+				writeString(this.CDATCRE, dos);
+
+				// String
+
+				writeString(this.CTEL1, dos);
+
+				// String
+
+				writeString(this.CTEL2, dos);
+
+				// String
+
+				writeString(this.CTEX1, dos);
+
+				// String
+
+				writeString(this.CTEX2, dos);
+
+				// String
+
+				writeString(this.CDELMOY, dos);
+
+				// String
+
+				writeString(this.CAFFAIRE, dos);
+
+				// String
+
+				writeString(this.CCPTFACT, dos);
+
+				// String
+
+				writeString(this.CINTERNET, dos);
+
+				// String
+
+				writeString(this.CIBAN1, dos);
+
+				// String
+
+				writeString(this.CBIC_old, dos);
+
+				// String
+
+				writeString(this.CFIDEL, dos);
+
+				// String
+
+				writeString(this.CRFA, dos);
+
+				// String
+
+				writeString(this.CCOMREG, dos);
+
+				// String
+
+				writeString(this.CAPE2, dos);
+
+				// String
+
+				writeString(this.CIBAN72, dos);
+
+				// String
+
+				writeString(this.CIBAN8, dos);
+
+				// String
+
+				writeString(this.CIBAN9, dos);
+
+				// String
+
+				writeString(this.CBIC, dos);
+
+				// String
+
+				writeString(this.CTRANSP, dos);
+
+				// String
+
+				writeString(this.CFACTMAIL, dos);
+
+				// String
+
+				writeString(this.CBLMAIL, dos);
+
+				// String
+
+				writeString(this.CFACTWEB, dos);
+
+				// String
+
+				writeString(this.CBLWEB, dos);
+
+				// String
+
+				writeString(this.CPUBLIPOSTAGE, dos);
+
+				// String
+
+				writeString(this.CFACT_EDI, dos);
+
+				// String
+
+				writeString(this.CFACT_CHORUS, dos);
+
+				// String
+
+				writeString(this.CFACTORING, dos);
+
+				// String
+
+				writeString(this.CCHORUS_SERVICE, dos);
+
+				// String
+
+				writeString(this.CFIL14, dos);
+
+				// String
+
+				writeString(this.CTAR, dos);
+
+				// String
+
+				writeString(this.FIL02, dos);
+
+				// String
+
+				writeString(this.CREJ, dos);
+
+				// String
+
+				writeString(this.CSECT, dos);
+
+				// String
+
+				writeString(this.CTOUR, dos);
+
+				// String
+
+				writeString(this.CCAN1, dos);
+
+				// String
+
+				writeString(this.CCAN2, dos);
+
+				// String
+
+				writeString(this.CCAN3, dos);
+
+				// String
+
+				writeString(this.CDATF, dos);
+
+				// String
+
+				writeString(this.CCAT, dos);
+
+				// String
+
+				writeString(this.CRESP, dos);
+
+				// String
+
+				writeString(this.CAPE, dos);
+
+				// String
+
+				writeString(this.CPREMC, dos);
+
+				// String
+
+				writeString(this.CDERNC, dos);
+
+				// String
+
+				writeString(this.CPROCC, dos);
+
+				// String
+
+				writeString(this.CTYPEC, dos);
+
+				// String
+
+				writeString(this.CSIRET, dos);
+
+				// String
+
+				writeString(this.CORIGIN, dos);
+
+				// String
+
+				writeString(this.CMOTCOUR, dos);
+
+				// String
+
+				writeString(this.CCOMPTA, dos);
+
+				// String
+
+				writeString(this.CAFFMEMO, dos);
+
+				// String
+
+				writeString(this.CFIL2, dos);
+
+				// String
+
+				writeString(this.CPNAFF, dos);
+
+				// String
+
+				writeString(this.CDEVTAR, dos);
+
+				// String
+
+				writeString(this.CMINCOM, dos);
+
+				// String
+
+				writeString(this.CRELEVE, dos);
+
+				// String
+
+				writeString(this.CRELIQ, dos);
+
+				// String
+
+				writeString(this.CMAJ, dos);
+
+				// String
+
+				writeString(this.CECH, dos);
+
+				// String
+
+				writeString(this.CETIQ, dos);
+
+				// String
+
+				writeString(this.CCOEF, dos);
+
+				// String
+
+				writeString(this.CARROND, dos);
+
+				// String
+
+				writeString(this.CENCOUR, dos);
+
+				// String
+
+				writeString(this.CNIVREL, dos);
+
+				// String
+
+				writeString(this.CBLOCAG, dos);
+
+				// String
+
+				writeString(this.CDATREL, dos);
+
+				// String
+
+				writeString(this.CRESCO, dos);
+
+				// String
+
+				writeString(this.CRESFI, dos);
+
+				// String
+
+				writeString(this.CSFAC, dos);
+
+				// String
+
+				writeString(this.CDATENC, dos);
+
+				// String
+
+				writeString(this.CDATSFA, dos);
+
+				// String
+
+				writeString(this.CCONTR, dos);
+
+				// String
+
+				writeString(this.CDEREL, dos);
+
+				// String
+
+				writeString(this.CPAYS, dos);
+
+				// String
+
+				writeString(this.CBLTOT, dos);
+
+				// String
+
+				writeString(this.CBLLIG, dos);
+
+				// String
+
+				writeString(this.CENCDIS, dos);
+
+				// String
+
+				writeString(this.CNCEE, dos);
+
+				// String
+
+				writeString(this.CNSFAC, dos);
+
+				// String
+
+				writeString(this.CPSRDAT, dos);
+
+				// String
+
+				writeString(this.CEPNASR, dos);
+
+				// String
+
+				writeString(this.CCODTAR, dos);
+
+				// String
+
+				writeString(this.CDEVISE, dos);
+
+				// String
+
+				writeString(this.iban2, dos);
+
+				// String
+
+				writeString(this.iban3, dos);
+
+				// String
+
+				writeString(this.iban4, dos);
+
+				// String
+
+				writeString(this.iban5, dos);
+
+				// String
+
+				writeString(this.iban6, dos);
+
+				// String
+
+				writeString(this.iban7, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("CREF=" + CREF);
+			sb.append(",CNOM=" + CNOM);
+			sb.append(",CRUE=" + CRUE);
+			sb.append(",CAUX=" + CAUX);
+			sb.append(",CCPTL=" + CCPTL);
+			sb.append(",CVIL=" + CVIL);
+			sb.append(",FILL01=" + FILL01);
+			sb.append(",CQUAL=" + CQUAL);
+			sb.append(",CCOM1=" + CCOM1);
+			sb.append(",CCREP=" + CCREP);
+			sb.append(",CREMFI=" + CREMFI);
+			sb.append(",CECHE=" + CECHE);
+			sb.append(",CECHJ=" + CECHJ);
+			sb.append(",CPAI=" + CPAI);
+			sb.append(",CCHAN=" + CCHAN);
+			sb.append(",CECHJ2=" + CECHJ2);
+			sb.append(",CMOD=" + CMOD);
+			sb.append(",CBQ1=" + CBQ1);
+			sb.append(",CBQ2=" + CBQ2);
+			sb.append(",CBQ3=" + CBQ3);
+			sb.append(",CBQ4=" + CBQ4);
+			sb.append(",CBQ5=" + CBQ5);
+			sb.append(",CBQ6=" + CBQ6);
+			sb.append(",CFACT=" + CFACT);
+			sb.append(",CBL=" + CBL);
+			sb.append(",CESC=" + CESC);
+			sb.append(",VARAD1=" + VARAD1);
+			sb.append(",VARAD2=" + VARAD2);
+			sb.append(",VARAD3=" + VARAD3);
+			sb.append(",VARAD4=" + VARAD4);
+			sb.append(",VARAD5=" + VARAD5);
+			sb.append(",VARAD6=" + VARAD6);
+			sb.append(",VARA1=" + VARA1);
+			sb.append(",VARA2=" + VARA2);
+			sb.append(",VARA3=" + VARA3);
+			sb.append(",VARA4=" + VARA4);
+			sb.append(",VARA5=" + VARA5);
+			sb.append(",VARB1=" + VARB1);
+			sb.append(",VARB2=" + VARB2);
+			sb.append(",VARB3=" + VARB3);
+			sb.append(",VARB4=" + VARB4);
+			sb.append(",VARB5=" + VARB5);
+			sb.append(",VARN1=" + VARN1);
+			sb.append(",VARN2=" + VARN2);
+			sb.append(",VARN3=" + VARN3);
+			sb.append(",VARN4=" + VARN4);
+			sb.append(",VARN5=" + VARN5);
+			sb.append(",CDATCRE=" + CDATCRE);
+			sb.append(",CTEL1=" + CTEL1);
+			sb.append(",CTEL2=" + CTEL2);
+			sb.append(",CTEX1=" + CTEX1);
+			sb.append(",CTEX2=" + CTEX2);
+			sb.append(",CDELMOY=" + CDELMOY);
+			sb.append(",CAFFAIRE=" + CAFFAIRE);
+			sb.append(",CCPTFACT=" + CCPTFACT);
+			sb.append(",CINTERNET=" + CINTERNET);
+			sb.append(",CIBAN1=" + CIBAN1);
+			sb.append(",CBIC_old=" + CBIC_old);
+			sb.append(",CFIDEL=" + CFIDEL);
+			sb.append(",CRFA=" + CRFA);
+			sb.append(",CCOMREG=" + CCOMREG);
+			sb.append(",CAPE2=" + CAPE2);
+			sb.append(",CIBAN72=" + CIBAN72);
+			sb.append(",CIBAN8=" + CIBAN8);
+			sb.append(",CIBAN9=" + CIBAN9);
+			sb.append(",CBIC=" + CBIC);
+			sb.append(",CTRANSP=" + CTRANSP);
+			sb.append(",CFACTMAIL=" + CFACTMAIL);
+			sb.append(",CBLMAIL=" + CBLMAIL);
+			sb.append(",CFACTWEB=" + CFACTWEB);
+			sb.append(",CBLWEB=" + CBLWEB);
+			sb.append(",CPUBLIPOSTAGE=" + CPUBLIPOSTAGE);
+			sb.append(",CFACT_EDI=" + CFACT_EDI);
+			sb.append(",CFACT_CHORUS=" + CFACT_CHORUS);
+			sb.append(",CFACTORING=" + CFACTORING);
+			sb.append(",CCHORUS_SERVICE=" + CCHORUS_SERVICE);
+			sb.append(",CFIL14=" + CFIL14);
+			sb.append(",CTAR=" + CTAR);
+			sb.append(",FIL02=" + FIL02);
+			sb.append(",CREJ=" + CREJ);
+			sb.append(",CSECT=" + CSECT);
+			sb.append(",CTOUR=" + CTOUR);
+			sb.append(",CCAN1=" + CCAN1);
+			sb.append(",CCAN2=" + CCAN2);
+			sb.append(",CCAN3=" + CCAN3);
+			sb.append(",CDATF=" + CDATF);
+			sb.append(",CCAT=" + CCAT);
+			sb.append(",CRESP=" + CRESP);
+			sb.append(",CAPE=" + CAPE);
+			sb.append(",CPREMC=" + CPREMC);
+			sb.append(",CDERNC=" + CDERNC);
+			sb.append(",CPROCC=" + CPROCC);
+			sb.append(",CTYPEC=" + CTYPEC);
+			sb.append(",CSIRET=" + CSIRET);
+			sb.append(",CORIGIN=" + CORIGIN);
+			sb.append(",CMOTCOUR=" + CMOTCOUR);
+			sb.append(",CCOMPTA=" + CCOMPTA);
+			sb.append(",CAFFMEMO=" + CAFFMEMO);
+			sb.append(",CFIL2=" + CFIL2);
+			sb.append(",CPNAFF=" + CPNAFF);
+			sb.append(",CDEVTAR=" + CDEVTAR);
+			sb.append(",CMINCOM=" + CMINCOM);
+			sb.append(",CRELEVE=" + CRELEVE);
+			sb.append(",CRELIQ=" + CRELIQ);
+			sb.append(",CMAJ=" + CMAJ);
+			sb.append(",CECH=" + CECH);
+			sb.append(",CETIQ=" + CETIQ);
+			sb.append(",CCOEF=" + CCOEF);
+			sb.append(",CARROND=" + CARROND);
+			sb.append(",CENCOUR=" + CENCOUR);
+			sb.append(",CNIVREL=" + CNIVREL);
+			sb.append(",CBLOCAG=" + CBLOCAG);
+			sb.append(",CDATREL=" + CDATREL);
+			sb.append(",CRESCO=" + CRESCO);
+			sb.append(",CRESFI=" + CRESFI);
+			sb.append(",CSFAC=" + CSFAC);
+			sb.append(",CDATENC=" + CDATENC);
+			sb.append(",CDATSFA=" + CDATSFA);
+			sb.append(",CCONTR=" + CCONTR);
+			sb.append(",CDEREL=" + CDEREL);
+			sb.append(",CPAYS=" + CPAYS);
+			sb.append(",CBLTOT=" + CBLTOT);
+			sb.append(",CBLLIG=" + CBLLIG);
+			sb.append(",CENCDIS=" + CENCDIS);
+			sb.append(",CNCEE=" + CNCEE);
+			sb.append(",CNSFAC=" + CNSFAC);
+			sb.append(",CPSRDAT=" + CPSRDAT);
+			sb.append(",CEPNASR=" + CEPNASR);
+			sb.append(",CCODTAR=" + CCODTAR);
+			sb.append(",CDEVISE=" + CDEVISE);
+			sb.append(",iban2=" + iban2);
+			sb.append(",iban3=" + iban3);
+			sb.append(",iban4=" + iban4);
+			sb.append(",iban5=" + iban5);
+			sb.append(",iban6=" + iban6);
+			sb.append(",iban7=" + iban7);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(after_tFileInputDelimited_11Struct other) {
+
+			int returnValue = -1;
+
+			returnValue = checkNullsAndCompare(this.CREF, other.CREF);
+			if (returnValue != 0) {
+				return returnValue;
+			}
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(), object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public void tFileInputDelimited_11Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+		globalMap.put("tFileInputDelimited_11_SUBPROCESS_STATE", 0);
 
 		final boolean execStat = this.execStat;
 
@@ -4577,8 +8597,10 @@ public class Article implements TalendJob {
 				globalResumeTicket = true;
 
 				tFileInputDelimited_9Process(globalMap);
+				tFileInputDelimited_12Process(globalMap);
 
-				row9Struct row9 = new row9Struct();
+				row10Struct row10 = new row10Struct();
+				out2Struct out2 = new out2Struct();
 				copyOfmain_6Struct copyOfmain_6 = new copyOfmain_6Struct();
 
 				/**
@@ -4648,7 +8670,7 @@ public class Article implements TalendJob {
 				currentComponent = "tMap_9";
 
 				if (execStat) {
-					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "row9");
+					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "out2");
 				}
 
 				int tos_count_tMap_9 = 0;
@@ -4680,179 +8702,764 @@ public class Article implements TalendJob {
 				 */
 
 				/**
-				 * [tFileInputDelimited_10 begin ] start
+				 * [tMap_10 begin ] start
 				 */
 
-				ok_Hash.put("tFileInputDelimited_10", false);
-				start_Hash.put("tFileInputDelimited_10", System.currentTimeMillis());
+				ok_Hash.put("tMap_10", false);
+				start_Hash.put("tMap_10", System.currentTimeMillis());
 
-				currentComponent = "tFileInputDelimited_10";
+				currentComponent = "tMap_10";
 
-				int tos_count_tFileInputDelimited_10 = 0;
+				if (execStat) {
+					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "row10");
+				}
 
-				final routines.system.RowState rowstate_tFileInputDelimited_10 = new routines.system.RowState();
+				int tos_count_tMap_10 = 0;
 
-				int nb_line_tFileInputDelimited_10 = 0;
-				org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_10 = null;
-				int limit_tFileInputDelimited_10 = -1;
+// ###############################
+// # Lookup's keys initialization
+
+				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row12Struct> tHash_Lookup_row12 = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row12Struct>) ((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row12Struct>) globalMap
+						.get("tHash_Lookup_row12"));
+
+				row12Struct row12HashKey = new row12Struct();
+				row12Struct row12Default = new row12Struct();
+// ###############################        
+
+// ###############################
+// # Vars initialization
+				class Var__tMap_10__Struct {
+				}
+				Var__tMap_10__Struct Var__tMap_10 = new Var__tMap_10__Struct();
+// ###############################
+
+// ###############################
+// # Outputs initialization
+				out2Struct out2_tmp = new out2Struct();
+// ###############################
+
+				/**
+				 * [tMap_10 begin ] stop
+				 */
+
+				/**
+				 * [tFileInputDelimited_11 begin ] start
+				 */
+
+				ok_Hash.put("tFileInputDelimited_11", false);
+				start_Hash.put("tFileInputDelimited_11", System.currentTimeMillis());
+
+				currentComponent = "tFileInputDelimited_11";
+
+				int tos_count_tFileInputDelimited_11 = 0;
+
+				final routines.system.RowState rowstate_tFileInputDelimited_11 = new routines.system.RowState();
+
+				class RowHelper_tFileInputDelimited_11 {
+
+					public void valueToConn_0(org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_11,
+							row10Struct row10) throws java.lang.Exception {
+
+						int columnIndexWithD_tFileInputDelimited_11 = 0;
+
+						columnIndexWithD_tFileInputDelimited_11 = 0;
+
+						row10.CREF = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 1;
+
+						row10.CNOM = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 2;
+
+						row10.CRUE = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 3;
+
+						row10.CAUX = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 4;
+
+						row10.CCPTL = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 5;
+
+						row10.CVIL = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 6;
+
+						row10.FILL01 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 7;
+
+						row10.CQUAL = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 8;
+
+						row10.CCOM1 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 9;
+
+						row10.CCREP = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 10;
+
+						row10.CREMFI = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 11;
+
+						row10.CECHE = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 12;
+
+						row10.CECHJ = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 13;
+
+						row10.CPAI = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 14;
+
+						row10.CCHAN = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 15;
+
+						row10.CECHJ2 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 16;
+
+						row10.CMOD = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 17;
+
+						row10.CBQ1 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 18;
+
+						row10.CBQ2 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 19;
+
+						row10.CBQ3 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 20;
+
+						row10.CBQ4 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 21;
+
+						row10.CBQ5 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 22;
+
+						row10.CBQ6 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 23;
+
+						row10.CFACT = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 24;
+
+						row10.CBL = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 25;
+
+						row10.CESC = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 26;
+
+						row10.VARAD1 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 27;
+
+						row10.VARAD2 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 28;
+
+						row10.VARAD3 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 29;
+
+						row10.VARAD4 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 30;
+
+						row10.VARAD5 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 31;
+
+						row10.VARAD6 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 32;
+
+						row10.VARA1 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 33;
+
+						row10.VARA2 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 34;
+
+						row10.VARA3 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 35;
+
+						row10.VARA4 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 36;
+
+						row10.VARA5 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 37;
+
+						row10.VARB1 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 38;
+
+						row10.VARB2 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 39;
+
+						row10.VARB3 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 40;
+
+						row10.VARB4 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 41;
+
+						row10.VARB5 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 42;
+
+						row10.VARN1 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 43;
+
+						row10.VARN2 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 44;
+
+						row10.VARN3 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 45;
+
+						row10.VARN4 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 46;
+
+						row10.VARN5 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 47;
+
+						row10.CDATCRE = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 48;
+
+						row10.CTEL1 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 49;
+
+						row10.CTEL2 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 50;
+
+						row10.CTEX1 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 51;
+
+						row10.CTEX2 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 52;
+
+						row10.CDELMOY = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 53;
+
+						row10.CAFFAIRE = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 54;
+
+						row10.CCPTFACT = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 55;
+
+						row10.CINTERNET = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 56;
+
+						row10.CIBAN1 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 57;
+
+						row10.CBIC_old = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 58;
+
+						row10.CFIDEL = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 59;
+
+						row10.CRFA = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 60;
+
+						row10.CCOMREG = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 61;
+
+						row10.CAPE2 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 62;
+
+						row10.CIBAN72 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 63;
+
+						row10.CIBAN8 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 64;
+
+						row10.CIBAN9 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 65;
+
+						row10.CBIC = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 66;
+
+						row10.CTRANSP = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 67;
+
+						row10.CFACTMAIL = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 68;
+
+						row10.CBLMAIL = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 69;
+
+						row10.CFACTWEB = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 70;
+
+						row10.CBLWEB = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 71;
+
+						row10.CPUBLIPOSTAGE = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 72;
+
+						row10.CFACT_EDI = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 73;
+
+						row10.CFACT_CHORUS = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 74;
+
+						row10.CFACTORING = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 75;
+
+						row10.CCHORUS_SERVICE = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 76;
+
+						row10.CFIL14 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 77;
+
+						row10.CTAR = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 78;
+
+						row10.FIL02 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 79;
+
+						row10.CREJ = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 80;
+
+						row10.CSECT = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 81;
+
+						row10.CTOUR = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 82;
+
+						row10.CCAN1 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 83;
+
+						row10.CCAN2 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 84;
+
+						row10.CCAN3 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 85;
+
+						row10.CDATF = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 86;
+
+						row10.CCAT = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 87;
+
+						row10.CRESP = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 88;
+
+						row10.CAPE = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 89;
+
+						row10.CPREMC = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 90;
+
+						row10.CDERNC = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 91;
+
+						row10.CPROCC = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 92;
+
+						row10.CTYPEC = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 93;
+
+						row10.CSIRET = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 94;
+
+						row10.CORIGIN = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 95;
+
+						row10.CMOTCOUR = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 96;
+
+						row10.CCOMPTA = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 97;
+
+						row10.CAFFMEMO = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 98;
+
+						row10.CFIL2 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 99;
+
+						row10.CPNAFF = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+					}
+
+					public void valueToConn_1(org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_11,
+							row10Struct row10) throws java.lang.Exception {
+
+						int columnIndexWithD_tFileInputDelimited_11 = 0;
+
+						columnIndexWithD_tFileInputDelimited_11 = 100;
+
+						row10.CDEVTAR = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 101;
+
+						row10.CMINCOM = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 102;
+
+						row10.CRELEVE = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 103;
+
+						row10.CRELIQ = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 104;
+
+						row10.CMAJ = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 105;
+
+						row10.CECH = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 106;
+
+						row10.CETIQ = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 107;
+
+						row10.CCOEF = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 108;
+
+						row10.CARROND = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 109;
+
+						row10.CENCOUR = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 110;
+
+						row10.CNIVREL = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 111;
+
+						row10.CBLOCAG = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 112;
+
+						row10.CDATREL = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 113;
+
+						row10.CRESCO = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 114;
+
+						row10.CRESFI = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 115;
+
+						row10.CSFAC = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 116;
+
+						row10.CDATENC = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 117;
+
+						row10.CDATSFA = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 118;
+
+						row10.CCONTR = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 119;
+
+						row10.CDEREL = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 120;
+
+						row10.CPAYS = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 121;
+
+						row10.CBLTOT = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 122;
+
+						row10.CBLLIG = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 123;
+
+						row10.CENCDIS = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 124;
+
+						row10.CNCEE = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 125;
+
+						row10.CNSFAC = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 126;
+
+						row10.CPSRDAT = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 127;
+
+						row10.CEPNASR = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 128;
+
+						row10.CCODTAR = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 129;
+
+						row10.CDEVISE = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 130;
+
+						row10.iban2 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 131;
+
+						row10.iban3 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 132;
+
+						row10.iban4 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 133;
+
+						row10.iban5 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 134;
+
+						row10.iban6 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+						columnIndexWithD_tFileInputDelimited_11 = 135;
+
+						row10.iban7 = fid_tFileInputDelimited_11.get(columnIndexWithD_tFileInputDelimited_11);
+
+					}
+
+					public void valueToConn(org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_11,
+							row10Struct row10) throws java.lang.Exception {
+
+						valueToConn_0(fid_tFileInputDelimited_11, row10);
+
+						valueToConn_1(fid_tFileInputDelimited_11, row10);
+
+					}
+
+				}
+				RowHelper_tFileInputDelimited_11 rowHelper_tFileInputDelimited_11 = new RowHelper_tFileInputDelimited_11();
+
+				int nb_line_tFileInputDelimited_11 = 0;
+				org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_11 = null;
+				int limit_tFileInputDelimited_11 = -1;
 				try {
 
-					Object filename_tFileInputDelimited_10 = "C:/DEV/Data/Base Montauban/remises_clients.csv";
-					if (filename_tFileInputDelimited_10 instanceof java.io.InputStream) {
+					Object filename_tFileInputDelimited_11 = "C:/DEV/Data/Base Montauban/Client.csv";
+					if (filename_tFileInputDelimited_11 instanceof java.io.InputStream) {
 
-						int footer_value_tFileInputDelimited_10 = 0, random_value_tFileInputDelimited_10 = -1;
-						if (footer_value_tFileInputDelimited_10 > 0 || random_value_tFileInputDelimited_10 > 0) {
+						int footer_value_tFileInputDelimited_11 = 0, random_value_tFileInputDelimited_11 = -1;
+						if (footer_value_tFileInputDelimited_11 > 0 || random_value_tFileInputDelimited_11 > 0) {
 							throw new java.lang.Exception(
 									"When the input source is a stream,footer and random shouldn't be bigger than 0.");
 						}
 
 					}
 					try {
-						fid_tFileInputDelimited_10 = new org.talend.fileprocess.FileInputDelimited(
-								"C:/DEV/Data/Base Montauban/remises_clients.csv", "ISO-8859-15", ";", "\n", true, 1, 0,
-								limit_tFileInputDelimited_10, -1, false);
+						fid_tFileInputDelimited_11 = new org.talend.fileprocess.FileInputDelimited(
+								"C:/DEV/Data/Base Montauban/Client.csv", "ISO-8859-15", ";", "\n", true, 1, 0,
+								limit_tFileInputDelimited_11, -1, false);
 					} catch (java.lang.Exception e) {
 
 						System.err.println(e.getMessage());
 
 					}
 
-					while (fid_tFileInputDelimited_10 != null && fid_tFileInputDelimited_10.nextRecord()) {
-						rowstate_tFileInputDelimited_10.reset();
+					while (fid_tFileInputDelimited_11 != null && fid_tFileInputDelimited_11.nextRecord()) {
+						rowstate_tFileInputDelimited_11.reset();
 
-						row9 = null;
+						row10 = null;
 
-						boolean whetherReject_tFileInputDelimited_10 = false;
-						row9 = new row9Struct();
+						boolean whetherReject_tFileInputDelimited_11 = false;
+						row10 = new row10Struct();
 						try {
 
-							int columnIndexWithD_tFileInputDelimited_10 = 0;
+							rowHelper_tFileInputDelimited_11.valueToConn(fid_tFileInputDelimited_11, row10);
 
-							columnIndexWithD_tFileInputDelimited_10 = 0;
-
-							row9.RCREF = fid_tFileInputDelimited_10.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 1;
-
-							row9.RCTYP = fid_tFileInputDelimited_10.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 2;
-
-							row9.RCFAM = fid_tFileInputDelimited_10.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 3;
-
-							row9.RCSFAM = fid_tFileInputDelimited_10.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 4;
-
-							row9.RCFIL = fid_tFileInputDelimited_10.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 5;
-
-							row9.RCTAR = fid_tFileInputDelimited_10.get(columnIndexWithD_tFileInputDelimited_10);
-
-							columnIndexWithD_tFileInputDelimited_10 = 6;
-
-							row9.RCREM = fid_tFileInputDelimited_10.get(columnIndexWithD_tFileInputDelimited_10);
-
-							if (rowstate_tFileInputDelimited_10.getException() != null) {
-								throw rowstate_tFileInputDelimited_10.getException();
+							if (rowstate_tFileInputDelimited_11.getException() != null) {
+								throw rowstate_tFileInputDelimited_11.getException();
 							}
 
 						} catch (java.lang.Exception e) {
-							whetherReject_tFileInputDelimited_10 = true;
+							whetherReject_tFileInputDelimited_11 = true;
 
 							System.err.println(e.getMessage());
-							row9 = null;
+							row10 = null;
 
 						}
 
 						/**
-						 * [tFileInputDelimited_10 begin ] stop
+						 * [tFileInputDelimited_11 begin ] stop
 						 */
 
 						/**
-						 * [tFileInputDelimited_10 main ] start
+						 * [tFileInputDelimited_11 main ] start
 						 */
 
-						currentComponent = "tFileInputDelimited_10";
+						currentComponent = "tFileInputDelimited_11";
 
-						tos_count_tFileInputDelimited_10++;
+						tos_count_tFileInputDelimited_11++;
 
 						/**
-						 * [tFileInputDelimited_10 main ] stop
+						 * [tFileInputDelimited_11 main ] stop
 						 */
 
 						/**
-						 * [tFileInputDelimited_10 process_data_begin ] start
+						 * [tFileInputDelimited_11 process_data_begin ] start
 						 */
 
-						currentComponent = "tFileInputDelimited_10";
+						currentComponent = "tFileInputDelimited_11";
 
 						/**
-						 * [tFileInputDelimited_10 process_data_begin ] stop
+						 * [tFileInputDelimited_11 process_data_begin ] stop
 						 */
-// Start of branch "row9"
-						if (row9 != null) {
+// Start of branch "row10"
+						if (row10 != null) {
 
 							/**
-							 * [tMap_9 main ] start
+							 * [tMap_10 main ] start
 							 */
 
-							currentComponent = "tMap_9";
+							currentComponent = "tMap_10";
 
 							if (execStat) {
-								runStat.updateStatOnConnection(iterateId, 1, 1, "row9");
+								runStat.updateStatOnConnection(iterateId, 1, 1, "row10");
 							}
 
-							boolean hasCasePrimitiveKeyWithNull_tMap_9 = false;
+							boolean hasCasePrimitiveKeyWithNull_tMap_10 = false;
 
 							// ###############################
 							// # Input tables (lookups)
-							boolean rejectedInnerJoin_tMap_9 = false;
-							boolean mainRowRejected_tMap_9 = false;
+							boolean rejectedInnerJoin_tMap_10 = false;
+							boolean mainRowRejected_tMap_10 = false;
 
 							///////////////////////////////////////////////
-							// Starting Lookup Table "row11"
+							// Starting Lookup Table "row12"
 							///////////////////////////////////////////////
 
-							boolean forceLooprow11 = false;
+							boolean forceLooprow12 = false;
 
-							row11Struct row11ObjectFromLookup = null;
+							row12Struct row12ObjectFromLookup = null;
 
-							if (!rejectedInnerJoin_tMap_9) { // G_TM_M_020
+							if (!rejectedInnerJoin_tMap_10) { // G_TM_M_020
 
-								hasCasePrimitiveKeyWithNull_tMap_9 = false;
+								hasCasePrimitiveKeyWithNull_tMap_10 = false;
 
-								row11HashKey.CREF = row9.RCREF;
+								row12HashKey.RCREF = row10.CREF;
 
-								row11HashKey.hashCodeDirty = true;
+								row12HashKey.hashCodeDirty = true;
 
-								tHash_Lookup_row11.lookup(row11HashKey);
+								tHash_Lookup_row12.lookup(row12HashKey);
 
 							} // G_TM_M_020
 
-							if (tHash_Lookup_row11 != null && tHash_Lookup_row11.getCount(row11HashKey) > 1) { // G 071
+							if (tHash_Lookup_row12 != null && tHash_Lookup_row12.getCount(row12HashKey) > 1) { // G 071
 
 								// System.out.println("WARNING: UNIQUE MATCH is configured for the lookup
-								// 'row11' and it contains more one result from keys : row11.CREF = '" +
-								// row11HashKey.CREF + "'");
+								// 'row12' and it contains more one result from keys : row12.RCREF = '" +
+								// row12HashKey.RCREF + "'");
 							} // G 071
 
-							row11Struct row11 = null;
+							row12Struct row12 = null;
 
-							row11Struct fromLookup_row11 = null;
-							row11 = row11Default;
+							row12Struct fromLookup_row12 = null;
+							row12 = row12Default;
 
-							if (tHash_Lookup_row11 != null && tHash_Lookup_row11.hasNext()) { // G 099
+							if (tHash_Lookup_row12 != null && tHash_Lookup_row12.hasNext()) { // G 099
 
-								fromLookup_row11 = tHash_Lookup_row11.next();
+								fromLookup_row12 = tHash_Lookup_row12.next();
 
 							} // G 099
 
-							if (fromLookup_row11 != null) {
-								row11 = fromLookup_row11;
+							if (fromLookup_row12 != null) {
+								row12 = fromLookup_row12;
 							}
 
 							// ###############################
@@ -4861,394 +9468,355 @@ public class Article implements TalendJob {
 								// ###############################
 								// # Vars tables
 
-								Var__tMap_9__Struct Var = Var__tMap_9;// ###############################
+								Var__tMap_10__Struct Var = Var__tMap_10;// ###############################
 								// ###############################
 								// # Output tables
 
-								copyOfmain_6 = null;
+								out2 = null;
 
-// # Output table : 'copyOfmain_6'
-								copyOfmain_6_tmp.idremise = row9.RCREF + row9.RCFAM + row9.RCSFAM;
-								copyOfmain_6_tmp.numero_colonne_tarifaire = row11.CCODTAR == null ? null
-										: row11.CCODTAR.isBlank() ? null : Integer.parseInt(row11.CCODTAR);
-								copyOfmain_6_tmp.pourcentage_remise = Float.parseFloat(row9.RCREM);
-								copyOfmain_6_tmp.idcli = row9.RCREF;
-								copyOfmain_6_tmp.idfamille = row9.RCFAM.equals("000") ? null
-										: row9.RCFAM.equals("011") ? null
-												: row9.RCFAM.equals("012") ? null
-														: row9.RCFAM.equals("013") ? null
-																: row9.RCFAM.equals("014") ? null
-																		: row9.RCFAM.equals("015") ? null
-																				: row9.RCFAM.equals("016") ? null
-																						: row9.RCFAM.equals("017")
-																								? null
-																								: row9.RCFAM.equals(
-																										"018") ? null
-																												: row9.RCFAM
-																														.equals("019")
-																																? null
-																																: row9.RCFAM
-																																		.equals("020")
-																																				? null
-																																				: row9.RCFAM
-																																						.equals("024")
-																																								? null
-																																								: row9.RCFAM
-																																										.equals("025")
-																																												? null
-																																												: row9.RCFAM
-																																														.equals("026")
-																																																? null
-																																																: row9.RCFAM
-																																																		.equals("027")
-																																																				? null
-																																																				: row9.RCFAM
-																																																						.equals("028")
-																																																								? null
-																																																								: row9.RCFAM
-																																																										.equals("029")
-																																																												? null
-																																																												: row9.RCFAM
-																																																														.equals("030")
-																																																																? null
-																																																																: row9.RCFAM
-																																																																		.equals("031")
-																																																																				? null
-																																																																				: row9.RCFAM
-																																																																						.equals("032")
-																																																																								? null
-																																																																								: row9.RCFAM
-																																																																										.equals("033")
-																																																																												? null
-																																																																												: row9.RCFAM
-																																																																														.equals("034")
-																																																																																? null
-																																																																																: row9.RCFAM
-																																																																																		.equals("035")
-																																																																																				? null
-																																																																																				: row9.RCFAM
-																																																																																						.equals("036")
-																																																																																								? null
-																																																																																								: row9.RCFAM
-																																																																																										.equals("037")
-																																																																																												? null
-																																																																																												: row9.RCFAM
-																																																																																														.equals("038")
-																																																																																																? null
-																																																																																																: row9.RCFAM
-																																																																																																		.equals("039")
-																																																																																																				? null
-																																																																																																				: row9.RCFAM
-																																																																																																						.equals("040")
-																																																																																																								? null
-																																																																																																								: row9.RCFAM
-																																																																																																										.equals("041")
-																																																																																																												? null
-																																																																																																												: row9.RCFAM
-																																																																																																														.equals("042")
-																																																																																																																? null
-																																																																																																																: row9.RCFAM
-																																																																																																																		.equals("043")
-																																																																																																																				? null
-																																																																																																																				: row9.RCFAM
-																																																																																																																						.equals("044")
-																																																																																																																								? null
-																																																																																																																								: row9.RCFAM
-																																																																																																																										.equals("045")
-																																																																																																																												? null
-																																																																																																																												: row9.RCFAM
-																																																																																																																														.equals("046")
-																																																																																																																																? null
-																																																																																																																																: row9.RCFAM
-																																																																																																																																		.equals("047")
-																																																																																																																																				? null
-																																																																																																																																				: row9.RCFAM
-																																																																																																																																						.equals("048")
-																																																																																																																																								? null
-																																																																																																																																								: row9.RCFAM
-																																																																																																																																										.equals("049")
-																																																																																																																																												? null
-																																																																																																																																												: row9.RCFAM
-																																																																																																																																														.equals("050")
-																																																																																																																																																? null
-																																																																																																																																																: row9.RCFAM
-																																																																																																																																																		.equals("051")
-																																																																																																																																																				? null
-																																																																																																																																																				: row9.RCFAM
-																																																																																																																																																						.equals("052")
-																																																																																																																																																								? null
-																																																																																																																																																								: row9.RCFAM
-																																																																																																																																																										.equals("053")
-																																																																																																																																																												? null
-																																																																																																																																																												: row9.RCFAM
-																																																																																																																																																														.equals("054")
-																																																																																																																																																																? null
-																																																																																																																																																																: row9.RCFAM
-																																																																																																																																																																		.equals("055")
-																																																																																																																																																																				? null
-																																																																																																																																																																				: row9.RCFAM
-																																																																																																																																																																						.equals("056")
-																																																																																																																																																																								? null
-																																																																																																																																																																								: row9.RCFAM
-																																																																																																																																																																										.equals("057")
-																																																																																																																																																																												? null
-																																																																																																																																																																												: row9.RCFAM
-																																																																																																																																																																														.equals("058")
-																																																																																																																																																																																? null
-																																																																																																																																																																																: row9.RCFAM
-																																																																																																																																																																																		.equals("059")
-																																																																																																																																																																																				? null
-																																																																																																																																																																																				: row9.RCFAM
-																																																																																																																																																																																						.equals("060")
-																																																																																																																																																																																								? null
-																																																																																																																																																																																								: row9.RCFAM
-																																																																																																																																																																																										.equals("061")
-																																																																																																																																																																																												? null
-																																																																																																																																																																																												: row9.RCFAM
-																																																																																																																																																																																														.equals("062")
-																																																																																																																																																																																																? null
-																																																																																																																																																																																																: row9.RCFAM
-																																																																																																																																																																																																		.equals("063")
-																																																																																																																																																																																																				? null
-																																																																																																																																																																																																				: row9.RCFAM
-																																																																																																																																																																																																						.equals("064")
-																																																																																																																																																																																																								? null
-																																																																																																																																																																																																								: row9.RCFAM
-																																																																																																																																																																																																										.equals("065")
-																																																																																																																																																																																																												? null
-																																																																																																																																																																																																												: row9.RCFAM
-																																																																																																																																																																																																														.equals("066")
-																																																																																																																																																																																																																? null
-																																																																																																																																																																																																																: row9.RCFAM
-																																																																																																																																																																																																																		.equals("067")
-																																																																																																																																																																																																																				? null
-																																																																																																																																																																																																																				: row9.RCFAM
-																																																																																																																																																																																																																						.equals("068")
-																																																																																																																																																																																																																								? null
-																																																																																																																																																																																																																								: row9.RCFAM
-																																																																																																																																																																																																																										.equals("069")
-																																																																																																																																																																																																																												? null
-																																																																																																																																																																																																																												: row9.RCFAM
-																																																																																																																																																																																																																														.equals("071")
-																																																																																																																																																																																																																																? null
-																																																																																																																																																																																																																																: row9.RCFAM
-																																																																																																																																																																																																																																		.equals("072")
-																																																																																																																																																																																																																																				? null
-																																																																																																																																																																																																																																				: row9.RCFAM
-																																																																																																																																																																																																																																						.equals("073")
-																																																																																																																																																																																																																																								? null
-																																																																																																																																																																																																																																								: row9.RCFAM
-																																																																																																																																																																																																																																										.equals("074")
-																																																																																																																																																																																																																																												? null
-																																																																																																																																																																																																																																												: row9.RCFAM
-																																																																																																																																																																																																																																														.equals("075")
-																																																																																																																																																																																																																																																? null
-																																																																																																																																																																																																																																																: row9.RCFAM
-																																																																																																																																																																																																																																																		.equals("076")
-																																																																																																																																																																																																																																																				? null
-																																																																																																																																																																																																																																																				: row9.RCFAM
-																																																																																																																																																																																																																																																						.equals("077")
-																																																																																																																																																																																																																																																								? null
-																																																																																																																																																																																																																																																								: row9.RCFAM
-																																																																																																																																																																																																																																																										.equals("079")
-																																																																																																																																																																																																																																																												? null
-																																																																																																																																																																																																																																																												:
-
-																																																																																																																																																																																																																																																												row9.RCFAM;
-								copyOfmain_6_tmp.idsous_famille = row9.RCSFAM.equals("000") ? null : row9.RCSFAM;
-								copyOfmain_6 = copyOfmain_6_tmp;
+// # Output table : 'out2'
+								out2_tmp.RCREF = row12.RCREF;
+								out2_tmp.RCTYP = row12.RCTYP;
+								out2_tmp.RCFAM = row12.RCFAM;
+								out2_tmp.RCSFAM = row12.RCSFAM;
+								out2_tmp.RCFIL = row12.RCFIL;
+								out2_tmp.RCTAR = row12.RCTAR;
+								out2_tmp.RCREM = row12.RCREM;
+								out2 = out2_tmp;
 // ###############################
 
 							} // end of Var scope
 
-							rejectedInnerJoin_tMap_9 = false;
+							rejectedInnerJoin_tMap_10 = false;
 
-							tos_count_tMap_9++;
+							tos_count_tMap_10++;
 
 							/**
-							 * [tMap_9 main ] stop
+							 * [tMap_10 main ] stop
 							 */
 
 							/**
-							 * [tMap_9 process_data_begin ] start
+							 * [tMap_10 process_data_begin ] start
 							 */
 
-							currentComponent = "tMap_9";
+							currentComponent = "tMap_10";
 
 							/**
-							 * [tMap_9 process_data_begin ] stop
+							 * [tMap_10 process_data_begin ] stop
 							 */
-// Start of branch "copyOfmain_6"
-							if (copyOfmain_6 != null) {
+// Start of branch "out2"
+							if (out2 != null) {
 
 								/**
-								 * [tDBOutput_9 main ] start
+								 * [tMap_9 main ] start
 								 */
 
-								currentComponent = "tDBOutput_9";
+								currentComponent = "tMap_9";
 
 								if (execStat) {
-									runStat.updateStatOnConnection(iterateId, 1, 1, "copyOfmain_6");
+									runStat.updateStatOnConnection(iterateId, 1, 1, "out2");
 								}
 
-								whetherReject_tDBOutput_9 = false;
-								if (copyOfmain_6.idremise == null) {
-									pstmt_tDBOutput_9.setNull(1, java.sql.Types.VARCHAR);
-								} else {
-									pstmt_tDBOutput_9.setString(1, copyOfmain_6.idremise);
+								boolean hasCasePrimitiveKeyWithNull_tMap_9 = false;
+
+								// ###############################
+								// # Input tables (lookups)
+								boolean rejectedInnerJoin_tMap_9 = false;
+								boolean mainRowRejected_tMap_9 = false;
+
+								///////////////////////////////////////////////
+								// Starting Lookup Table "row11"
+								///////////////////////////////////////////////
+
+								boolean forceLooprow11 = false;
+
+								row11Struct row11ObjectFromLookup = null;
+
+								if (!rejectedInnerJoin_tMap_9) { // G_TM_M_020
+
+									hasCasePrimitiveKeyWithNull_tMap_9 = false;
+
+									row11HashKey.CREF = out2.RCREF;
+
+									row11HashKey.hashCodeDirty = true;
+
+									tHash_Lookup_row11.lookup(row11HashKey);
+
+								} // G_TM_M_020
+
+								if (tHash_Lookup_row11 != null && tHash_Lookup_row11.getCount(row11HashKey) > 1) { // G
+																													// 071
+
+									// System.out.println("WARNING: UNIQUE MATCH is configured for the lookup
+									// 'row11' and it contains more one result from keys : row11.CREF = '" +
+									// row11HashKey.CREF + "'");
+								} // G 071
+
+								row11Struct row11 = null;
+
+								row11Struct fromLookup_row11 = null;
+								row11 = row11Default;
+
+								if (tHash_Lookup_row11 != null && tHash_Lookup_row11.hasNext()) { // G 099
+
+									fromLookup_row11 = tHash_Lookup_row11.next();
+
+								} // G 099
+
+								if (fromLookup_row11 != null) {
+									row11 = fromLookup_row11;
 								}
 
-								if (copyOfmain_6.numero_colonne_tarifaire == null) {
-									pstmt_tDBOutput_9.setNull(2, java.sql.Types.INTEGER);
-								} else {
-									pstmt_tDBOutput_9.setInt(2, copyOfmain_6.numero_colonne_tarifaire);
-								}
+								// ###############################
+								{ // start of Var scope
 
-								if (copyOfmain_6.pourcentage_remise == null) {
-									pstmt_tDBOutput_9.setNull(3, java.sql.Types.FLOAT);
-								} else {
-									pstmt_tDBOutput_9.setFloat(3, copyOfmain_6.pourcentage_remise);
-								}
+									// ###############################
+									// # Vars tables
 
-								if (copyOfmain_6.idcli == null) {
-									pstmt_tDBOutput_9.setNull(4, java.sql.Types.VARCHAR);
-								} else {
-									pstmt_tDBOutput_9.setString(4, copyOfmain_6.idcli);
-								}
+									Var__tMap_9__Struct Var = Var__tMap_9;// ###############################
+									// ###############################
+									// # Output tables
 
-								if (copyOfmain_6.idfamille == null) {
-									pstmt_tDBOutput_9.setNull(5, java.sql.Types.VARCHAR);
-								} else {
-									pstmt_tDBOutput_9.setString(5, copyOfmain_6.idfamille);
-								}
+									copyOfmain_6 = null;
 
-								if (copyOfmain_6.idsous_famille == null) {
-									pstmt_tDBOutput_9.setNull(6, java.sql.Types.VARCHAR);
-								} else {
-									pstmt_tDBOutput_9.setString(6, copyOfmain_6.idsous_famille);
-								}
+// # Output table : 'copyOfmain_6'
+									copyOfmain_6_tmp.idremise = out2.RCREF + out2.RCFAM + out2.RCSFAM;
+									copyOfmain_6_tmp.numero_colonne_tarifaire = null;
+									copyOfmain_6_tmp.pourcentage_remise = null;
+									copyOfmain_6_tmp.idcli = null;
+									copyOfmain_6_tmp.idfamille = null;
+									copyOfmain_6_tmp.idsous_famille = null;
+									copyOfmain_6 = copyOfmain_6_tmp;
+// ###############################
 
-								pstmt_tDBOutput_9.addBatch();
-								nb_line_tDBOutput_9++;
+								} // end of Var scope
 
-								batchSizeCounter_tDBOutput_9++;
+								rejectedInnerJoin_tMap_9 = false;
 
-								if ((batchSize_tDBOutput_9 > 0)
-										&& (batchSize_tDBOutput_9 <= batchSizeCounter_tDBOutput_9)) {
-									try {
-										int countSum_tDBOutput_9 = 0;
+								tos_count_tMap_9++;
 
-										for (int countEach_tDBOutput_9 : pstmt_tDBOutput_9.executeBatch()) {
-											countSum_tDBOutput_9 += (countEach_tDBOutput_9 < 0 ? 0
-													: countEach_tDBOutput_9);
-										}
+								/**
+								 * [tMap_9 main ] stop
+								 */
 
-										insertedCount_tDBOutput_9 += countSum_tDBOutput_9;
+								/**
+								 * [tMap_9 process_data_begin ] start
+								 */
 
-										batchSizeCounter_tDBOutput_9 = 0;
-									} catch (java.sql.BatchUpdateException e_tDBOutput_9) {
-										java.sql.SQLException ne_tDBOutput_9 = e_tDBOutput_9.getNextException(),
-												sqle_tDBOutput_9 = null;
-										String errormessage_tDBOutput_9;
-										if (ne_tDBOutput_9 != null) {
-											// build new exception to provide the original cause
-											sqle_tDBOutput_9 = new java.sql.SQLException(
-													e_tDBOutput_9.getMessage() + "\ncaused by: "
-															+ ne_tDBOutput_9.getMessage(),
-													ne_tDBOutput_9.getSQLState(), ne_tDBOutput_9.getErrorCode(),
-													ne_tDBOutput_9);
-											errormessage_tDBOutput_9 = sqle_tDBOutput_9.getMessage();
-										} else {
-											errormessage_tDBOutput_9 = e_tDBOutput_9.getMessage();
-										}
+								currentComponent = "tMap_9";
 
-										int countSum_tDBOutput_9 = 0;
-										for (int countEach_tDBOutput_9 : e_tDBOutput_9.getUpdateCounts()) {
-											countSum_tDBOutput_9 += (countEach_tDBOutput_9 < 0 ? 0
-													: countEach_tDBOutput_9);
-										}
+								/**
+								 * [tMap_9 process_data_begin ] stop
+								 */
+// Start of branch "copyOfmain_6"
+								if (copyOfmain_6 != null) {
 
-										insertedCount_tDBOutput_9 += countSum_tDBOutput_9;
+									/**
+									 * [tDBOutput_9 main ] start
+									 */
 
-										System.err.println(errormessage_tDBOutput_9);
+									currentComponent = "tDBOutput_9";
 
+									if (execStat) {
+										runStat.updateStatOnConnection(iterateId, 1, 1, "copyOfmain_6");
 									}
-								}
 
-								tos_count_tDBOutput_9++;
+									whetherReject_tDBOutput_9 = false;
+									if (copyOfmain_6.idremise == null) {
+										pstmt_tDBOutput_9.setNull(1, java.sql.Types.VARCHAR);
+									} else {
+										pstmt_tDBOutput_9.setString(1, copyOfmain_6.idremise);
+									}
+
+									if (copyOfmain_6.numero_colonne_tarifaire == null) {
+										pstmt_tDBOutput_9.setNull(2, java.sql.Types.INTEGER);
+									} else {
+										pstmt_tDBOutput_9.setInt(2, copyOfmain_6.numero_colonne_tarifaire);
+									}
+
+									if (copyOfmain_6.pourcentage_remise == null) {
+										pstmt_tDBOutput_9.setNull(3, java.sql.Types.FLOAT);
+									} else {
+										pstmt_tDBOutput_9.setFloat(3, copyOfmain_6.pourcentage_remise);
+									}
+
+									if (copyOfmain_6.idcli == null) {
+										pstmt_tDBOutput_9.setNull(4, java.sql.Types.VARCHAR);
+									} else {
+										pstmt_tDBOutput_9.setString(4, copyOfmain_6.idcli);
+									}
+
+									if (copyOfmain_6.idfamille == null) {
+										pstmt_tDBOutput_9.setNull(5, java.sql.Types.VARCHAR);
+									} else {
+										pstmt_tDBOutput_9.setString(5, copyOfmain_6.idfamille);
+									}
+
+									if (copyOfmain_6.idsous_famille == null) {
+										pstmt_tDBOutput_9.setNull(6, java.sql.Types.VARCHAR);
+									} else {
+										pstmt_tDBOutput_9.setString(6, copyOfmain_6.idsous_famille);
+									}
+
+									pstmt_tDBOutput_9.addBatch();
+									nb_line_tDBOutput_9++;
+
+									batchSizeCounter_tDBOutput_9++;
+
+									if ((batchSize_tDBOutput_9 > 0)
+											&& (batchSize_tDBOutput_9 <= batchSizeCounter_tDBOutput_9)) {
+										try {
+											int countSum_tDBOutput_9 = 0;
+
+											for (int countEach_tDBOutput_9 : pstmt_tDBOutput_9.executeBatch()) {
+												countSum_tDBOutput_9 += (countEach_tDBOutput_9 < 0 ? 0
+														: countEach_tDBOutput_9);
+											}
+
+											insertedCount_tDBOutput_9 += countSum_tDBOutput_9;
+
+											batchSizeCounter_tDBOutput_9 = 0;
+										} catch (java.sql.BatchUpdateException e_tDBOutput_9) {
+											java.sql.SQLException ne_tDBOutput_9 = e_tDBOutput_9.getNextException(),
+													sqle_tDBOutput_9 = null;
+											String errormessage_tDBOutput_9;
+											if (ne_tDBOutput_9 != null) {
+												// build new exception to provide the original cause
+												sqle_tDBOutput_9 = new java.sql.SQLException(
+														e_tDBOutput_9.getMessage() + "\ncaused by: "
+																+ ne_tDBOutput_9.getMessage(),
+														ne_tDBOutput_9.getSQLState(), ne_tDBOutput_9.getErrorCode(),
+														ne_tDBOutput_9);
+												errormessage_tDBOutput_9 = sqle_tDBOutput_9.getMessage();
+											} else {
+												errormessage_tDBOutput_9 = e_tDBOutput_9.getMessage();
+											}
+
+											int countSum_tDBOutput_9 = 0;
+											for (int countEach_tDBOutput_9 : e_tDBOutput_9.getUpdateCounts()) {
+												countSum_tDBOutput_9 += (countEach_tDBOutput_9 < 0 ? 0
+														: countEach_tDBOutput_9);
+											}
+
+											insertedCount_tDBOutput_9 += countSum_tDBOutput_9;
+
+											System.err.println(errormessage_tDBOutput_9);
+
+										}
+									}
+
+									tos_count_tDBOutput_9++;
+
+									/**
+									 * [tDBOutput_9 main ] stop
+									 */
+
+									/**
+									 * [tDBOutput_9 process_data_begin ] start
+									 */
+
+									currentComponent = "tDBOutput_9";
+
+									/**
+									 * [tDBOutput_9 process_data_begin ] stop
+									 */
+
+									/**
+									 * [tDBOutput_9 process_data_end ] start
+									 */
+
+									currentComponent = "tDBOutput_9";
+
+									/**
+									 * [tDBOutput_9 process_data_end ] stop
+									 */
+
+								} // End of branch "copyOfmain_6"
 
 								/**
-								 * [tDBOutput_9 main ] stop
+								 * [tMap_9 process_data_end ] start
 								 */
+
+								currentComponent = "tMap_9";
 
 								/**
-								 * [tDBOutput_9 process_data_begin ] start
+								 * [tMap_9 process_data_end ] stop
 								 */
 
-								currentComponent = "tDBOutput_9";
-
-								/**
-								 * [tDBOutput_9 process_data_begin ] stop
-								 */
-
-								/**
-								 * [tDBOutput_9 process_data_end ] start
-								 */
-
-								currentComponent = "tDBOutput_9";
-
-								/**
-								 * [tDBOutput_9 process_data_end ] stop
-								 */
-
-							} // End of branch "copyOfmain_6"
+							} // End of branch "out2"
 
 							/**
-							 * [tMap_9 process_data_end ] start
+							 * [tMap_10 process_data_end ] start
 							 */
 
-							currentComponent = "tMap_9";
+							currentComponent = "tMap_10";
 
 							/**
-							 * [tMap_9 process_data_end ] stop
+							 * [tMap_10 process_data_end ] stop
 							 */
 
-						} // End of branch "row9"
+						} // End of branch "row10"
 
 						/**
-						 * [tFileInputDelimited_10 process_data_end ] start
+						 * [tFileInputDelimited_11 process_data_end ] start
 						 */
 
-						currentComponent = "tFileInputDelimited_10";
+						currentComponent = "tFileInputDelimited_11";
 
 						/**
-						 * [tFileInputDelimited_10 process_data_end ] stop
+						 * [tFileInputDelimited_11 process_data_end ] stop
 						 */
 
 						/**
-						 * [tFileInputDelimited_10 end ] start
+						 * [tFileInputDelimited_11 end ] start
 						 */
 
-						currentComponent = "tFileInputDelimited_10";
+						currentComponent = "tFileInputDelimited_11";
 
 					}
 				} finally {
-					if (!((Object) ("C:/DEV/Data/Base Montauban/remises_clients.csv") instanceof java.io.InputStream)) {
-						if (fid_tFileInputDelimited_10 != null) {
-							fid_tFileInputDelimited_10.close();
+					if (!((Object) ("C:/DEV/Data/Base Montauban/Client.csv") instanceof java.io.InputStream)) {
+						if (fid_tFileInputDelimited_11 != null) {
+							fid_tFileInputDelimited_11.close();
 						}
 					}
-					if (fid_tFileInputDelimited_10 != null) {
-						globalMap.put("tFileInputDelimited_10_NB_LINE", fid_tFileInputDelimited_10.getRowNumber());
+					if (fid_tFileInputDelimited_11 != null) {
+						globalMap.put("tFileInputDelimited_11_NB_LINE", fid_tFileInputDelimited_11.getRowNumber());
 
 					}
 				}
 
-				ok_Hash.put("tFileInputDelimited_10", true);
-				end_Hash.put("tFileInputDelimited_10", System.currentTimeMillis());
+				ok_Hash.put("tFileInputDelimited_11", true);
+				end_Hash.put("tFileInputDelimited_11", System.currentTimeMillis());
 
 				/**
-				 * [tFileInputDelimited_10 end ] stop
+				 * [tFileInputDelimited_11 end ] stop
+				 */
+
+				/**
+				 * [tMap_10 end ] start
+				 */
+
+				currentComponent = "tMap_10";
+
+// ###############################
+// # Lookup hashes releasing
+				if (tHash_Lookup_row12 != null) {
+					tHash_Lookup_row12.endGet();
+				}
+				globalMap.remove("tHash_Lookup_row12");
+
+// ###############################      
+
+				if (execStat) {
+					runStat.updateStat(resourceMap, iterateId, 2, 0, "row10");
+				}
+
+				ok_Hash.put("tMap_10", true);
+				end_Hash.put("tMap_10", System.currentTimeMillis());
+
+				/**
+				 * [tMap_10 end ] stop
 				 */
 
 				/**
@@ -5267,7 +9835,7 @@ public class Article implements TalendJob {
 // ###############################      
 
 				if (execStat) {
-					runStat.updateStat(resourceMap, iterateId, 2, 0, "row9");
+					runStat.updateStat(resourceMap, iterateId, 2, 0, "out2");
 				}
 
 				ok_Hash.put("tMap_9", true);
@@ -5351,7 +9919,7 @@ public class Article implements TalendJob {
 			} // end the resume
 
 			if (resumeEntryMethodName == null || globalResumeTicket) {
-				resumeUtil.addLog("CHECKPOINT", "CONNECTION:SUBJOB_OK:tFileInputDelimited_10:OnSubjobOk", "",
+				resumeUtil.addLog("CHECKPOINT", "CONNECTION:SUBJOB_OK:tFileInputDelimited_11:OnSubjobOk", "",
 						Thread.currentThread().getId() + "", "", "", "", "", "");
 			}
 
@@ -5376,16 +9944,29 @@ public class Article implements TalendJob {
 			// free memory for "tMap_9"
 			globalMap.remove("tHash_Lookup_row11");
 
+			// free memory for "tMap_10"
+			globalMap.remove("tHash_Lookup_row12");
+
 			try {
 
 				/**
-				 * [tFileInputDelimited_10 finally ] start
+				 * [tFileInputDelimited_11 finally ] start
 				 */
 
-				currentComponent = "tFileInputDelimited_10";
+				currentComponent = "tFileInputDelimited_11";
 
 				/**
-				 * [tFileInputDelimited_10 finally ] stop
+				 * [tFileInputDelimited_11 finally ] stop
+				 */
+
+				/**
+				 * [tMap_10 finally ] start
+				 */
+
+				currentComponent = "tMap_10";
+
+				/**
+				 * [tMap_10 finally ] stop
 				 */
 
 				/**
@@ -5424,7 +10005,7 @@ public class Article implements TalendJob {
 			resourceMap = null;
 		}
 
-		globalMap.put("tFileInputDelimited_10_SUBPROCESS_STATE", 1);
+		globalMap.put("tFileInputDelimited_11_SUBPROCESS_STATE", 1);
 	}
 
 	public static class copyOfmain_1Struct implements routines.system.IPersistableRow<copyOfmain_1Struct> {
@@ -6558,8 +11139,6 @@ public class Article implements TalendJob {
 
 								batchSizeCounter_tDBOutput_4++;
 
-								if (!whetherReject_tDBOutput_4) {
-								}
 								if ((batchSize_tDBOutput_4 > 0)
 										&& (batchSize_tDBOutput_4 <= batchSizeCounter_tDBOutput_4)) {
 									try {
@@ -6766,11 +11345,6 @@ public class Article implements TalendJob {
 				ok_Hash.put("tDBOutput_4", true);
 				end_Hash.put("tDBOutput_4", System.currentTimeMillis());
 
-				if (execStat) {
-					runStat.updateStatOnConnection("OnComponentOk5", 0, "ok");
-				}
-				tDBCommit_2Process(globalMap);
-
 				/**
 				 * [tDBOutput_4 end ] stop
 				 */
@@ -6838,278 +11412,6 @@ public class Article implements TalendJob {
 		}
 
 		globalMap.put("tFileInputDelimited_4_SUBPROCESS_STATE", 1);
-	}
-
-	public void tDBCommit_2Process(final java.util.Map<String, Object> globalMap) throws TalendException {
-		globalMap.put("tDBCommit_2_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-
-		String currentComponent = "";
-		java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
-
-		try {
-			// TDI-39566 avoid throwing an useless Exception
-			boolean resumeIt = true;
-			if (globalResumeTicket == false && resumeEntryMethodName != null) {
-				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
-				resumeIt = resumeEntryMethodName.equals(currentMethodName);
-			}
-			if (resumeIt || globalResumeTicket) { // start the resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tDBCommit_2 begin ] start
-				 */
-
-				ok_Hash.put("tDBCommit_2", false);
-				start_Hash.put("tDBCommit_2", System.currentTimeMillis());
-
-				currentComponent = "tDBCommit_2";
-
-				int tos_count_tDBCommit_2 = 0;
-
-				/**
-				 * [tDBCommit_2 begin ] stop
-				 */
-
-				/**
-				 * [tDBCommit_2 main ] start
-				 */
-
-				currentComponent = "tDBCommit_2";
-
-				java.sql.Connection conn_tDBCommit_2 = (java.sql.Connection) globalMap.get("conn_tDBConnection_1");
-				if (conn_tDBCommit_2 != null && !conn_tDBCommit_2.isClosed()) {
-
-					try {
-
-						conn_tDBCommit_2.commit();
-
-					} finally {
-
-						conn_tDBCommit_2.close();
-
-						if ("com.mysql.cj.jdbc.Driver".equals((String) globalMap.get("driverClass_tDBConnection_1"))
-								&& routines.system.BundleUtils.inOSGi()) {
-							Class.forName("com.mysql.cj.jdbc.AbandonedConnectionCleanupThread")
-									.getMethod("checkedShutdown").invoke(null, (Object[]) null);
-						}
-
-					}
-
-				}
-
-				tos_count_tDBCommit_2++;
-
-				/**
-				 * [tDBCommit_2 main ] stop
-				 */
-
-				/**
-				 * [tDBCommit_2 process_data_begin ] start
-				 */
-
-				currentComponent = "tDBCommit_2";
-
-				/**
-				 * [tDBCommit_2 process_data_begin ] stop
-				 */
-
-				/**
-				 * [tDBCommit_2 process_data_end ] start
-				 */
-
-				currentComponent = "tDBCommit_2";
-
-				/**
-				 * [tDBCommit_2 process_data_end ] stop
-				 */
-
-				/**
-				 * [tDBCommit_2 end ] start
-				 */
-
-				currentComponent = "tDBCommit_2";
-
-				ok_Hash.put("tDBCommit_2", true);
-				end_Hash.put("tDBCommit_2", System.currentTimeMillis());
-
-				/**
-				 * [tDBCommit_2 end ] stop
-				 */
-			} // end the resume
-
-		} catch (java.lang.Exception e) {
-
-			TalendException te = new TalendException(e, currentComponent, globalMap);
-
-			throw te;
-		} catch (java.lang.Error error) {
-
-			runStat.stopThreadStat();
-
-			throw error;
-		} finally {
-
-			try {
-
-				/**
-				 * [tDBCommit_2 finally ] start
-				 */
-
-				currentComponent = "tDBCommit_2";
-
-				/**
-				 * [tDBCommit_2 finally ] stop
-				 */
-			} catch (java.lang.Exception e) {
-				// ignore
-			} catch (java.lang.Error error) {
-				// ignore
-			}
-			resourceMap = null;
-		}
-
-		globalMap.put("tDBCommit_2_SUBPROCESS_STATE", 1);
-	}
-
-	public void tDBRollback_2Process(final java.util.Map<String, Object> globalMap) throws TalendException {
-		globalMap.put("tDBRollback_2_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-
-		String currentComponent = "";
-		java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
-
-		try {
-			// TDI-39566 avoid throwing an useless Exception
-			boolean resumeIt = true;
-			if (globalResumeTicket == false && resumeEntryMethodName != null) {
-				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
-				resumeIt = resumeEntryMethodName.equals(currentMethodName);
-			}
-			if (resumeIt || globalResumeTicket) { // start the resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tDBRollback_2 begin ] start
-				 */
-
-				ok_Hash.put("tDBRollback_2", false);
-				start_Hash.put("tDBRollback_2", System.currentTimeMillis());
-
-				currentComponent = "tDBRollback_2";
-
-				int tos_count_tDBRollback_2 = 0;
-
-				/**
-				 * [tDBRollback_2 begin ] stop
-				 */
-
-				/**
-				 * [tDBRollback_2 main ] start
-				 */
-
-				currentComponent = "tDBRollback_2";
-
-				java.sql.Connection conn_tDBRollback_2 = (java.sql.Connection) globalMap.get("conn_tDBConnection_1");
-				if (conn_tDBRollback_2 != null && !conn_tDBRollback_2.isClosed()) {
-
-					try {
-
-						conn_tDBRollback_2.rollback();
-
-					} finally {
-
-						conn_tDBRollback_2.close();
-
-						if ("com.mysql.cj.jdbc.Driver".equals((String) globalMap.get("driverClass_tDBConnection_1"))
-								&& routines.system.BundleUtils.inOSGi()) {
-							Class.forName("com.mysql.cj.jdbc.AbandonedConnectionCleanupThread")
-									.getMethod("checkedShutdown").invoke(null, (Object[]) null);
-						}
-
-					}
-
-				}
-
-				tos_count_tDBRollback_2++;
-
-				/**
-				 * [tDBRollback_2 main ] stop
-				 */
-
-				/**
-				 * [tDBRollback_2 process_data_begin ] start
-				 */
-
-				currentComponent = "tDBRollback_2";
-
-				/**
-				 * [tDBRollback_2 process_data_begin ] stop
-				 */
-
-				/**
-				 * [tDBRollback_2 process_data_end ] start
-				 */
-
-				currentComponent = "tDBRollback_2";
-
-				/**
-				 * [tDBRollback_2 process_data_end ] stop
-				 */
-
-				/**
-				 * [tDBRollback_2 end ] start
-				 */
-
-				currentComponent = "tDBRollback_2";
-
-				ok_Hash.put("tDBRollback_2", true);
-				end_Hash.put("tDBRollback_2", System.currentTimeMillis());
-
-				/**
-				 * [tDBRollback_2 end ] stop
-				 */
-			} // end the resume
-
-		} catch (java.lang.Exception e) {
-
-			TalendException te = new TalendException(e, currentComponent, globalMap);
-
-			throw te;
-		} catch (java.lang.Error error) {
-
-			runStat.stopThreadStat();
-
-			throw error;
-		} finally {
-
-			try {
-
-				/**
-				 * [tDBRollback_2 finally ] start
-				 */
-
-				currentComponent = "tDBRollback_2";
-
-				/**
-				 * [tDBRollback_2 finally ] stop
-				 */
-			} catch (java.lang.Exception e) {
-				// ignore
-			} catch (java.lang.Error error) {
-				// ignore
-			}
-			resourceMap = null;
-		}
-
-		globalMap.put("tDBRollback_2_SUBPROCESS_STATE", 1);
 	}
 
 	public static class row11Struct implements routines.system.IPersistableComparableLookupRow<row11Struct> {
@@ -8923,10 +13225,10 @@ public class Article implements TalendJob {
 				int tos_count_tAdvancedHash_row11 = 0;
 
 				// connection name:row11
-				// source node:tFileInputDelimited_9 - inputs:(after_tFileInputDelimited_10)
+				// source node:tFileInputDelimited_9 - inputs:(after_tFileInputDelimited_11)
 				// outputs:(row11,row11) | target node:tAdvancedHash_row11 - inputs:(row11)
 				// outputs:()
-				// linked node: tMap_9 - inputs:(row9,row11) outputs:(copyOfmain_6)
+				// linked node: tMap_9 - inputs:(out2,row11) outputs:(copyOfmain_6)
 
 				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_row11 = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
 
@@ -9982,6 +14284,764 @@ public class Article implements TalendJob {
 		globalMap.put("tFileInputDelimited_9_SUBPROCESS_STATE", 1);
 	}
 
+	public static class row12Struct implements routines.system.IPersistableComparableLookupRow<row12Struct> {
+		final static byte[] commonByteArrayLock_LOCAL_PROJECT_Article = new byte[0];
+		static byte[] commonByteArray_LOCAL_PROJECT_Article = new byte[0];
+		protected static final int DEFAULT_HASHCODE = 1;
+		protected static final int PRIME = 31;
+		protected int hashCode = DEFAULT_HASHCODE;
+		public boolean hashCodeDirty = true;
+
+		public String loopKey;
+
+		public String RCREF;
+
+		public String getRCREF() {
+			return this.RCREF;
+		}
+
+		public String RCTYP;
+
+		public String getRCTYP() {
+			return this.RCTYP;
+		}
+
+		public String RCFAM;
+
+		public String getRCFAM() {
+			return this.RCFAM;
+		}
+
+		public String RCSFAM;
+
+		public String getRCSFAM() {
+			return this.RCSFAM;
+		}
+
+		public String RCFIL;
+
+		public String getRCFIL() {
+			return this.RCFIL;
+		}
+
+		public String RCTAR;
+
+		public String getRCTAR() {
+			return this.RCTAR;
+		}
+
+		public String RCREM;
+
+		public String getRCREM() {
+			return this.RCREM;
+		}
+
+		@Override
+		public int hashCode() {
+			if (this.hashCodeDirty) {
+				final int prime = PRIME;
+				int result = DEFAULT_HASHCODE;
+
+				result = prime * result + ((this.RCREF == null) ? 0 : this.RCREF.hashCode());
+
+				this.hashCode = result;
+				this.hashCodeDirty = false;
+			}
+			return this.hashCode;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final row12Struct other = (row12Struct) obj;
+
+			if (this.RCREF == null) {
+				if (other.RCREF != null)
+					return false;
+
+			} else if (!this.RCREF.equals(other.RCREF))
+
+				return false;
+
+			return true;
+		}
+
+		public void copyDataTo(row12Struct other) {
+
+			other.RCREF = this.RCREF;
+			other.RCTYP = this.RCTYP;
+			other.RCFAM = this.RCFAM;
+			other.RCSFAM = this.RCSFAM;
+			other.RCFIL = this.RCFIL;
+			other.RCTAR = this.RCTAR;
+			other.RCREM = this.RCREM;
+
+		}
+
+		public void copyKeysDataTo(row12Struct other) {
+
+			other.RCREF = this.RCREF;
+
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_LOCAL_PROJECT_Article.length) {
+					if (length < 1024 && commonByteArray_LOCAL_PROJECT_Article.length == 0) {
+						commonByteArray_LOCAL_PROJECT_Article = new byte[1024];
+					} else {
+						commonByteArray_LOCAL_PROJECT_Article = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_LOCAL_PROJECT_Article, 0, length);
+				strReturn = new String(commonByteArray_LOCAL_PROJECT_Article, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		private String readString(DataInputStream dis, ObjectInputStream ois) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				byte[] byteArray = new byte[length];
+				dis.read(byteArray);
+				strReturn = new String(byteArray, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, DataOutputStream dos, ObjectOutputStream oos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readKeysData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_LOCAL_PROJECT_Article) {
+
+				try {
+
+					int length = 0;
+
+					this.RCREF = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeKeysData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.RCREF, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		/**
+		 * Fill Values data by reading ObjectInputStream.
+		 */
+		public void readValuesData(DataInputStream dis, ObjectInputStream ois) {
+			try {
+
+				int length = 0;
+
+				this.RCTYP = readString(dis, ois);
+
+				this.RCFAM = readString(dis, ois);
+
+				this.RCSFAM = readString(dis, ois);
+
+				this.RCFIL = readString(dis, ois);
+
+				this.RCTAR = readString(dis, ois);
+
+				this.RCREM = readString(dis, ois);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+
+			}
+
+		}
+
+		/**
+		 * Return a byte array which represents Values data.
+		 */
+		public void writeValuesData(DataOutputStream dos, ObjectOutputStream oos) {
+			try {
+
+				writeString(this.RCTYP, dos, oos);
+
+				writeString(this.RCFAM, dos, oos);
+
+				writeString(this.RCSFAM, dos, oos);
+
+				writeString(this.RCFIL, dos, oos);
+
+				writeString(this.RCTAR, dos, oos);
+
+				writeString(this.RCREM, dos, oos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("RCREF=" + RCREF);
+			sb.append(",RCTYP=" + RCTYP);
+			sb.append(",RCFAM=" + RCFAM);
+			sb.append(",RCSFAM=" + RCSFAM);
+			sb.append(",RCFIL=" + RCFIL);
+			sb.append(",RCTAR=" + RCTAR);
+			sb.append(",RCREM=" + RCREM);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row12Struct other) {
+
+			int returnValue = -1;
+
+			returnValue = checkNullsAndCompare(this.RCREF, other.RCREF);
+			if (returnValue != 0) {
+				return returnValue;
+			}
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(), object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public void tFileInputDelimited_12Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+		globalMap.put("tFileInputDelimited_12_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+
+		String currentComponent = "";
+		java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+		try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { // start the resume
+				globalResumeTicket = true;
+
+				row12Struct row12 = new row12Struct();
+
+				/**
+				 * [tAdvancedHash_row12 begin ] start
+				 */
+
+				ok_Hash.put("tAdvancedHash_row12", false);
+				start_Hash.put("tAdvancedHash_row12", System.currentTimeMillis());
+
+				currentComponent = "tAdvancedHash_row12";
+
+				if (execStat) {
+					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "row12");
+				}
+
+				int tos_count_tAdvancedHash_row12 = 0;
+
+				// connection name:row12
+				// source node:tFileInputDelimited_12 - inputs:(after_tFileInputDelimited_11)
+				// outputs:(row12,row12) | target node:tAdvancedHash_row12 - inputs:(row12)
+				// outputs:()
+				// linked node: tMap_10 - inputs:(row10,row12) outputs:(out2)
+
+				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_row12 = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
+
+				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row12Struct> tHash_Lookup_row12 = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
+						.<row12Struct>getLookup(matchingModeEnum_row12);
+
+				globalMap.put("tHash_Lookup_row12", tHash_Lookup_row12);
+
+				/**
+				 * [tAdvancedHash_row12 begin ] stop
+				 */
+
+				/**
+				 * [tFileInputDelimited_12 begin ] start
+				 */
+
+				ok_Hash.put("tFileInputDelimited_12", false);
+				start_Hash.put("tFileInputDelimited_12", System.currentTimeMillis());
+
+				currentComponent = "tFileInputDelimited_12";
+
+				int tos_count_tFileInputDelimited_12 = 0;
+
+				final routines.system.RowState rowstate_tFileInputDelimited_12 = new routines.system.RowState();
+
+				int nb_line_tFileInputDelimited_12 = 0;
+				org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_12 = null;
+				int limit_tFileInputDelimited_12 = -1;
+				try {
+
+					Object filename_tFileInputDelimited_12 = "C:/DEV/Data/Base Montauban/remises_clients.csv";
+					if (filename_tFileInputDelimited_12 instanceof java.io.InputStream) {
+
+						int footer_value_tFileInputDelimited_12 = 0, random_value_tFileInputDelimited_12 = -1;
+						if (footer_value_tFileInputDelimited_12 > 0 || random_value_tFileInputDelimited_12 > 0) {
+							throw new java.lang.Exception(
+									"When the input source is a stream,footer and random shouldn't be bigger than 0.");
+						}
+
+					}
+					try {
+						fid_tFileInputDelimited_12 = new org.talend.fileprocess.FileInputDelimited(
+								"C:/DEV/Data/Base Montauban/remises_clients.csv", "ISO-8859-15", ";", "\n", true, 1, 0,
+								limit_tFileInputDelimited_12, -1, false);
+					} catch (java.lang.Exception e) {
+
+						System.err.println(e.getMessage());
+
+					}
+
+					while (fid_tFileInputDelimited_12 != null && fid_tFileInputDelimited_12.nextRecord()) {
+						rowstate_tFileInputDelimited_12.reset();
+
+						row12 = null;
+
+						row12 = null;
+
+						boolean whetherReject_tFileInputDelimited_12 = false;
+						row12 = new row12Struct();
+						try {
+
+							int columnIndexWithD_tFileInputDelimited_12 = 0;
+
+							columnIndexWithD_tFileInputDelimited_12 = 0;
+
+							row12.RCREF = fid_tFileInputDelimited_12.get(columnIndexWithD_tFileInputDelimited_12);
+
+							columnIndexWithD_tFileInputDelimited_12 = 1;
+
+							row12.RCTYP = fid_tFileInputDelimited_12.get(columnIndexWithD_tFileInputDelimited_12);
+
+							columnIndexWithD_tFileInputDelimited_12 = 2;
+
+							row12.RCFAM = fid_tFileInputDelimited_12.get(columnIndexWithD_tFileInputDelimited_12);
+
+							columnIndexWithD_tFileInputDelimited_12 = 3;
+
+							row12.RCSFAM = fid_tFileInputDelimited_12.get(columnIndexWithD_tFileInputDelimited_12);
+
+							columnIndexWithD_tFileInputDelimited_12 = 4;
+
+							row12.RCFIL = fid_tFileInputDelimited_12.get(columnIndexWithD_tFileInputDelimited_12);
+
+							columnIndexWithD_tFileInputDelimited_12 = 5;
+
+							row12.RCTAR = fid_tFileInputDelimited_12.get(columnIndexWithD_tFileInputDelimited_12);
+
+							columnIndexWithD_tFileInputDelimited_12 = 6;
+
+							row12.RCREM = fid_tFileInputDelimited_12.get(columnIndexWithD_tFileInputDelimited_12);
+
+							if (rowstate_tFileInputDelimited_12.getException() != null) {
+								throw rowstate_tFileInputDelimited_12.getException();
+							}
+
+						} catch (java.lang.Exception e) {
+							whetherReject_tFileInputDelimited_12 = true;
+
+							System.err.println(e.getMessage());
+							row12 = null;
+
+						}
+
+						/**
+						 * [tFileInputDelimited_12 begin ] stop
+						 */
+
+						/**
+						 * [tFileInputDelimited_12 main ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_12";
+
+						tos_count_tFileInputDelimited_12++;
+
+						/**
+						 * [tFileInputDelimited_12 main ] stop
+						 */
+
+						/**
+						 * [tFileInputDelimited_12 process_data_begin ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_12";
+
+						/**
+						 * [tFileInputDelimited_12 process_data_begin ] stop
+						 */
+// Start of branch "row12"
+						if (row12 != null) {
+
+							/**
+							 * [tAdvancedHash_row12 main ] start
+							 */
+
+							currentComponent = "tAdvancedHash_row12";
+
+							if (execStat) {
+								runStat.updateStatOnConnection(iterateId, 1, 1, "row12");
+							}
+
+							row12Struct row12_HashRow = new row12Struct();
+
+							row12_HashRow.RCREF = row12.RCREF;
+
+							row12_HashRow.RCTYP = row12.RCTYP;
+
+							row12_HashRow.RCFAM = row12.RCFAM;
+
+							row12_HashRow.RCSFAM = row12.RCSFAM;
+
+							row12_HashRow.RCFIL = row12.RCFIL;
+
+							row12_HashRow.RCTAR = row12.RCTAR;
+
+							row12_HashRow.RCREM = row12.RCREM;
+
+							tHash_Lookup_row12.put(row12_HashRow);
+
+							tos_count_tAdvancedHash_row12++;
+
+							/**
+							 * [tAdvancedHash_row12 main ] stop
+							 */
+
+							/**
+							 * [tAdvancedHash_row12 process_data_begin ] start
+							 */
+
+							currentComponent = "tAdvancedHash_row12";
+
+							/**
+							 * [tAdvancedHash_row12 process_data_begin ] stop
+							 */
+
+							/**
+							 * [tAdvancedHash_row12 process_data_end ] start
+							 */
+
+							currentComponent = "tAdvancedHash_row12";
+
+							/**
+							 * [tAdvancedHash_row12 process_data_end ] stop
+							 */
+
+						} // End of branch "row12"
+
+						/**
+						 * [tFileInputDelimited_12 process_data_end ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_12";
+
+						/**
+						 * [tFileInputDelimited_12 process_data_end ] stop
+						 */
+
+						/**
+						 * [tFileInputDelimited_12 end ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_12";
+
+					}
+				} finally {
+					if (!((Object) ("C:/DEV/Data/Base Montauban/remises_clients.csv") instanceof java.io.InputStream)) {
+						if (fid_tFileInputDelimited_12 != null) {
+							fid_tFileInputDelimited_12.close();
+						}
+					}
+					if (fid_tFileInputDelimited_12 != null) {
+						globalMap.put("tFileInputDelimited_12_NB_LINE", fid_tFileInputDelimited_12.getRowNumber());
+
+					}
+				}
+
+				ok_Hash.put("tFileInputDelimited_12", true);
+				end_Hash.put("tFileInputDelimited_12", System.currentTimeMillis());
+
+				/**
+				 * [tFileInputDelimited_12 end ] stop
+				 */
+
+				/**
+				 * [tAdvancedHash_row12 end ] start
+				 */
+
+				currentComponent = "tAdvancedHash_row12";
+
+				tHash_Lookup_row12.endPut();
+
+				if (execStat) {
+					runStat.updateStat(resourceMap, iterateId, 2, 0, "row12");
+				}
+
+				ok_Hash.put("tAdvancedHash_row12", true);
+				end_Hash.put("tAdvancedHash_row12", System.currentTimeMillis());
+
+				/**
+				 * [tAdvancedHash_row12 end ] stop
+				 */
+
+			} // end the resume
+
+		} catch (java.lang.Exception e) {
+
+			TalendException te = new TalendException(e, currentComponent, globalMap);
+
+			throw te;
+		} catch (java.lang.Error error) {
+
+			runStat.stopThreadStat();
+
+			throw error;
+		} finally {
+
+			try {
+
+				/**
+				 * [tFileInputDelimited_12 finally ] start
+				 */
+
+				currentComponent = "tFileInputDelimited_12";
+
+				/**
+				 * [tFileInputDelimited_12 finally ] stop
+				 */
+
+				/**
+				 * [tAdvancedHash_row12 finally ] start
+				 */
+
+				currentComponent = "tAdvancedHash_row12";
+
+				/**
+				 * [tAdvancedHash_row12 finally ] stop
+				 */
+
+			} catch (java.lang.Exception e) {
+				// ignore
+			} catch (java.lang.Error error) {
+				// ignore
+			}
+			resourceMap = null;
+		}
+
+		globalMap.put("tFileInputDelimited_12_SUBPROCESS_STATE", 1);
+	}
+
+	public void tLogRow_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+		globalMap.put("tLogRow_1_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+
+		String currentComponent = "";
+		java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+		try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { // start the resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tLogRow_1 begin ] start
+				 */
+
+				ok_Hash.put("tLogRow_1", false);
+				start_Hash.put("tLogRow_1", System.currentTimeMillis());
+
+				currentComponent = "tLogRow_1";
+
+				int tos_count_tLogRow_1 = 0;
+
+				///////////////////////
+
+				final String OUTPUT_FIELD_SEPARATOR_tLogRow_1 = "|";
+				java.io.PrintStream consoleOut_tLogRow_1 = null;
+
+				StringBuilder strBuffer_tLogRow_1 = null;
+				int nb_line_tLogRow_1 = 0;
+///////////////////////    			
+
+				/**
+				 * [tLogRow_1 begin ] stop
+				 */
+
+				/**
+				 * [tLogRow_1 main ] start
+				 */
+
+				currentComponent = "tLogRow_1";
+
+				tos_count_tLogRow_1++;
+
+				/**
+				 * [tLogRow_1 main ] stop
+				 */
+
+				/**
+				 * [tLogRow_1 process_data_begin ] start
+				 */
+
+				currentComponent = "tLogRow_1";
+
+				/**
+				 * [tLogRow_1 process_data_begin ] stop
+				 */
+
+				/**
+				 * [tLogRow_1 process_data_end ] start
+				 */
+
+				currentComponent = "tLogRow_1";
+
+				/**
+				 * [tLogRow_1 process_data_end ] stop
+				 */
+
+				/**
+				 * [tLogRow_1 end ] start
+				 */
+
+				currentComponent = "tLogRow_1";
+
+//////
+//////
+				globalMap.put("tLogRow_1_NB_LINE", nb_line_tLogRow_1);
+
+///////////////////////    			
+
+				ok_Hash.put("tLogRow_1", true);
+				end_Hash.put("tLogRow_1", System.currentTimeMillis());
+
+				/**
+				 * [tLogRow_1 end ] stop
+				 */
+			} // end the resume
+
+		} catch (java.lang.Exception e) {
+
+			TalendException te = new TalendException(e, currentComponent, globalMap);
+
+			throw te;
+		} catch (java.lang.Error error) {
+
+			runStat.stopThreadStat();
+
+			throw error;
+		} finally {
+
+			try {
+
+				/**
+				 * [tLogRow_1 finally ] start
+				 */
+
+				currentComponent = "tLogRow_1";
+
+				/**
+				 * [tLogRow_1 finally ] stop
+				 */
+			} catch (java.lang.Exception e) {
+				// ignore
+			} catch (java.lang.Error error) {
+				// ignore
+			}
+			resourceMap = null;
+		}
+
+		globalMap.put("tLogRow_1_SUBPROCESS_STATE", 1);
+	}
+
 	public void tPostjob_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
 		globalMap.put("tPostjob_1_SUBPROCESS_STATE", 0);
 
@@ -10102,126 +15162,6 @@ public class Article implements TalendJob {
 		globalMap.put("tPostjob_1_SUBPROCESS_STATE", 1);
 	}
 
-	public void tDBClose_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
-		globalMap.put("tDBClose_1_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-
-		String currentComponent = "";
-		java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
-
-		try {
-			// TDI-39566 avoid throwing an useless Exception
-			boolean resumeIt = true;
-			if (globalResumeTicket == false && resumeEntryMethodName != null) {
-				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
-				resumeIt = resumeEntryMethodName.equals(currentMethodName);
-			}
-			if (resumeIt || globalResumeTicket) { // start the resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tDBClose_1 begin ] start
-				 */
-
-				ok_Hash.put("tDBClose_1", false);
-				start_Hash.put("tDBClose_1", System.currentTimeMillis());
-
-				currentComponent = "tDBClose_1";
-
-				int tos_count_tDBClose_1 = 0;
-
-				/**
-				 * [tDBClose_1 begin ] stop
-				 */
-
-				/**
-				 * [tDBClose_1 main ] start
-				 */
-
-				currentComponent = "tDBClose_1";
-
-				java.sql.Connection conn_tDBClose_1 = (java.sql.Connection) globalMap.get("conn_tDBConnection_1");
-				if (conn_tDBClose_1 != null && !conn_tDBClose_1.isClosed()) {
-					conn_tDBClose_1.close();
-				}
-
-				tos_count_tDBClose_1++;
-
-				/**
-				 * [tDBClose_1 main ] stop
-				 */
-
-				/**
-				 * [tDBClose_1 process_data_begin ] start
-				 */
-
-				currentComponent = "tDBClose_1";
-
-				/**
-				 * [tDBClose_1 process_data_begin ] stop
-				 */
-
-				/**
-				 * [tDBClose_1 process_data_end ] start
-				 */
-
-				currentComponent = "tDBClose_1";
-
-				/**
-				 * [tDBClose_1 process_data_end ] stop
-				 */
-
-				/**
-				 * [tDBClose_1 end ] start
-				 */
-
-				currentComponent = "tDBClose_1";
-
-				ok_Hash.put("tDBClose_1", true);
-				end_Hash.put("tDBClose_1", System.currentTimeMillis());
-
-				/**
-				 * [tDBClose_1 end ] stop
-				 */
-			} // end the resume
-
-		} catch (java.lang.Exception e) {
-
-			TalendException te = new TalendException(e, currentComponent, globalMap);
-
-			throw te;
-		} catch (java.lang.Error error) {
-
-			runStat.stopThreadStat();
-
-			throw error;
-		} finally {
-
-			try {
-
-				/**
-				 * [tDBClose_1 finally ] start
-				 */
-
-				currentComponent = "tDBClose_1";
-
-				/**
-				 * [tDBClose_1 finally ] stop
-				 */
-			} catch (java.lang.Exception e) {
-				// ignore
-			} catch (java.lang.Error error) {
-				// ignore
-			}
-			resourceMap = null;
-		}
-
-		globalMap.put("tDBClose_1_SUBPROCESS_STATE", 1);
-	}
-
 	public void tPrejob_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
 		globalMap.put("tPrejob_1_SUBPROCESS_STATE", 0);
 
@@ -10340,167 +15280,6 @@ public class Article implements TalendJob {
 		}
 
 		globalMap.put("tPrejob_1_SUBPROCESS_STATE", 1);
-	}
-
-	public void tDBConnection_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
-		globalMap.put("tDBConnection_1_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-
-		String currentComponent = "";
-		java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
-
-		try {
-			// TDI-39566 avoid throwing an useless Exception
-			boolean resumeIt = true;
-			if (globalResumeTicket == false && resumeEntryMethodName != null) {
-				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
-				resumeIt = resumeEntryMethodName.equals(currentMethodName);
-			}
-			if (resumeIt || globalResumeTicket) { // start the resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tDBConnection_1 begin ] start
-				 */
-
-				ok_Hash.put("tDBConnection_1", false);
-				start_Hash.put("tDBConnection_1", System.currentTimeMillis());
-
-				currentComponent = "tDBConnection_1";
-
-				int tos_count_tDBConnection_1 = 0;
-
-				String dbProperties_tDBConnection_1 = "";
-				String url_tDBConnection_1 = "jdbc:postgresql://" + "192.168.1.116" + ":" + "5432" + "/" + "syg";
-
-				if (dbProperties_tDBConnection_1 != null && !"".equals(dbProperties_tDBConnection_1.trim())) {
-					url_tDBConnection_1 = url_tDBConnection_1 + "?" + dbProperties_tDBConnection_1;
-				}
-				String dbUser_tDBConnection_1 = "postgres";
-
-				final String decryptedPassword_tDBConnection_1 = routines.system.PasswordEncryptUtil.decryptPassword(
-						"enc:routine.encryption.key.v1:zw+uScBV7WurNMqVJFGG5rd5q/KRU37cOwoAcmp1yZcyw9gRIQ==");
-				String dbPwd_tDBConnection_1 = decryptedPassword_tDBConnection_1;
-
-				java.sql.Connection conn_tDBConnection_1 = null;
-
-				java.util.Enumeration<java.sql.Driver> drivers_tDBConnection_1 = java.sql.DriverManager.getDrivers();
-				java.util.Set<String> redShiftDriverNames_tDBConnection_1 = new java.util.HashSet<String>(
-						java.util.Arrays.asList("com.amazon.redshift.jdbc.Driver", "com.amazon.redshift.jdbc41.Driver",
-								"com.amazon.redshift.jdbc42.Driver"));
-				while (drivers_tDBConnection_1.hasMoreElements()) {
-					java.sql.Driver d_tDBConnection_1 = drivers_tDBConnection_1.nextElement();
-					if (redShiftDriverNames_tDBConnection_1.contains(d_tDBConnection_1.getClass().getName())) {
-						try {
-							java.sql.DriverManager.deregisterDriver(d_tDBConnection_1);
-							java.sql.DriverManager.registerDriver(d_tDBConnection_1);
-						} catch (java.lang.Exception e_tDBConnection_1) {
-							// do nothing
-						}
-					}
-				}
-				String driverClass_tDBConnection_1 = "org.postgresql.Driver";
-				java.lang.Class jdbcclazz_tDBConnection_1 = java.lang.Class.forName(driverClass_tDBConnection_1);
-				globalMap.put("driverClass_tDBConnection_1", driverClass_tDBConnection_1);
-
-				conn_tDBConnection_1 = java.sql.DriverManager.getConnection(url_tDBConnection_1, dbUser_tDBConnection_1,
-						dbPwd_tDBConnection_1);
-
-				globalMap.put("conn_tDBConnection_1", conn_tDBConnection_1);
-				if (null != conn_tDBConnection_1) {
-
-					conn_tDBConnection_1.setAutoCommit(false);
-				}
-
-				globalMap.put("schema_" + "tDBConnection_1", "");
-
-				globalMap.put("conn_" + "tDBConnection_1", conn_tDBConnection_1);
-
-				/**
-				 * [tDBConnection_1 begin ] stop
-				 */
-
-				/**
-				 * [tDBConnection_1 main ] start
-				 */
-
-				currentComponent = "tDBConnection_1";
-
-				tos_count_tDBConnection_1++;
-
-				/**
-				 * [tDBConnection_1 main ] stop
-				 */
-
-				/**
-				 * [tDBConnection_1 process_data_begin ] start
-				 */
-
-				currentComponent = "tDBConnection_1";
-
-				/**
-				 * [tDBConnection_1 process_data_begin ] stop
-				 */
-
-				/**
-				 * [tDBConnection_1 process_data_end ] start
-				 */
-
-				currentComponent = "tDBConnection_1";
-
-				/**
-				 * [tDBConnection_1 process_data_end ] stop
-				 */
-
-				/**
-				 * [tDBConnection_1 end ] start
-				 */
-
-				currentComponent = "tDBConnection_1";
-
-				ok_Hash.put("tDBConnection_1", true);
-				end_Hash.put("tDBConnection_1", System.currentTimeMillis());
-
-				/**
-				 * [tDBConnection_1 end ] stop
-				 */
-			} // end the resume
-
-		} catch (java.lang.Exception e) {
-
-			TalendException te = new TalendException(e, currentComponent, globalMap);
-
-			throw te;
-		} catch (java.lang.Error error) {
-
-			runStat.stopThreadStat();
-
-			throw error;
-		} finally {
-
-			try {
-
-				/**
-				 * [tDBConnection_1 finally ] start
-				 */
-
-				currentComponent = "tDBConnection_1";
-
-				/**
-				 * [tDBConnection_1 finally ] stop
-				 */
-			} catch (java.lang.Exception e) {
-				// ignore
-			} catch (java.lang.Error error) {
-				// ignore
-			}
-			resourceMap = null;
-		}
-
-		globalMap.put("tDBConnection_1_SUBPROCESS_STATE", 1);
 	}
 
 	public String resuming_logs_dir_path = null;
@@ -10897,6 +15676,6 @@ public class Article implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 301190 characters generated by Talend Open Studio for Data Integration on the
- * 18 février 2022 à 09:25:24 CET
+ * 416398 characters generated by Talend Open Studio for Data Integration on the
+ * 21 février 2022 à 09:43:14 CET
  ************************************************************************************************/
