@@ -260,6 +260,16 @@ public class Adresse implements TalendJob {
 		}
 	}
 
+	public void tDBRollback_3_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tDBRollback_3_onSubJobError(exception, errorComponent, globalMap);
+	}
+
 	public void tFileInputDelimited_1_error(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
@@ -285,23 +295,39 @@ public class Adresse implements TalendJob {
 
 		end_Hash.put(errorComponent, System.currentTimeMillis());
 
-		try {
-
-			if (this.execStat) {
-				runStat.updateStatOnConnection("OnComponentError2", 0, "error");
-			}
-
-			errorCode = null;
-			tDBRollback_3Process(globalMap);
-			if (!"failure".equals(status)) {
-				status = "end";
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		status = "failure";
 
 		tFileInputDelimited_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tFileInputDelimited_2_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_2_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tMap_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_2_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tDBOutput_2_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_2_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tDBCommit_3_error(Exception exception, String errorComponent,
@@ -312,16 +338,6 @@ public class Adresse implements TalendJob {
 		status = "failure";
 
 		tDBCommit_3_onSubJobError(exception, errorComponent, globalMap);
-	}
-
-	public void tDBRollback_3_error(Exception exception, String errorComponent,
-			final java.util.Map<String, Object> globalMap) throws TalendException {
-
-		end_Hash.put(errorComponent, System.currentTimeMillis());
-
-		status = "failure";
-
-		tDBRollback_3_onSubJobError(exception, errorComponent, globalMap);
 	}
 
 	public void tPostjob_1_error(Exception exception, String errorComponent,
@@ -364,6 +380,14 @@ public class Adresse implements TalendJob {
 		tDBConnection_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
+	public void tDBRollback_3_onSubJobError(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread.currentThread().getId() + "", "FATAL", "",
+				exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception), "");
+
+	}
+
 	public void tFileInputDelimited_1_onSubJobError(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
@@ -372,7 +396,7 @@ public class Adresse implements TalendJob {
 
 	}
 
-	public void tDBCommit_3_onSubJobError(Exception exception, String errorComponent,
+	public void tFileInputDelimited_2_onSubJobError(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
 		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread.currentThread().getId() + "", "FATAL", "",
@@ -380,7 +404,7 @@ public class Adresse implements TalendJob {
 
 	}
 
-	public void tDBRollback_3_onSubJobError(Exception exception, String errorComponent,
+	public void tDBCommit_3_onSubJobError(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
 		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread.currentThread().getId() + "", "FATAL", "",
@@ -418,6 +442,128 @@ public class Adresse implements TalendJob {
 		resumeUtil.addLog("SYSTEM_LOG", "NODE:" + errorComponent, "", Thread.currentThread().getId() + "", "FATAL", "",
 				exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception), "");
 
+	}
+
+	public void tDBRollback_3Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+		globalMap.put("tDBRollback_3_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+
+		String currentComponent = "";
+		java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+		try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { // start the resume
+				globalResumeTicket = true;
+
+				/**
+				 * [tDBRollback_3 begin ] start
+				 */
+
+				ok_Hash.put("tDBRollback_3", false);
+				start_Hash.put("tDBRollback_3", System.currentTimeMillis());
+
+				currentComponent = "tDBRollback_3";
+
+				int tos_count_tDBRollback_3 = 0;
+
+				/**
+				 * [tDBRollback_3 begin ] stop
+				 */
+
+				/**
+				 * [tDBRollback_3 main ] start
+				 */
+
+				currentComponent = "tDBRollback_3";
+
+				java.sql.Connection conn_tDBRollback_3 = (java.sql.Connection) globalMap.get("conn_tDBConnection_1");
+				if (conn_tDBRollback_3 != null && !conn_tDBRollback_3.isClosed()) {
+
+					conn_tDBRollback_3.rollback();
+
+				}
+
+				tos_count_tDBRollback_3++;
+
+				/**
+				 * [tDBRollback_3 main ] stop
+				 */
+
+				/**
+				 * [tDBRollback_3 process_data_begin ] start
+				 */
+
+				currentComponent = "tDBRollback_3";
+
+				/**
+				 * [tDBRollback_3 process_data_begin ] stop
+				 */
+
+				/**
+				 * [tDBRollback_3 process_data_end ] start
+				 */
+
+				currentComponent = "tDBRollback_3";
+
+				/**
+				 * [tDBRollback_3 process_data_end ] stop
+				 */
+
+				/**
+				 * [tDBRollback_3 end ] start
+				 */
+
+				currentComponent = "tDBRollback_3";
+
+				ok_Hash.put("tDBRollback_3", true);
+				end_Hash.put("tDBRollback_3", System.currentTimeMillis());
+
+				/**
+				 * [tDBRollback_3 end ] stop
+				 */
+			} // end the resume
+
+		} catch (java.lang.Exception e) {
+
+			TalendException te = new TalendException(e, currentComponent, globalMap);
+
+			throw te;
+		} catch (java.lang.Error error) {
+
+			runStat.stopThreadStat();
+
+			throw error;
+		} finally {
+
+			try {
+
+				/**
+				 * [tDBRollback_3 finally ] start
+				 */
+
+				currentComponent = "tDBRollback_3";
+
+				/**
+				 * [tDBRollback_3 finally ] stop
+				 */
+			} catch (java.lang.Exception e) {
+				// ignore
+			} catch (java.lang.Error error) {
+				// ignore
+			}
+			resourceMap = null;
+		}
+
+		globalMap.put("tDBRollback_3_SUBPROCESS_STATE", 1);
 	}
 
 	public static class mainStruct implements routines.system.IPersistableRow<mainStruct> {
@@ -3293,7 +3439,7 @@ public class Adresse implements TalendJob {
 								main = null;
 
 // # Output table : 'main'
-								main_tmp.idadresse = Numeric.sequence("s1", 1, 1);
+								main_tmp.idadresse = Numeric.sequence("Adresse", 1, 1);
 								main_tmp.codepostal = row1.CCPTL;
 								main_tmp.pays = row1.CPAYS;
 								main_tmp.rue = row1.CRUE;
@@ -3400,8 +3546,6 @@ public class Adresse implements TalendJob {
 
 								batchSizeCounter_tDBOutput_1++;
 
-								if (!whetherReject_tDBOutput_1) {
-								}
 								if ((batchSize_tDBOutput_1 > 0)
 										&& (batchSize_tDBOutput_1 <= batchSizeCounter_tDBOutput_1)) {
 									try {
@@ -3608,16 +3752,22 @@ public class Adresse implements TalendJob {
 				ok_Hash.put("tDBOutput_1", true);
 				end_Hash.put("tDBOutput_1", System.currentTimeMillis());
 
-				if (execStat) {
-					runStat.updateStatOnConnection("OnComponentOk4", 0, "ok");
-				}
-				tDBCommit_3Process(globalMap);
-
 				/**
 				 * [tDBOutput_1 end ] stop
 				 */
 
 			} // end the resume
+
+			if (resumeEntryMethodName == null || globalResumeTicket) {
+				resumeUtil.addLog("CHECKPOINT", "CONNECTION:SUBJOB_OK:tFileInputDelimited_1:OnSubjobOk", "",
+						Thread.currentThread().getId() + "", "", "", "", "", "");
+			}
+
+			if (execStat) {
+				runStat.updateStatOnConnection("OnSubjobOk1", 0, "ok");
+			}
+
+			tFileInputDelimited_2Process(globalMap);
 
 		} catch (java.lang.Exception e) {
 
@@ -3680,6 +3830,2183 @@ public class Adresse implements TalendJob {
 		}
 
 		globalMap.put("tFileInputDelimited_1_SUBPROCESS_STATE", 1);
+	}
+
+	public static class copyOfmainStruct implements routines.system.IPersistableRow<copyOfmainStruct> {
+		final static byte[] commonByteArrayLock_LOCAL_PROJECT_Adresse = new byte[0];
+		static byte[] commonByteArray_LOCAL_PROJECT_Adresse = new byte[0];
+		protected static final int DEFAULT_HASHCODE = 1;
+		protected static final int PRIME = 31;
+		protected int hashCode = DEFAULT_HASHCODE;
+		public boolean hashCodeDirty = true;
+
+		public String loopKey;
+
+		public int idadresse;
+
+		public int getIdadresse() {
+			return this.idadresse;
+		}
+
+		public String codepostal;
+
+		public String getCodepostal() {
+			return this.codepostal;
+		}
+
+		public String pays;
+
+		public String getPays() {
+			return this.pays;
+		}
+
+		public String rue;
+
+		public String getRue() {
+			return this.rue;
+		}
+
+		public String ruebis;
+
+		public String getRuebis() {
+			return this.ruebis;
+		}
+
+		public String ruetier;
+
+		public String getRuetier() {
+			return this.ruetier;
+		}
+
+		public String ville;
+
+		public String getVille() {
+			return this.ville;
+		}
+
+		public String idadresse_livraison;
+
+		public String getIdadresse_livraison() {
+			return this.idadresse_livraison;
+		}
+
+		public String idcli;
+
+		public String getIdcli() {
+			return this.idcli;
+		}
+
+		public String idfournisseur;
+
+		public String getIdfournisseur() {
+			return this.idfournisseur;
+		}
+
+		@Override
+		public int hashCode() {
+			if (this.hashCodeDirty) {
+				final int prime = PRIME;
+				int result = DEFAULT_HASHCODE;
+
+				result = prime * result + (int) this.idadresse;
+
+				this.hashCode = result;
+				this.hashCodeDirty = false;
+			}
+			return this.hashCode;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final copyOfmainStruct other = (copyOfmainStruct) obj;
+
+			if (this.idadresse != other.idadresse)
+				return false;
+
+			return true;
+		}
+
+		public void copyDataTo(copyOfmainStruct other) {
+
+			other.idadresse = this.idadresse;
+			other.codepostal = this.codepostal;
+			other.pays = this.pays;
+			other.rue = this.rue;
+			other.ruebis = this.ruebis;
+			other.ruetier = this.ruetier;
+			other.ville = this.ville;
+			other.idadresse_livraison = this.idadresse_livraison;
+			other.idcli = this.idcli;
+			other.idfournisseur = this.idfournisseur;
+
+		}
+
+		public void copyKeysDataTo(copyOfmainStruct other) {
+
+			other.idadresse = this.idadresse;
+
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_LOCAL_PROJECT_Adresse.length) {
+					if (length < 1024 && commonByteArray_LOCAL_PROJECT_Adresse.length == 0) {
+						commonByteArray_LOCAL_PROJECT_Adresse = new byte[1024];
+					} else {
+						commonByteArray_LOCAL_PROJECT_Adresse = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_LOCAL_PROJECT_Adresse, 0, length);
+				strReturn = new String(commonByteArray_LOCAL_PROJECT_Adresse, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_LOCAL_PROJECT_Adresse) {
+
+				try {
+
+					int length = 0;
+
+					this.idadresse = dis.readInt();
+
+					this.codepostal = readString(dis);
+
+					this.pays = readString(dis);
+
+					this.rue = readString(dis);
+
+					this.ruebis = readString(dis);
+
+					this.ruetier = readString(dis);
+
+					this.ville = readString(dis);
+
+					this.idadresse_livraison = readString(dis);
+
+					this.idcli = readString(dis);
+
+					this.idfournisseur = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// int
+
+				dos.writeInt(this.idadresse);
+
+				// String
+
+				writeString(this.codepostal, dos);
+
+				// String
+
+				writeString(this.pays, dos);
+
+				// String
+
+				writeString(this.rue, dos);
+
+				// String
+
+				writeString(this.ruebis, dos);
+
+				// String
+
+				writeString(this.ruetier, dos);
+
+				// String
+
+				writeString(this.ville, dos);
+
+				// String
+
+				writeString(this.idadresse_livraison, dos);
+
+				// String
+
+				writeString(this.idcli, dos);
+
+				// String
+
+				writeString(this.idfournisseur, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("idadresse=" + String.valueOf(idadresse));
+			sb.append(",codepostal=" + codepostal);
+			sb.append(",pays=" + pays);
+			sb.append(",rue=" + rue);
+			sb.append(",ruebis=" + ruebis);
+			sb.append(",ruetier=" + ruetier);
+			sb.append(",ville=" + ville);
+			sb.append(",idadresse_livraison=" + idadresse_livraison);
+			sb.append(",idcli=" + idcli);
+			sb.append(",idfournisseur=" + idfournisseur);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(copyOfmainStruct other) {
+
+			int returnValue = -1;
+
+			returnValue = checkNullsAndCompare(this.idadresse, other.idadresse);
+			if (returnValue != 0) {
+				return returnValue;
+			}
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(), object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class row2Struct implements routines.system.IPersistableRow<row2Struct> {
+		final static byte[] commonByteArrayLock_LOCAL_PROJECT_Adresse = new byte[0];
+		static byte[] commonByteArray_LOCAL_PROJECT_Adresse = new byte[0];
+
+		public String FRREF;
+
+		public String getFRREF() {
+			return this.FRREF;
+		}
+
+		public String FRNOM;
+
+		public String getFRNOM() {
+			return this.FRNOM;
+		}
+
+		public String FRRUE;
+
+		public String getFRRUE() {
+			return this.FRRUE;
+		}
+
+		public String FRAUX;
+
+		public String getFRAUX() {
+			return this.FRAUX;
+		}
+
+		public String FRCPTL;
+
+		public String getFRCPTL() {
+			return this.FRCPTL;
+		}
+
+		public String FRVIL;
+
+		public String getFRVIL() {
+			return this.FRVIL;
+		}
+
+		public String FRPLAN;
+
+		public String getFRPLAN() {
+			return this.FRPLAN;
+		}
+
+		public String FRCODE;
+
+		public String getFRCODE() {
+			return this.FRCODE;
+		}
+
+		public String FRFIL1;
+
+		public String getFRFIL1() {
+			return this.FRFIL1;
+		}
+
+		public String FRQUAL;
+
+		public String getFRQUAL() {
+			return this.FRQUAL;
+		}
+
+		public String FRCOM1;
+
+		public String getFRCOM1() {
+			return this.FRCOM1;
+		}
+
+		public String FRDEL;
+
+		public String getFRDEL() {
+			return this.FRDEL;
+		}
+
+		public String FRREMFI;
+
+		public String getFRREMFI() {
+			return this.FRREMFI;
+		}
+
+		public String FRECH;
+
+		public String getFRECH() {
+			return this.FRECH;
+		}
+
+		public String FRECHJ;
+
+		public String getFRECHJ() {
+			return this.FRECHJ;
+		}
+
+		public String FRPAI;
+
+		public String getFRPAI() {
+			return this.FRPAI;
+		}
+
+		public String FRDAC;
+
+		public String getFRDAC() {
+			return this.FRDAC;
+		}
+
+		public String FRECHJ2;
+
+		public String getFRECHJ2() {
+			return this.FRECHJ2;
+		}
+
+		public String FRMOD;
+
+		public String getFRMOD() {
+			return this.FRMOD;
+		}
+
+		public String FRBQ1;
+
+		public String getFRBQ1() {
+			return this.FRBQ1;
+		}
+
+		public String FRBQ2;
+
+		public String getFRBQ2() {
+			return this.FRBQ2;
+		}
+
+		public String FRBQ3;
+
+		public String getFRBQ3() {
+			return this.FRBQ3;
+		}
+
+		public String FRBQ4;
+
+		public String getFRBQ4() {
+			return this.FRBQ4;
+		}
+
+		public String FRBQ5;
+
+		public String getFRBQ5() {
+			return this.FRBQ5;
+		}
+
+		public String FRBQ6;
+
+		public String getFRBQ6() {
+			return this.FRBQ6;
+		}
+
+		public String FRFACT;
+
+		public String getFRFACT() {
+			return this.FRFACT;
+		}
+
+		public String FRBL;
+
+		public String getFRBL() {
+			return this.FRBL;
+		}
+
+		public String FRESC;
+
+		public String getFRESC() {
+			return this.FRESC;
+		}
+
+		public String FRFIL2;
+
+		public String getFRFIL2() {
+			return this.FRFIL2;
+		}
+
+		public String FRDAL;
+
+		public String getFRDAL() {
+			return this.FRDAL;
+		}
+
+		public String FRCAN1;
+
+		public String getFRCAN1() {
+			return this.FRCAN1;
+		}
+
+		public String FRCAN2;
+
+		public String getFRCAN2() {
+			return this.FRCAN2;
+		}
+
+		public String FRCAN3;
+
+		public String getFRCAN3() {
+			return this.FRCAN3;
+		}
+
+		public String FRDATF;
+
+		public String getFRDATF() {
+			return this.FRDATF;
+		}
+
+		public String FRRESP;
+
+		public String getFRRESP() {
+			return this.FRRESP;
+		}
+
+		public String FRTEL1;
+
+		public String getFRTEL1() {
+			return this.FRTEL1;
+		}
+
+		public String FRTEL2;
+
+		public String getFRTEL2() {
+			return this.FRTEL2;
+		}
+
+		public String FRTEX1;
+
+		public String getFRTEX1() {
+			return this.FRTEX1;
+		}
+
+		public String FRTEX2;
+
+		public String getFRTEX2() {
+			return this.FRTEX2;
+		}
+
+		public String FRCDEFAX;
+
+		public String getFRCDEFAX() {
+			return this.FRCDEFAX;
+		}
+
+		public String FRCDEMAIL;
+
+		public String getFRCDEMAIL() {
+			return this.FRCDEMAIL;
+		}
+
+		public String FRCDEINT;
+
+		public String getFRCDEINT() {
+			return this.FRCDEINT;
+		}
+
+		public String FRCDEDIL;
+
+		public String getFRCDEDIL() {
+			return this.FRCDEDIL;
+		}
+
+		public String FREXPORT;
+
+		public String getFREXPORT() {
+			return this.FREXPORT;
+		}
+
+		public String FRGENCODE;
+
+		public String getFRGENCODE() {
+			return this.FRGENCODE;
+		}
+
+		public String FREXPEDIT;
+
+		public String getFREXPEDIT() {
+			return this.FREXPEDIT;
+		}
+
+		public String FRIDENT;
+
+		public String getFRIDENT() {
+			return this.FRIDENT;
+		}
+
+		public String FRPASSE;
+
+		public String getFRPASSE() {
+			return this.FRPASSE;
+		}
+
+		public String FRSITE;
+
+		public String getFRSITE() {
+			return this.FRSITE;
+		}
+
+		public String FRIBAN1;
+
+		public String getFRIBAN1() {
+			return this.FRIBAN1;
+		}
+
+		public String FRIBAN72;
+
+		public String getFRIBAN72() {
+			return this.FRIBAN72;
+		}
+
+		public String FRIBAN8;
+
+		public String getFRIBAN8() {
+			return this.FRIBAN8;
+		}
+
+		public String FRIBAN9;
+
+		public String getFRIBAN9() {
+			return this.FRIBAN9;
+		}
+
+		public String FRIBIC;
+
+		public String getFRIBIC() {
+			return this.FRIBIC;
+		}
+
+		public String FRFIL3;
+
+		public String getFRFIL3() {
+			return this.FRFIL3;
+		}
+
+		public String FRFRANC;
+
+		public String getFRFRANC() {
+			return this.FRFRANC;
+		}
+
+		public String FRCODLIV;
+
+		public String getFRCODLIV() {
+			return this.FRCODLIV;
+		}
+
+		public String FRCODCLI;
+
+		public String getFRCODCLI() {
+			return this.FRCODCLI;
+		}
+
+		public String FRPAYS;
+
+		public String getFRPAYS() {
+			return this.FRPAYS;
+		}
+
+		public String FRSECT;
+
+		public String getFRSECT() {
+			return this.FRSECT;
+		}
+
+		public String FRTOUR;
+
+		public String getFRTOUR() {
+			return this.FRTOUR;
+		}
+
+		public String FRNCEE;
+
+		public String getFRNCEE() {
+			return this.FRNCEE;
+		}
+
+		public String FRFRAP;
+
+		public String getFRFRAP() {
+			return this.FRFRAP;
+		}
+
+		public String FRPOID;
+
+		public String getFRPOID() {
+			return this.FRPOID;
+		}
+
+		public String FRCUBA;
+
+		public String getFRCUBA() {
+			return this.FRCUBA;
+		}
+
+		public String FRNTEL2;
+
+		public String getFRNTEL2() {
+			return this.FRNTEL2;
+		}
+
+		public String FRNTEX2;
+
+		public String getFRNTEX2() {
+			return this.FRNTEX2;
+		}
+
+		public String FRCREP;
+
+		public String getFRCREP() {
+			return this.FRCREP;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_LOCAL_PROJECT_Adresse.length) {
+					if (length < 1024 && commonByteArray_LOCAL_PROJECT_Adresse.length == 0) {
+						commonByteArray_LOCAL_PROJECT_Adresse = new byte[1024];
+					} else {
+						commonByteArray_LOCAL_PROJECT_Adresse = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_LOCAL_PROJECT_Adresse, 0, length);
+				strReturn = new String(commonByteArray_LOCAL_PROJECT_Adresse, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_LOCAL_PROJECT_Adresse) {
+
+				try {
+
+					int length = 0;
+
+					this.FRREF = readString(dis);
+
+					this.FRNOM = readString(dis);
+
+					this.FRRUE = readString(dis);
+
+					this.FRAUX = readString(dis);
+
+					this.FRCPTL = readString(dis);
+
+					this.FRVIL = readString(dis);
+
+					this.FRPLAN = readString(dis);
+
+					this.FRCODE = readString(dis);
+
+					this.FRFIL1 = readString(dis);
+
+					this.FRQUAL = readString(dis);
+
+					this.FRCOM1 = readString(dis);
+
+					this.FRDEL = readString(dis);
+
+					this.FRREMFI = readString(dis);
+
+					this.FRECH = readString(dis);
+
+					this.FRECHJ = readString(dis);
+
+					this.FRPAI = readString(dis);
+
+					this.FRDAC = readString(dis);
+
+					this.FRECHJ2 = readString(dis);
+
+					this.FRMOD = readString(dis);
+
+					this.FRBQ1 = readString(dis);
+
+					this.FRBQ2 = readString(dis);
+
+					this.FRBQ3 = readString(dis);
+
+					this.FRBQ4 = readString(dis);
+
+					this.FRBQ5 = readString(dis);
+
+					this.FRBQ6 = readString(dis);
+
+					this.FRFACT = readString(dis);
+
+					this.FRBL = readString(dis);
+
+					this.FRESC = readString(dis);
+
+					this.FRFIL2 = readString(dis);
+
+					this.FRDAL = readString(dis);
+
+					this.FRCAN1 = readString(dis);
+
+					this.FRCAN2 = readString(dis);
+
+					this.FRCAN3 = readString(dis);
+
+					this.FRDATF = readString(dis);
+
+					this.FRRESP = readString(dis);
+
+					this.FRTEL1 = readString(dis);
+
+					this.FRTEL2 = readString(dis);
+
+					this.FRTEX1 = readString(dis);
+
+					this.FRTEX2 = readString(dis);
+
+					this.FRCDEFAX = readString(dis);
+
+					this.FRCDEMAIL = readString(dis);
+
+					this.FRCDEINT = readString(dis);
+
+					this.FRCDEDIL = readString(dis);
+
+					this.FREXPORT = readString(dis);
+
+					this.FRGENCODE = readString(dis);
+
+					this.FREXPEDIT = readString(dis);
+
+					this.FRIDENT = readString(dis);
+
+					this.FRPASSE = readString(dis);
+
+					this.FRSITE = readString(dis);
+
+					this.FRIBAN1 = readString(dis);
+
+					this.FRIBAN72 = readString(dis);
+
+					this.FRIBAN8 = readString(dis);
+
+					this.FRIBAN9 = readString(dis);
+
+					this.FRIBIC = readString(dis);
+
+					this.FRFIL3 = readString(dis);
+
+					this.FRFRANC = readString(dis);
+
+					this.FRCODLIV = readString(dis);
+
+					this.FRCODCLI = readString(dis);
+
+					this.FRPAYS = readString(dis);
+
+					this.FRSECT = readString(dis);
+
+					this.FRTOUR = readString(dis);
+
+					this.FRNCEE = readString(dis);
+
+					this.FRFRAP = readString(dis);
+
+					this.FRPOID = readString(dis);
+
+					this.FRCUBA = readString(dis);
+
+					this.FRNTEL2 = readString(dis);
+
+					this.FRNTEX2 = readString(dis);
+
+					this.FRCREP = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.FRREF, dos);
+
+				// String
+
+				writeString(this.FRNOM, dos);
+
+				// String
+
+				writeString(this.FRRUE, dos);
+
+				// String
+
+				writeString(this.FRAUX, dos);
+
+				// String
+
+				writeString(this.FRCPTL, dos);
+
+				// String
+
+				writeString(this.FRVIL, dos);
+
+				// String
+
+				writeString(this.FRPLAN, dos);
+
+				// String
+
+				writeString(this.FRCODE, dos);
+
+				// String
+
+				writeString(this.FRFIL1, dos);
+
+				// String
+
+				writeString(this.FRQUAL, dos);
+
+				// String
+
+				writeString(this.FRCOM1, dos);
+
+				// String
+
+				writeString(this.FRDEL, dos);
+
+				// String
+
+				writeString(this.FRREMFI, dos);
+
+				// String
+
+				writeString(this.FRECH, dos);
+
+				// String
+
+				writeString(this.FRECHJ, dos);
+
+				// String
+
+				writeString(this.FRPAI, dos);
+
+				// String
+
+				writeString(this.FRDAC, dos);
+
+				// String
+
+				writeString(this.FRECHJ2, dos);
+
+				// String
+
+				writeString(this.FRMOD, dos);
+
+				// String
+
+				writeString(this.FRBQ1, dos);
+
+				// String
+
+				writeString(this.FRBQ2, dos);
+
+				// String
+
+				writeString(this.FRBQ3, dos);
+
+				// String
+
+				writeString(this.FRBQ4, dos);
+
+				// String
+
+				writeString(this.FRBQ5, dos);
+
+				// String
+
+				writeString(this.FRBQ6, dos);
+
+				// String
+
+				writeString(this.FRFACT, dos);
+
+				// String
+
+				writeString(this.FRBL, dos);
+
+				// String
+
+				writeString(this.FRESC, dos);
+
+				// String
+
+				writeString(this.FRFIL2, dos);
+
+				// String
+
+				writeString(this.FRDAL, dos);
+
+				// String
+
+				writeString(this.FRCAN1, dos);
+
+				// String
+
+				writeString(this.FRCAN2, dos);
+
+				// String
+
+				writeString(this.FRCAN3, dos);
+
+				// String
+
+				writeString(this.FRDATF, dos);
+
+				// String
+
+				writeString(this.FRRESP, dos);
+
+				// String
+
+				writeString(this.FRTEL1, dos);
+
+				// String
+
+				writeString(this.FRTEL2, dos);
+
+				// String
+
+				writeString(this.FRTEX1, dos);
+
+				// String
+
+				writeString(this.FRTEX2, dos);
+
+				// String
+
+				writeString(this.FRCDEFAX, dos);
+
+				// String
+
+				writeString(this.FRCDEMAIL, dos);
+
+				// String
+
+				writeString(this.FRCDEINT, dos);
+
+				// String
+
+				writeString(this.FRCDEDIL, dos);
+
+				// String
+
+				writeString(this.FREXPORT, dos);
+
+				// String
+
+				writeString(this.FRGENCODE, dos);
+
+				// String
+
+				writeString(this.FREXPEDIT, dos);
+
+				// String
+
+				writeString(this.FRIDENT, dos);
+
+				// String
+
+				writeString(this.FRPASSE, dos);
+
+				// String
+
+				writeString(this.FRSITE, dos);
+
+				// String
+
+				writeString(this.FRIBAN1, dos);
+
+				// String
+
+				writeString(this.FRIBAN72, dos);
+
+				// String
+
+				writeString(this.FRIBAN8, dos);
+
+				// String
+
+				writeString(this.FRIBAN9, dos);
+
+				// String
+
+				writeString(this.FRIBIC, dos);
+
+				// String
+
+				writeString(this.FRFIL3, dos);
+
+				// String
+
+				writeString(this.FRFRANC, dos);
+
+				// String
+
+				writeString(this.FRCODLIV, dos);
+
+				// String
+
+				writeString(this.FRCODCLI, dos);
+
+				// String
+
+				writeString(this.FRPAYS, dos);
+
+				// String
+
+				writeString(this.FRSECT, dos);
+
+				// String
+
+				writeString(this.FRTOUR, dos);
+
+				// String
+
+				writeString(this.FRNCEE, dos);
+
+				// String
+
+				writeString(this.FRFRAP, dos);
+
+				// String
+
+				writeString(this.FRPOID, dos);
+
+				// String
+
+				writeString(this.FRCUBA, dos);
+
+				// String
+
+				writeString(this.FRNTEL2, dos);
+
+				// String
+
+				writeString(this.FRNTEX2, dos);
+
+				// String
+
+				writeString(this.FRCREP, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("FRREF=" + FRREF);
+			sb.append(",FRNOM=" + FRNOM);
+			sb.append(",FRRUE=" + FRRUE);
+			sb.append(",FRAUX=" + FRAUX);
+			sb.append(",FRCPTL=" + FRCPTL);
+			sb.append(",FRVIL=" + FRVIL);
+			sb.append(",FRPLAN=" + FRPLAN);
+			sb.append(",FRCODE=" + FRCODE);
+			sb.append(",FRFIL1=" + FRFIL1);
+			sb.append(",FRQUAL=" + FRQUAL);
+			sb.append(",FRCOM1=" + FRCOM1);
+			sb.append(",FRDEL=" + FRDEL);
+			sb.append(",FRREMFI=" + FRREMFI);
+			sb.append(",FRECH=" + FRECH);
+			sb.append(",FRECHJ=" + FRECHJ);
+			sb.append(",FRPAI=" + FRPAI);
+			sb.append(",FRDAC=" + FRDAC);
+			sb.append(",FRECHJ2=" + FRECHJ2);
+			sb.append(",FRMOD=" + FRMOD);
+			sb.append(",FRBQ1=" + FRBQ1);
+			sb.append(",FRBQ2=" + FRBQ2);
+			sb.append(",FRBQ3=" + FRBQ3);
+			sb.append(",FRBQ4=" + FRBQ4);
+			sb.append(",FRBQ5=" + FRBQ5);
+			sb.append(",FRBQ6=" + FRBQ6);
+			sb.append(",FRFACT=" + FRFACT);
+			sb.append(",FRBL=" + FRBL);
+			sb.append(",FRESC=" + FRESC);
+			sb.append(",FRFIL2=" + FRFIL2);
+			sb.append(",FRDAL=" + FRDAL);
+			sb.append(",FRCAN1=" + FRCAN1);
+			sb.append(",FRCAN2=" + FRCAN2);
+			sb.append(",FRCAN3=" + FRCAN3);
+			sb.append(",FRDATF=" + FRDATF);
+			sb.append(",FRRESP=" + FRRESP);
+			sb.append(",FRTEL1=" + FRTEL1);
+			sb.append(",FRTEL2=" + FRTEL2);
+			sb.append(",FRTEX1=" + FRTEX1);
+			sb.append(",FRTEX2=" + FRTEX2);
+			sb.append(",FRCDEFAX=" + FRCDEFAX);
+			sb.append(",FRCDEMAIL=" + FRCDEMAIL);
+			sb.append(",FRCDEINT=" + FRCDEINT);
+			sb.append(",FRCDEDIL=" + FRCDEDIL);
+			sb.append(",FREXPORT=" + FREXPORT);
+			sb.append(",FRGENCODE=" + FRGENCODE);
+			sb.append(",FREXPEDIT=" + FREXPEDIT);
+			sb.append(",FRIDENT=" + FRIDENT);
+			sb.append(",FRPASSE=" + FRPASSE);
+			sb.append(",FRSITE=" + FRSITE);
+			sb.append(",FRIBAN1=" + FRIBAN1);
+			sb.append(",FRIBAN72=" + FRIBAN72);
+			sb.append(",FRIBAN8=" + FRIBAN8);
+			sb.append(",FRIBAN9=" + FRIBAN9);
+			sb.append(",FRIBIC=" + FRIBIC);
+			sb.append(",FRFIL3=" + FRFIL3);
+			sb.append(",FRFRANC=" + FRFRANC);
+			sb.append(",FRCODLIV=" + FRCODLIV);
+			sb.append(",FRCODCLI=" + FRCODCLI);
+			sb.append(",FRPAYS=" + FRPAYS);
+			sb.append(",FRSECT=" + FRSECT);
+			sb.append(",FRTOUR=" + FRTOUR);
+			sb.append(",FRNCEE=" + FRNCEE);
+			sb.append(",FRFRAP=" + FRFRAP);
+			sb.append(",FRPOID=" + FRPOID);
+			sb.append(",FRCUBA=" + FRCUBA);
+			sb.append(",FRNTEL2=" + FRNTEL2);
+			sb.append(",FRNTEX2=" + FRNTEX2);
+			sb.append(",FRCREP=" + FRCREP);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row2Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(), object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public void tFileInputDelimited_2Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+		globalMap.put("tFileInputDelimited_2_SUBPROCESS_STATE", 0);
+
+		final boolean execStat = this.execStat;
+
+		String iterateId = "";
+
+		String currentComponent = "";
+		java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+		try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { // start the resume
+				globalResumeTicket = true;
+
+				row2Struct row2 = new row2Struct();
+				copyOfmainStruct copyOfmain = new copyOfmainStruct();
+
+				/**
+				 * [tDBOutput_2 begin ] start
+				 */
+
+				ok_Hash.put("tDBOutput_2", false);
+				start_Hash.put("tDBOutput_2", System.currentTimeMillis());
+
+				currentComponent = "tDBOutput_2";
+
+				if (execStat) {
+					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "copyOfmain");
+				}
+
+				int tos_count_tDBOutput_2 = 0;
+
+				String dbschema_tDBOutput_2 = null;
+				dbschema_tDBOutput_2 = (String) globalMap.get("schema_" + "tDBConnection_1");
+
+				String tableName_tDBOutput_2 = null;
+				if (dbschema_tDBOutput_2 == null || dbschema_tDBOutput_2.trim().length() == 0) {
+					tableName_tDBOutput_2 = ("adresse");
+				} else {
+					tableName_tDBOutput_2 = dbschema_tDBOutput_2 + "\".\"" + ("adresse");
+				}
+
+				int nb_line_tDBOutput_2 = 0;
+				int nb_line_update_tDBOutput_2 = 0;
+				int nb_line_inserted_tDBOutput_2 = 0;
+				int nb_line_deleted_tDBOutput_2 = 0;
+				int nb_line_rejected_tDBOutput_2 = 0;
+
+				int deletedCount_tDBOutput_2 = 0;
+				int updatedCount_tDBOutput_2 = 0;
+				int insertedCount_tDBOutput_2 = 0;
+				int rejectedCount_tDBOutput_2 = 0;
+
+				boolean whetherReject_tDBOutput_2 = false;
+
+				java.sql.Connection conn_tDBOutput_2 = null;
+				String dbUser_tDBOutput_2 = null;
+
+				conn_tDBOutput_2 = (java.sql.Connection) globalMap.get("conn_tDBConnection_1");
+
+				int batchSize_tDBOutput_2 = 10000;
+				int batchSizeCounter_tDBOutput_2 = 0;
+
+				int count_tDBOutput_2 = 0;
+				String insert_tDBOutput_2 = "INSERT INTO \"" + tableName_tDBOutput_2
+						+ "\" (\"idadresse\",\"codepostal\",\"pays\",\"rue\",\"ruebis\",\"ruetier\",\"ville\",\"idadresse_livraison\",\"idcli\",\"idfournisseur\") VALUES (?,?,?,?,?,?,?,?,?,?)";
+
+				java.sql.PreparedStatement pstmt_tDBOutput_2 = conn_tDBOutput_2.prepareStatement(insert_tDBOutput_2);
+				resourceMap.put("pstmt_tDBOutput_2", pstmt_tDBOutput_2);
+
+				/**
+				 * [tDBOutput_2 begin ] stop
+				 */
+
+				/**
+				 * [tMap_2 begin ] start
+				 */
+
+				ok_Hash.put("tMap_2", false);
+				start_Hash.put("tMap_2", System.currentTimeMillis());
+
+				currentComponent = "tMap_2";
+
+				if (execStat) {
+					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "row2");
+				}
+
+				int tos_count_tMap_2 = 0;
+
+// ###############################
+// # Lookup's keys initialization
+// ###############################        
+
+// ###############################
+// # Vars initialization
+				class Var__tMap_2__Struct {
+				}
+				Var__tMap_2__Struct Var__tMap_2 = new Var__tMap_2__Struct();
+// ###############################
+
+// ###############################
+// # Outputs initialization
+				copyOfmainStruct copyOfmain_tmp = new copyOfmainStruct();
+// ###############################
+
+				/**
+				 * [tMap_2 begin ] stop
+				 */
+
+				/**
+				 * [tFileInputDelimited_2 begin ] start
+				 */
+
+				ok_Hash.put("tFileInputDelimited_2", false);
+				start_Hash.put("tFileInputDelimited_2", System.currentTimeMillis());
+
+				currentComponent = "tFileInputDelimited_2";
+
+				int tos_count_tFileInputDelimited_2 = 0;
+
+				final routines.system.RowState rowstate_tFileInputDelimited_2 = new routines.system.RowState();
+
+				int nb_line_tFileInputDelimited_2 = 0;
+				org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_2 = null;
+				int limit_tFileInputDelimited_2 = -1;
+				try {
+
+					Object filename_tFileInputDelimited_2 = "C:/DEV/Data/Base Montauban/Fournisseur.csv";
+					if (filename_tFileInputDelimited_2 instanceof java.io.InputStream) {
+
+						int footer_value_tFileInputDelimited_2 = 0, random_value_tFileInputDelimited_2 = -1;
+						if (footer_value_tFileInputDelimited_2 > 0 || random_value_tFileInputDelimited_2 > 0) {
+							throw new java.lang.Exception(
+									"When the input source is a stream,footer and random shouldn't be bigger than 0.");
+						}
+
+					}
+					try {
+						fid_tFileInputDelimited_2 = new org.talend.fileprocess.FileInputDelimited(
+								"C:/DEV/Data/Base Montauban/Fournisseur.csv", "ISO-8859-15", ";", "\n", true, 1, 0,
+								limit_tFileInputDelimited_2, -1, false);
+					} catch (java.lang.Exception e) {
+
+						System.err.println(e.getMessage());
+
+					}
+
+					while (fid_tFileInputDelimited_2 != null && fid_tFileInputDelimited_2.nextRecord()) {
+						rowstate_tFileInputDelimited_2.reset();
+
+						row2 = null;
+
+						boolean whetherReject_tFileInputDelimited_2 = false;
+						row2 = new row2Struct();
+						try {
+
+							int columnIndexWithD_tFileInputDelimited_2 = 0;
+
+							columnIndexWithD_tFileInputDelimited_2 = 0;
+
+							row2.FRREF = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 1;
+
+							row2.FRNOM = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 2;
+
+							row2.FRRUE = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 3;
+
+							row2.FRAUX = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 4;
+
+							row2.FRCPTL = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 5;
+
+							row2.FRVIL = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 6;
+
+							row2.FRPLAN = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 7;
+
+							row2.FRCODE = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 8;
+
+							row2.FRFIL1 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 9;
+
+							row2.FRQUAL = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 10;
+
+							row2.FRCOM1 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 11;
+
+							row2.FRDEL = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 12;
+
+							row2.FRREMFI = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 13;
+
+							row2.FRECH = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 14;
+
+							row2.FRECHJ = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 15;
+
+							row2.FRPAI = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 16;
+
+							row2.FRDAC = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 17;
+
+							row2.FRECHJ2 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 18;
+
+							row2.FRMOD = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 19;
+
+							row2.FRBQ1 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 20;
+
+							row2.FRBQ2 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 21;
+
+							row2.FRBQ3 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 22;
+
+							row2.FRBQ4 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 23;
+
+							row2.FRBQ5 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 24;
+
+							row2.FRBQ6 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 25;
+
+							row2.FRFACT = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 26;
+
+							row2.FRBL = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 27;
+
+							row2.FRESC = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 28;
+
+							row2.FRFIL2 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 29;
+
+							row2.FRDAL = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 30;
+
+							row2.FRCAN1 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 31;
+
+							row2.FRCAN2 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 32;
+
+							row2.FRCAN3 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 33;
+
+							row2.FRDATF = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 34;
+
+							row2.FRRESP = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 35;
+
+							row2.FRTEL1 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 36;
+
+							row2.FRTEL2 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 37;
+
+							row2.FRTEX1 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 38;
+
+							row2.FRTEX2 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 39;
+
+							row2.FRCDEFAX = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 40;
+
+							row2.FRCDEMAIL = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 41;
+
+							row2.FRCDEINT = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 42;
+
+							row2.FRCDEDIL = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 43;
+
+							row2.FREXPORT = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 44;
+
+							row2.FRGENCODE = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 45;
+
+							row2.FREXPEDIT = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 46;
+
+							row2.FRIDENT = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 47;
+
+							row2.FRPASSE = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 48;
+
+							row2.FRSITE = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 49;
+
+							row2.FRIBAN1 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 50;
+
+							row2.FRIBAN72 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 51;
+
+							row2.FRIBAN8 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 52;
+
+							row2.FRIBAN9 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 53;
+
+							row2.FRIBIC = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 54;
+
+							row2.FRFIL3 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 55;
+
+							row2.FRFRANC = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 56;
+
+							row2.FRCODLIV = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 57;
+
+							row2.FRCODCLI = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 58;
+
+							row2.FRPAYS = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 59;
+
+							row2.FRSECT = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 60;
+
+							row2.FRTOUR = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 61;
+
+							row2.FRNCEE = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 62;
+
+							row2.FRFRAP = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 63;
+
+							row2.FRPOID = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 64;
+
+							row2.FRCUBA = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 65;
+
+							row2.FRNTEL2 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 66;
+
+							row2.FRNTEX2 = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							columnIndexWithD_tFileInputDelimited_2 = 67;
+
+							row2.FRCREP = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+
+							if (rowstate_tFileInputDelimited_2.getException() != null) {
+								throw rowstate_tFileInputDelimited_2.getException();
+							}
+
+						} catch (java.lang.Exception e) {
+							whetherReject_tFileInputDelimited_2 = true;
+
+							System.err.println(e.getMessage());
+							row2 = null;
+
+						}
+
+						/**
+						 * [tFileInputDelimited_2 begin ] stop
+						 */
+
+						/**
+						 * [tFileInputDelimited_2 main ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_2";
+
+						tos_count_tFileInputDelimited_2++;
+
+						/**
+						 * [tFileInputDelimited_2 main ] stop
+						 */
+
+						/**
+						 * [tFileInputDelimited_2 process_data_begin ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_2";
+
+						/**
+						 * [tFileInputDelimited_2 process_data_begin ] stop
+						 */
+// Start of branch "row2"
+						if (row2 != null) {
+
+							/**
+							 * [tMap_2 main ] start
+							 */
+
+							currentComponent = "tMap_2";
+
+							if (execStat) {
+								runStat.updateStatOnConnection(iterateId, 1, 1, "row2");
+							}
+
+							boolean hasCasePrimitiveKeyWithNull_tMap_2 = false;
+
+							// ###############################
+							// # Input tables (lookups)
+							boolean rejectedInnerJoin_tMap_2 = false;
+							boolean mainRowRejected_tMap_2 = false;
+
+							// ###############################
+							{ // start of Var scope
+
+								// ###############################
+								// # Vars tables
+
+								Var__tMap_2__Struct Var = Var__tMap_2;// ###############################
+								// ###############################
+								// # Output tables
+
+								copyOfmain = null;
+
+// # Output table : 'copyOfmain'
+								copyOfmain_tmp.idadresse = Numeric.sequence("Adresse", 1, 1);
+								copyOfmain_tmp.codepostal = row2.FRCPTL;
+								copyOfmain_tmp.pays = row2.FRPAI;
+								copyOfmain_tmp.rue = row2.FRRUE;
+								copyOfmain_tmp.ruebis = row2.FRAUX;
+								copyOfmain_tmp.ruetier = null;
+								copyOfmain_tmp.ville = row2.FRVIL;
+								copyOfmain_tmp.idadresse_livraison = null;
+								copyOfmain_tmp.idcli = null;
+								copyOfmain_tmp.idfournisseur = row2.FRREF;
+								copyOfmain = copyOfmain_tmp;
+// ###############################
+
+							} // end of Var scope
+
+							rejectedInnerJoin_tMap_2 = false;
+
+							tos_count_tMap_2++;
+
+							/**
+							 * [tMap_2 main ] stop
+							 */
+
+							/**
+							 * [tMap_2 process_data_begin ] start
+							 */
+
+							currentComponent = "tMap_2";
+
+							/**
+							 * [tMap_2 process_data_begin ] stop
+							 */
+// Start of branch "copyOfmain"
+							if (copyOfmain != null) {
+
+								/**
+								 * [tDBOutput_2 main ] start
+								 */
+
+								currentComponent = "tDBOutput_2";
+
+								if (execStat) {
+									runStat.updateStatOnConnection(iterateId, 1, 1, "copyOfmain");
+								}
+
+								whetherReject_tDBOutput_2 = false;
+								pstmt_tDBOutput_2.setInt(1, copyOfmain.idadresse);
+
+								if (copyOfmain.codepostal == null) {
+									pstmt_tDBOutput_2.setNull(2, java.sql.Types.VARCHAR);
+								} else {
+									pstmt_tDBOutput_2.setString(2, copyOfmain.codepostal);
+								}
+
+								if (copyOfmain.pays == null) {
+									pstmt_tDBOutput_2.setNull(3, java.sql.Types.VARCHAR);
+								} else {
+									pstmt_tDBOutput_2.setString(3, copyOfmain.pays);
+								}
+
+								if (copyOfmain.rue == null) {
+									pstmt_tDBOutput_2.setNull(4, java.sql.Types.VARCHAR);
+								} else {
+									pstmt_tDBOutput_2.setString(4, copyOfmain.rue);
+								}
+
+								if (copyOfmain.ruebis == null) {
+									pstmt_tDBOutput_2.setNull(5, java.sql.Types.VARCHAR);
+								} else {
+									pstmt_tDBOutput_2.setString(5, copyOfmain.ruebis);
+								}
+
+								if (copyOfmain.ruetier == null) {
+									pstmt_tDBOutput_2.setNull(6, java.sql.Types.VARCHAR);
+								} else {
+									pstmt_tDBOutput_2.setString(6, copyOfmain.ruetier);
+								}
+
+								if (copyOfmain.ville == null) {
+									pstmt_tDBOutput_2.setNull(7, java.sql.Types.VARCHAR);
+								} else {
+									pstmt_tDBOutput_2.setString(7, copyOfmain.ville);
+								}
+
+								if (copyOfmain.idadresse_livraison == null) {
+									pstmt_tDBOutput_2.setNull(8, java.sql.Types.VARCHAR);
+								} else {
+									pstmt_tDBOutput_2.setString(8, copyOfmain.idadresse_livraison);
+								}
+
+								if (copyOfmain.idcli == null) {
+									pstmt_tDBOutput_2.setNull(9, java.sql.Types.VARCHAR);
+								} else {
+									pstmt_tDBOutput_2.setString(9, copyOfmain.idcli);
+								}
+
+								if (copyOfmain.idfournisseur == null) {
+									pstmt_tDBOutput_2.setNull(10, java.sql.Types.VARCHAR);
+								} else {
+									pstmt_tDBOutput_2.setString(10, copyOfmain.idfournisseur);
+								}
+
+								pstmt_tDBOutput_2.addBatch();
+								nb_line_tDBOutput_2++;
+
+								batchSizeCounter_tDBOutput_2++;
+
+								if (!whetherReject_tDBOutput_2) {
+								}
+								if ((batchSize_tDBOutput_2 > 0)
+										&& (batchSize_tDBOutput_2 <= batchSizeCounter_tDBOutput_2)) {
+									try {
+										int countSum_tDBOutput_2 = 0;
+
+										for (int countEach_tDBOutput_2 : pstmt_tDBOutput_2.executeBatch()) {
+											countSum_tDBOutput_2 += (countEach_tDBOutput_2 < 0 ? 0
+													: countEach_tDBOutput_2);
+										}
+
+										insertedCount_tDBOutput_2 += countSum_tDBOutput_2;
+
+										batchSizeCounter_tDBOutput_2 = 0;
+									} catch (java.sql.BatchUpdateException e_tDBOutput_2) {
+										java.sql.SQLException ne_tDBOutput_2 = e_tDBOutput_2.getNextException(),
+												sqle_tDBOutput_2 = null;
+										String errormessage_tDBOutput_2;
+										if (ne_tDBOutput_2 != null) {
+											// build new exception to provide the original cause
+											sqle_tDBOutput_2 = new java.sql.SQLException(
+													e_tDBOutput_2.getMessage() + "\ncaused by: "
+															+ ne_tDBOutput_2.getMessage(),
+													ne_tDBOutput_2.getSQLState(), ne_tDBOutput_2.getErrorCode(),
+													ne_tDBOutput_2);
+											errormessage_tDBOutput_2 = sqle_tDBOutput_2.getMessage();
+										} else {
+											errormessage_tDBOutput_2 = e_tDBOutput_2.getMessage();
+										}
+
+										int countSum_tDBOutput_2 = 0;
+										for (int countEach_tDBOutput_2 : e_tDBOutput_2.getUpdateCounts()) {
+											countSum_tDBOutput_2 += (countEach_tDBOutput_2 < 0 ? 0
+													: countEach_tDBOutput_2);
+										}
+
+										insertedCount_tDBOutput_2 += countSum_tDBOutput_2;
+
+										System.err.println(errormessage_tDBOutput_2);
+
+									}
+								}
+
+								tos_count_tDBOutput_2++;
+
+								/**
+								 * [tDBOutput_2 main ] stop
+								 */
+
+								/**
+								 * [tDBOutput_2 process_data_begin ] start
+								 */
+
+								currentComponent = "tDBOutput_2";
+
+								/**
+								 * [tDBOutput_2 process_data_begin ] stop
+								 */
+
+								/**
+								 * [tDBOutput_2 process_data_end ] start
+								 */
+
+								currentComponent = "tDBOutput_2";
+
+								/**
+								 * [tDBOutput_2 process_data_end ] stop
+								 */
+
+							} // End of branch "copyOfmain"
+
+							/**
+							 * [tMap_2 process_data_end ] start
+							 */
+
+							currentComponent = "tMap_2";
+
+							/**
+							 * [tMap_2 process_data_end ] stop
+							 */
+
+						} // End of branch "row2"
+
+						/**
+						 * [tFileInputDelimited_2 process_data_end ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_2";
+
+						/**
+						 * [tFileInputDelimited_2 process_data_end ] stop
+						 */
+
+						/**
+						 * [tFileInputDelimited_2 end ] start
+						 */
+
+						currentComponent = "tFileInputDelimited_2";
+
+					}
+				} finally {
+					if (!((Object) ("C:/DEV/Data/Base Montauban/Fournisseur.csv") instanceof java.io.InputStream)) {
+						if (fid_tFileInputDelimited_2 != null) {
+							fid_tFileInputDelimited_2.close();
+						}
+					}
+					if (fid_tFileInputDelimited_2 != null) {
+						globalMap.put("tFileInputDelimited_2_NB_LINE", fid_tFileInputDelimited_2.getRowNumber());
+
+					}
+				}
+
+				ok_Hash.put("tFileInputDelimited_2", true);
+				end_Hash.put("tFileInputDelimited_2", System.currentTimeMillis());
+
+				/**
+				 * [tFileInputDelimited_2 end ] stop
+				 */
+
+				/**
+				 * [tMap_2 end ] start
+				 */
+
+				currentComponent = "tMap_2";
+
+// ###############################
+// # Lookup hashes releasing
+// ###############################      
+
+				if (execStat) {
+					runStat.updateStat(resourceMap, iterateId, 2, 0, "row2");
+				}
+
+				ok_Hash.put("tMap_2", true);
+				end_Hash.put("tMap_2", System.currentTimeMillis());
+
+				/**
+				 * [tMap_2 end ] stop
+				 */
+
+				/**
+				 * [tDBOutput_2 end ] start
+				 */
+
+				currentComponent = "tDBOutput_2";
+
+				try {
+					int countSum_tDBOutput_2 = 0;
+					if (pstmt_tDBOutput_2 != null && batchSizeCounter_tDBOutput_2 > 0) {
+
+						for (int countEach_tDBOutput_2 : pstmt_tDBOutput_2.executeBatch()) {
+							countSum_tDBOutput_2 += (countEach_tDBOutput_2 < 0 ? 0 : countEach_tDBOutput_2);
+						}
+
+					}
+
+					insertedCount_tDBOutput_2 += countSum_tDBOutput_2;
+
+				} catch (java.sql.BatchUpdateException e_tDBOutput_2) {
+					java.sql.SQLException ne_tDBOutput_2 = e_tDBOutput_2.getNextException(), sqle_tDBOutput_2 = null;
+					String errormessage_tDBOutput_2;
+					if (ne_tDBOutput_2 != null) {
+						// build new exception to provide the original cause
+						sqle_tDBOutput_2 = new java.sql.SQLException(
+								e_tDBOutput_2.getMessage() + "\ncaused by: " + ne_tDBOutput_2.getMessage(),
+								ne_tDBOutput_2.getSQLState(), ne_tDBOutput_2.getErrorCode(), ne_tDBOutput_2);
+						errormessage_tDBOutput_2 = sqle_tDBOutput_2.getMessage();
+					} else {
+						errormessage_tDBOutput_2 = e_tDBOutput_2.getMessage();
+					}
+
+					int countSum_tDBOutput_2 = 0;
+					for (int countEach_tDBOutput_2 : e_tDBOutput_2.getUpdateCounts()) {
+						countSum_tDBOutput_2 += (countEach_tDBOutput_2 < 0 ? 0 : countEach_tDBOutput_2);
+					}
+
+					insertedCount_tDBOutput_2 += countSum_tDBOutput_2;
+
+					System.err.println(errormessage_tDBOutput_2);
+
+				}
+
+				if (pstmt_tDBOutput_2 != null) {
+
+					pstmt_tDBOutput_2.close();
+					resourceMap.remove("pstmt_tDBOutput_2");
+				}
+				resourceMap.put("statementClosed_tDBOutput_2", true);
+
+				nb_line_deleted_tDBOutput_2 = nb_line_deleted_tDBOutput_2 + deletedCount_tDBOutput_2;
+				nb_line_update_tDBOutput_2 = nb_line_update_tDBOutput_2 + updatedCount_tDBOutput_2;
+				nb_line_inserted_tDBOutput_2 = nb_line_inserted_tDBOutput_2 + insertedCount_tDBOutput_2;
+				nb_line_rejected_tDBOutput_2 = nb_line_rejected_tDBOutput_2 + rejectedCount_tDBOutput_2;
+
+				globalMap.put("tDBOutput_2_NB_LINE", nb_line_tDBOutput_2);
+				globalMap.put("tDBOutput_2_NB_LINE_UPDATED", nb_line_update_tDBOutput_2);
+				globalMap.put("tDBOutput_2_NB_LINE_INSERTED", nb_line_inserted_tDBOutput_2);
+				globalMap.put("tDBOutput_2_NB_LINE_DELETED", nb_line_deleted_tDBOutput_2);
+				globalMap.put("tDBOutput_2_NB_LINE_REJECTED", nb_line_rejected_tDBOutput_2);
+
+				if (execStat) {
+					runStat.updateStat(resourceMap, iterateId, 2, 0, "copyOfmain");
+				}
+
+				ok_Hash.put("tDBOutput_2", true);
+				end_Hash.put("tDBOutput_2", System.currentTimeMillis());
+
+				if (execStat) {
+					runStat.updateStatOnConnection("OnComponentOk3", 0, "ok");
+				}
+				tDBCommit_3Process(globalMap);
+
+				/**
+				 * [tDBOutput_2 end ] stop
+				 */
+
+			} // end the resume
+
+		} catch (java.lang.Exception e) {
+
+			TalendException te = new TalendException(e, currentComponent, globalMap);
+
+			throw te;
+		} catch (java.lang.Error error) {
+
+			runStat.stopThreadStat();
+
+			throw error;
+		} finally {
+
+			try {
+
+				/**
+				 * [tFileInputDelimited_2 finally ] start
+				 */
+
+				currentComponent = "tFileInputDelimited_2";
+
+				/**
+				 * [tFileInputDelimited_2 finally ] stop
+				 */
+
+				/**
+				 * [tMap_2 finally ] start
+				 */
+
+				currentComponent = "tMap_2";
+
+				/**
+				 * [tMap_2 finally ] stop
+				 */
+
+				/**
+				 * [tDBOutput_2 finally ] start
+				 */
+
+				currentComponent = "tDBOutput_2";
+
+				if (resourceMap.get("statementClosed_tDBOutput_2") == null) {
+					java.sql.PreparedStatement pstmtToClose_tDBOutput_2 = null;
+					if ((pstmtToClose_tDBOutput_2 = (java.sql.PreparedStatement) resourceMap
+							.remove("pstmt_tDBOutput_2")) != null) {
+						pstmtToClose_tDBOutput_2.close();
+					}
+				}
+
+				/**
+				 * [tDBOutput_2 finally ] stop
+				 */
+
+			} catch (java.lang.Exception e) {
+				// ignore
+			} catch (java.lang.Error error) {
+				// ignore
+			}
+			resourceMap = null;
+		}
+
+		globalMap.put("tFileInputDelimited_2_SUBPROCESS_STATE", 1);
 	}
 
 	public void tDBCommit_3Process(final java.util.Map<String, Object> globalMap) throws TalendException {
@@ -3802,128 +6129,6 @@ public class Adresse implements TalendJob {
 		}
 
 		globalMap.put("tDBCommit_3_SUBPROCESS_STATE", 1);
-	}
-
-	public void tDBRollback_3Process(final java.util.Map<String, Object> globalMap) throws TalendException {
-		globalMap.put("tDBRollback_3_SUBPROCESS_STATE", 0);
-
-		final boolean execStat = this.execStat;
-
-		String iterateId = "";
-
-		String currentComponent = "";
-		java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
-
-		try {
-			// TDI-39566 avoid throwing an useless Exception
-			boolean resumeIt = true;
-			if (globalResumeTicket == false && resumeEntryMethodName != null) {
-				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
-				resumeIt = resumeEntryMethodName.equals(currentMethodName);
-			}
-			if (resumeIt || globalResumeTicket) { // start the resume
-				globalResumeTicket = true;
-
-				/**
-				 * [tDBRollback_3 begin ] start
-				 */
-
-				ok_Hash.put("tDBRollback_3", false);
-				start_Hash.put("tDBRollback_3", System.currentTimeMillis());
-
-				currentComponent = "tDBRollback_3";
-
-				int tos_count_tDBRollback_3 = 0;
-
-				/**
-				 * [tDBRollback_3 begin ] stop
-				 */
-
-				/**
-				 * [tDBRollback_3 main ] start
-				 */
-
-				currentComponent = "tDBRollback_3";
-
-				java.sql.Connection conn_tDBRollback_3 = (java.sql.Connection) globalMap.get("conn_tDBConnection_1");
-				if (conn_tDBRollback_3 != null && !conn_tDBRollback_3.isClosed()) {
-
-					conn_tDBRollback_3.rollback();
-
-				}
-
-				tos_count_tDBRollback_3++;
-
-				/**
-				 * [tDBRollback_3 main ] stop
-				 */
-
-				/**
-				 * [tDBRollback_3 process_data_begin ] start
-				 */
-
-				currentComponent = "tDBRollback_3";
-
-				/**
-				 * [tDBRollback_3 process_data_begin ] stop
-				 */
-
-				/**
-				 * [tDBRollback_3 process_data_end ] start
-				 */
-
-				currentComponent = "tDBRollback_3";
-
-				/**
-				 * [tDBRollback_3 process_data_end ] stop
-				 */
-
-				/**
-				 * [tDBRollback_3 end ] start
-				 */
-
-				currentComponent = "tDBRollback_3";
-
-				ok_Hash.put("tDBRollback_3", true);
-				end_Hash.put("tDBRollback_3", System.currentTimeMillis());
-
-				/**
-				 * [tDBRollback_3 end ] stop
-				 */
-			} // end the resume
-
-		} catch (java.lang.Exception e) {
-
-			TalendException te = new TalendException(e, currentComponent, globalMap);
-
-			throw te;
-		} catch (java.lang.Error error) {
-
-			runStat.stopThreadStat();
-
-			throw error;
-		} finally {
-
-			try {
-
-				/**
-				 * [tDBRollback_3 finally ] start
-				 */
-
-				currentComponent = "tDBRollback_3";
-
-				/**
-				 * [tDBRollback_3 finally ] stop
-				 */
-			} catch (java.lang.Exception e) {
-				// ignore
-			} catch (java.lang.Error error) {
-				// ignore
-			}
-			resourceMap = null;
-		}
-
-		globalMap.put("tDBRollback_3_SUBPROCESS_STATE", 1);
 	}
 
 	public void tPostjob_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
@@ -4318,7 +6523,7 @@ public class Adresse implements TalendJob {
 				int tos_count_tDBConnection_1 = 0;
 
 				String dbProperties_tDBConnection_1 = "";
-				String url_tDBConnection_1 = "jdbc:postgresql://" + "192.168.1.116" + ":" + "5432" + "/" + "syg";
+				String url_tDBConnection_1 = "jdbc:postgresql://" + "192.168.1.110" + ":" + "5432" + "/" + "syg";
 
 				if (dbProperties_tDBConnection_1 != null && !"".equals(dbProperties_tDBConnection_1.trim())) {
 					url_tDBConnection_1 = url_tDBConnection_1 + "?" + dbProperties_tDBConnection_1;
@@ -4326,7 +6531,7 @@ public class Adresse implements TalendJob {
 				String dbUser_tDBConnection_1 = "postgres";
 
 				final String decryptedPassword_tDBConnection_1 = routines.system.PasswordEncryptUtil.decryptPassword(
-						"enc:routine.encryption.key.v1:viASCYfQg0QX1m32REE7IngW3JU/mzBgJciYoOruX0ny+zz4Fg==");
+						"enc:routine.encryption.key.v1:LexFG7htpx2CtI1++k1zI7yOkyNM/AIT0s6jBN0KtFsWzh64Tw==");
 				String dbPwd_tDBConnection_1 = decryptedPassword_tDBConnection_1;
 
 				java.sql.Connection conn_tDBConnection_1 = null;
@@ -4654,6 +6859,18 @@ public class Adresse implements TalendJob {
 
 		try {
 			errorCode = null;
+			tDBRollback_3Process(globalMap);
+			if (!"failure".equals(status)) {
+				status = "end";
+			}
+		} catch (TalendException e_tDBRollback_3) {
+			globalMap.put("tDBRollback_3_SUBPROCESS_STATE", -1);
+
+			e_tDBRollback_3.printStackTrace();
+
+		}
+		try {
+			errorCode = null;
 			tFileInputDelimited_1Process(globalMap);
 			if (!"failure".equals(status)) {
 				status = "end";
@@ -4841,6 +7058,6 @@ public class Adresse implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 129351 characters generated by Talend Open Studio for Data Integration on the
- * 17 février 2022 à 15:56:06 CET
+ * 187324 characters generated by Talend Open Studio for Data Integration on the
+ * 25 mars 2022 à 16:37:42 CET
  ************************************************************************************************/

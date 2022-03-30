@@ -107,11 +107,6 @@
       <artifactId>ClientAttribute</artifactId>
       <version>0.1.0</version>
     </dependency>
-    <dependency>
-      <groupId>org.example.local_project.job</groupId>
-      <artifactId>Article</artifactId>
-      <version>0.1.0</version>
-    </dependency>
   </dependencies>
   <build>
     <finalName>${talend.job.finalName}</finalName>

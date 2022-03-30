@@ -1143,6 +1143,9 @@ public class ClientAttribute implements TalendJob {
 				int batchSizeCounter_tDBOutput_1 = 0;
 
 				int count_tDBOutput_1 = 0;
+				try (java.sql.Statement stmtClear_tDBOutput_1 = conn_tDBOutput_1.createStatement()) {
+					stmtClear_tDBOutput_1.executeUpdate("DELETE FROM \"" + tableName_tDBOutput_1 + "\"");
+				}
 				String insert_tDBOutput_1 = "INSERT INTO \"" + tableName_tDBOutput_1
 						+ "\" (\"iddevise\",\"libelle\",\"taux\") VALUES (?,?,?)";
 
@@ -2583,10 +2586,10 @@ public class ClientAttribute implements TalendJob {
 			return this.idmode_payement;
 		}
 
-		public String libelle;
+		public String libelle_payement;
 
-		public String getLibelle() {
-			return this.libelle;
+		public String getLibelle_payement() {
+			return this.libelle_payement;
 		}
 
 		@Override
@@ -2627,7 +2630,7 @@ public class ClientAttribute implements TalendJob {
 		public void copyDataTo(copyOfmain_1Struct other) {
 
 			other.idmode_payement = this.idmode_payement;
-			other.libelle = this.libelle;
+			other.libelle_payement = this.libelle_payement;
 
 		}
 
@@ -2677,7 +2680,7 @@ public class ClientAttribute implements TalendJob {
 
 					this.idmode_payement = readString(dis);
 
-					this.libelle = readString(dis);
+					this.libelle_payement = readString(dis);
 
 				} catch (IOException e) {
 					throw new RuntimeException(e);
@@ -2697,7 +2700,7 @@ public class ClientAttribute implements TalendJob {
 
 				// String
 
-				writeString(this.libelle, dos);
+				writeString(this.libelle_payement, dos);
 
 			} catch (IOException e) {
 				throw new RuntimeException(e);
@@ -2711,7 +2714,7 @@ public class ClientAttribute implements TalendJob {
 			sb.append(super.toString());
 			sb.append("[");
 			sb.append("idmode_payement=" + idmode_payement);
-			sb.append(",libelle=" + libelle);
+			sb.append(",libelle_payement=" + libelle_payement);
 			sb.append("]");
 
 			return sb.toString();
@@ -3007,7 +3010,7 @@ public class ClientAttribute implements TalendJob {
 
 				int count_tDBOutput_5 = 0;
 				String insert_tDBOutput_5 = "INSERT INTO \"" + tableName_tDBOutput_5
-						+ "\" (\"idmode_payement\",\"libelle\") VALUES (?,?)";
+						+ "\" (\"idmode_payement\",\"libelle_payement\") VALUES (?,?)";
 
 				java.sql.PreparedStatement pstmt_tDBOutput_5 = conn_tDBOutput_5.prepareStatement(insert_tDBOutput_5);
 				resourceMap.put("pstmt_tDBOutput_5", pstmt_tDBOutput_5);
@@ -3200,7 +3203,7 @@ public class ClientAttribute implements TalendJob {
 
 // # Output table : 'copyOfmain_1'
 								copyOfmain_1_tmp.idmode_payement = row5.CODE_PAIEMENT;
-								copyOfmain_1_tmp.libelle = row5.LIBELLE_PAIEMENT;
+								copyOfmain_1_tmp.libelle_payement = null;
 								copyOfmain_1 = copyOfmain_1_tmp;
 // ###############################
 
@@ -3243,10 +3246,10 @@ public class ClientAttribute implements TalendJob {
 									pstmt_tDBOutput_5.setString(1, copyOfmain_1.idmode_payement);
 								}
 
-								if (copyOfmain_1.libelle == null) {
+								if (copyOfmain_1.libelle_payement == null) {
 									pstmt_tDBOutput_5.setNull(2, java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tDBOutput_5.setString(2, copyOfmain_1.libelle);
+									pstmt_tDBOutput_5.setString(2, copyOfmain_1.libelle_payement);
 								}
 
 								pstmt_tDBOutput_5.addBatch();
@@ -4460,10 +4463,10 @@ public class ClientAttribute implements TalendJob {
 			return this.idqualite;
 		}
 
-		public String libelle;
+		public String libelle_qualite;
 
-		public String getLibelle() {
-			return this.libelle;
+		public String getLibelle_qualite() {
+			return this.libelle_qualite;
 		}
 
 		@Override
@@ -4504,7 +4507,7 @@ public class ClientAttribute implements TalendJob {
 		public void copyDataTo(copyOfmain_3Struct other) {
 
 			other.idqualite = this.idqualite;
-			other.libelle = this.libelle;
+			other.libelle_qualite = this.libelle_qualite;
 
 		}
 
@@ -4554,7 +4557,7 @@ public class ClientAttribute implements TalendJob {
 
 					this.idqualite = readString(dis);
 
-					this.libelle = readString(dis);
+					this.libelle_qualite = readString(dis);
 
 				} catch (IOException e) {
 					throw new RuntimeException(e);
@@ -4574,7 +4577,7 @@ public class ClientAttribute implements TalendJob {
 
 				// String
 
-				writeString(this.libelle, dos);
+				writeString(this.libelle_qualite, dos);
 
 			} catch (IOException e) {
 				throw new RuntimeException(e);
@@ -4588,7 +4591,7 @@ public class ClientAttribute implements TalendJob {
 			sb.append(super.toString());
 			sb.append("[");
 			sb.append("idqualite=" + idqualite);
-			sb.append(",libelle=" + libelle);
+			sb.append(",libelle_qualite=" + libelle_qualite);
 			sb.append("]");
 
 			return sb.toString();
@@ -4835,7 +4838,7 @@ public class ClientAttribute implements TalendJob {
 					stmtClear_tDBOutput_9.executeUpdate("DELETE FROM \"" + tableName_tDBOutput_9 + "\"");
 				}
 				String insert_tDBOutput_9 = "INSERT INTO \"" + tableName_tDBOutput_9
-						+ "\" (\"idqualite\",\"libelle\") VALUES (?,?)";
+						+ "\" (\"idqualite\",\"libelle_qualite\") VALUES (?,?)";
 
 				java.sql.PreparedStatement pstmt_tDBOutput_9 = conn_tDBOutput_9.prepareStatement(insert_tDBOutput_9);
 				resourceMap.put("pstmt_tDBOutput_9", pstmt_tDBOutput_9);
@@ -5008,7 +5011,7 @@ public class ClientAttribute implements TalendJob {
 
 // # Output table : 'copyOfmain_3'
 								copyOfmain_3_tmp.idqualite = row9.CODE_QUALITE;
-								copyOfmain_3_tmp.libelle = row9.LIBELLE_QUALITE;
+								copyOfmain_3_tmp.libelle_qualite = null;
 								copyOfmain_3 = copyOfmain_3_tmp;
 // ###############################
 
@@ -5051,10 +5054,10 @@ public class ClientAttribute implements TalendJob {
 									pstmt_tDBOutput_9.setString(1, copyOfmain_3.idqualite);
 								}
 
-								if (copyOfmain_3.libelle == null) {
+								if (copyOfmain_3.libelle_qualite == null) {
 									pstmt_tDBOutput_9.setNull(2, java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tDBOutput_9.setString(2, copyOfmain_3.libelle);
+									pstmt_tDBOutput_9.setString(2, copyOfmain_3.libelle_qualite);
 								}
 
 								pstmt_tDBOutput_9.addBatch();
@@ -5358,16 +5361,16 @@ public class ClientAttribute implements TalendJob {
 
 		public String loopKey;
 
-		public int idfidel;
+		public int idcode_facturation;
 
-		public int getIdfidel() {
-			return this.idfidel;
+		public int getIdcode_facturation() {
+			return this.idcode_facturation;
 		}
 
-		public String libelle;
+		public String libelle_code_facturation;
 
-		public String getLibelle() {
-			return this.libelle;
+		public String getLibelle_code_facturation() {
+			return this.libelle_code_facturation;
 		}
 
 		@Override
@@ -5376,7 +5379,7 @@ public class ClientAttribute implements TalendJob {
 				final int prime = PRIME;
 				int result = DEFAULT_HASHCODE;
 
-				result = prime * result + (int) this.idfidel;
+				result = prime * result + (int) this.idcode_facturation;
 
 				this.hashCode = result;
 				this.hashCodeDirty = false;
@@ -5394,7 +5397,7 @@ public class ClientAttribute implements TalendJob {
 				return false;
 			final copyOfcopyOfmain_2Struct other = (copyOfcopyOfmain_2Struct) obj;
 
-			if (this.idfidel != other.idfidel)
+			if (this.idcode_facturation != other.idcode_facturation)
 				return false;
 
 			return true;
@@ -5402,14 +5405,14 @@ public class ClientAttribute implements TalendJob {
 
 		public void copyDataTo(copyOfcopyOfmain_2Struct other) {
 
-			other.idfidel = this.idfidel;
-			other.libelle = this.libelle;
+			other.idcode_facturation = this.idcode_facturation;
+			other.libelle_code_facturation = this.libelle_code_facturation;
 
 		}
 
 		public void copyKeysDataTo(copyOfcopyOfmain_2Struct other) {
 
-			other.idfidel = this.idfidel;
+			other.idcode_facturation = this.idcode_facturation;
 
 		}
 
@@ -5451,9 +5454,9 @@ public class ClientAttribute implements TalendJob {
 
 					int length = 0;
 
-					this.idfidel = dis.readInt();
+					this.idcode_facturation = dis.readInt();
 
-					this.libelle = readString(dis);
+					this.libelle_code_facturation = readString(dis);
 
 				} catch (IOException e) {
 					throw new RuntimeException(e);
@@ -5469,11 +5472,11 @@ public class ClientAttribute implements TalendJob {
 
 				// int
 
-				dos.writeInt(this.idfidel);
+				dos.writeInt(this.idcode_facturation);
 
 				// String
 
-				writeString(this.libelle, dos);
+				writeString(this.libelle_code_facturation, dos);
 
 			} catch (IOException e) {
 				throw new RuntimeException(e);
@@ -5486,8 +5489,8 @@ public class ClientAttribute implements TalendJob {
 			StringBuilder sb = new StringBuilder();
 			sb.append(super.toString());
 			sb.append("[");
-			sb.append("idfidel=" + String.valueOf(idfidel));
-			sb.append(",libelle=" + libelle);
+			sb.append("idcode_facturation=" + String.valueOf(idcode_facturation));
+			sb.append(",libelle_code_facturation=" + libelle_code_facturation);
 			sb.append("]");
 
 			return sb.toString();
@@ -5500,7 +5503,7 @@ public class ClientAttribute implements TalendJob {
 
 			int returnValue = -1;
 
-			returnValue = checkNullsAndCompare(this.idfidel, other.idfidel);
+			returnValue = checkNullsAndCompare(this.idcode_facturation, other.idcode_facturation);
 			if (returnValue != 0) {
 				return returnValue;
 			}
@@ -5703,9 +5706,9 @@ public class ClientAttribute implements TalendJob {
 
 				String tableName_tDBOutput_10 = null;
 				if (dbschema_tDBOutput_10 == null || dbschema_tDBOutput_10.trim().length() == 0) {
-					tableName_tDBOutput_10 = ("fidelite");
+					tableName_tDBOutput_10 = ("code_facturation");
 				} else {
-					tableName_tDBOutput_10 = dbschema_tDBOutput_10 + "\".\"" + ("fidelite");
+					tableName_tDBOutput_10 = dbschema_tDBOutput_10 + "\".\"" + ("code_facturation");
 				}
 
 				int nb_line_tDBOutput_10 = 0;
@@ -5734,7 +5737,7 @@ public class ClientAttribute implements TalendJob {
 					stmtClear_tDBOutput_10.executeUpdate("DELETE FROM \"" + tableName_tDBOutput_10 + "\"");
 				}
 				String insert_tDBOutput_10 = "INSERT INTO \"" + tableName_tDBOutput_10
-						+ "\" (\"idfidel\",\"libelle\") VALUES (?,?)";
+						+ "\" (\"idcode_facturation\",\"libelle_code_facturation\") VALUES (?,?)";
 
 				java.sql.PreparedStatement pstmt_tDBOutput_10 = conn_tDBOutput_10.prepareStatement(insert_tDBOutput_10);
 				resourceMap.put("pstmt_tDBOutput_10", pstmt_tDBOutput_10);
@@ -5792,32 +5795,165 @@ public class ClientAttribute implements TalendJob {
 				final routines.system.RowState rowstate_tFileInputDelimited_10 = new routines.system.RowState();
 
 				int nb_line_tFileInputDelimited_10 = 0;
-				org.talend.fileprocess.FileInputDelimited fid_tFileInputDelimited_10 = null;
-				int limit_tFileInputDelimited_10 = -1;
+				int footer_tFileInputDelimited_10 = 0;
+				int totalLinetFileInputDelimited_10 = 0;
+				int limittFileInputDelimited_10 = -1;
+				int lastLinetFileInputDelimited_10 = -1;
+
+				char fieldSeparator_tFileInputDelimited_10[] = null;
+
+				// support passing value (property: Field Separator) by 'context.fs' or
+				// 'globalMap.get("fs")'.
+				if (((String) ";").length() > 0) {
+					fieldSeparator_tFileInputDelimited_10 = ((String) ";").toCharArray();
+				} else {
+					throw new IllegalArgumentException("Field Separator must be assigned a char.");
+				}
+
+				char rowSeparator_tFileInputDelimited_10[] = null;
+
+				// support passing value (property: Row Separator) by 'context.rs' or
+				// 'globalMap.get("rs")'.
+				if (((String) "\r\n").length() > 0) {
+					rowSeparator_tFileInputDelimited_10 = ((String) "\r\n").toCharArray();
+				} else {
+					throw new IllegalArgumentException("Row Separator must be assigned a char.");
+				}
+
+				Object filename_tFileInputDelimited_10 = /** Start field tFileInputDelimited_10:FILENAME */
+						"C:/DEV/Data/Base Montauban/param/fidelités.csv"/** End field tFileInputDelimited_10:FILENAME */
+				;
+				com.talend.csv.CSVReader csvReadertFileInputDelimited_10 = null;
+
 				try {
 
-					Object filename_tFileInputDelimited_10 = "C:/DEV/Data/Base Montauban/param/fidelités.csv";
-					if (filename_tFileInputDelimited_10 instanceof java.io.InputStream) {
+					String[] rowtFileInputDelimited_10 = null;
+					int currentLinetFileInputDelimited_10 = 0;
+					int outputLinetFileInputDelimited_10 = 0;
+					try {// TD110 begin
+						if (filename_tFileInputDelimited_10 instanceof java.io.InputStream) {
 
-						int footer_value_tFileInputDelimited_10 = 0, random_value_tFileInputDelimited_10 = -1;
-						if (footer_value_tFileInputDelimited_10 > 0 || random_value_tFileInputDelimited_10 > 0) {
-							throw new java.lang.Exception(
-									"When the input source is a stream,footer and random shouldn't be bigger than 0.");
+							int footer_value_tFileInputDelimited_10 = 0;
+							if (footer_value_tFileInputDelimited_10 > 0) {
+								throw new java.lang.Exception(
+										"When the input source is a stream,footer shouldn't be bigger than 0.");
+							}
+
+							csvReadertFileInputDelimited_10 = new com.talend.csv.CSVReader(
+									(java.io.InputStream) filename_tFileInputDelimited_10,
+									fieldSeparator_tFileInputDelimited_10[0], "ISO-8859-15");
+						} else {
+							csvReadertFileInputDelimited_10 = new com.talend.csv.CSVReader(
+									new java.io.BufferedReader(
+											new java.io.InputStreamReader(
+													new java.io.FileInputStream(
+															String.valueOf(filename_tFileInputDelimited_10)),
+													"ISO-8859-15")),
+									fieldSeparator_tFileInputDelimited_10[0]);
 						}
 
-					}
-					try {
-						fid_tFileInputDelimited_10 = new org.talend.fileprocess.FileInputDelimited(
-								"C:/DEV/Data/Base Montauban/param/fidelités.csv", "ISO-8859-15", ";", "\n", true, 1, 0,
-								limit_tFileInputDelimited_10, -1, false);
+						csvReadertFileInputDelimited_10.setTrimWhitespace(false);
+						if ((rowSeparator_tFileInputDelimited_10[0] != '\n')
+								&& (rowSeparator_tFileInputDelimited_10[0] != '\r'))
+							csvReadertFileInputDelimited_10.setLineEnd("" + rowSeparator_tFileInputDelimited_10[0]);
+
+						csvReadertFileInputDelimited_10.setQuoteChar('"');
+
+						csvReadertFileInputDelimited_10.setEscapeChar(csvReadertFileInputDelimited_10.getQuoteChar());
+
+						if (footer_tFileInputDelimited_10 > 0) {
+							for (totalLinetFileInputDelimited_10 = 0; totalLinetFileInputDelimited_10 < 1; totalLinetFileInputDelimited_10++) {
+								csvReadertFileInputDelimited_10.readNext();
+							}
+							csvReadertFileInputDelimited_10.setSkipEmptyRecords(true);
+							while (csvReadertFileInputDelimited_10.readNext()) {
+
+								rowtFileInputDelimited_10 = csvReadertFileInputDelimited_10.getValues();
+								if (!(rowtFileInputDelimited_10.length == 1
+										&& ("\015").equals(rowtFileInputDelimited_10[0]))) {// empty line when row
+																							// separator is '\n'
+
+									totalLinetFileInputDelimited_10++;
+
+								}
+
+							}
+							int lastLineTemptFileInputDelimited_10 = totalLinetFileInputDelimited_10
+									- footer_tFileInputDelimited_10 < 0 ? 0
+											: totalLinetFileInputDelimited_10 - footer_tFileInputDelimited_10;
+							if (lastLinetFileInputDelimited_10 > 0) {
+								lastLinetFileInputDelimited_10 = lastLinetFileInputDelimited_10 < lastLineTemptFileInputDelimited_10
+										? lastLinetFileInputDelimited_10
+										: lastLineTemptFileInputDelimited_10;
+							} else {
+								lastLinetFileInputDelimited_10 = lastLineTemptFileInputDelimited_10;
+							}
+
+							csvReadertFileInputDelimited_10.close();
+							if (filename_tFileInputDelimited_10 instanceof java.io.InputStream) {
+								csvReadertFileInputDelimited_10 = new com.talend.csv.CSVReader(
+										(java.io.InputStream) filename_tFileInputDelimited_10,
+										fieldSeparator_tFileInputDelimited_10[0], "ISO-8859-15");
+							} else {
+								csvReadertFileInputDelimited_10 = new com.talend.csv.CSVReader(
+										new java.io.BufferedReader(new java.io.InputStreamReader(
+												new java.io.FileInputStream(
+														String.valueOf(filename_tFileInputDelimited_10)),
+												"ISO-8859-15")),
+										fieldSeparator_tFileInputDelimited_10[0]);
+							}
+							csvReadertFileInputDelimited_10.setTrimWhitespace(false);
+							if ((rowSeparator_tFileInputDelimited_10[0] != '\n')
+									&& (rowSeparator_tFileInputDelimited_10[0] != '\r'))
+								csvReadertFileInputDelimited_10.setLineEnd("" + rowSeparator_tFileInputDelimited_10[0]);
+
+							csvReadertFileInputDelimited_10.setQuoteChar('"');
+
+							csvReadertFileInputDelimited_10
+									.setEscapeChar(csvReadertFileInputDelimited_10.getQuoteChar());
+
+						}
+
+						if (limittFileInputDelimited_10 != 0) {
+							for (currentLinetFileInputDelimited_10 = 0; currentLinetFileInputDelimited_10 < 1; currentLinetFileInputDelimited_10++) {
+								csvReadertFileInputDelimited_10.readNext();
+							}
+						}
+						csvReadertFileInputDelimited_10.setSkipEmptyRecords(true);
+
 					} catch (java.lang.Exception e) {
 
 						System.err.println(e.getMessage());
 
-					}
+					} // TD110 end
 
-					while (fid_tFileInputDelimited_10 != null && fid_tFileInputDelimited_10.nextRecord()) {
+					while (limittFileInputDelimited_10 != 0 && csvReadertFileInputDelimited_10 != null
+							&& csvReadertFileInputDelimited_10.readNext()) {
 						rowstate_tFileInputDelimited_10.reset();
+
+						rowtFileInputDelimited_10 = csvReadertFileInputDelimited_10.getValues();
+
+						if (rowtFileInputDelimited_10.length == 1 && ("\015").equals(rowtFileInputDelimited_10[0])) {// empty
+																														// line
+																														// when
+																														// row
+																														// separator
+																														// is
+																														// '\n'
+							continue;
+						}
+
+						currentLinetFileInputDelimited_10++;
+
+						if (lastLinetFileInputDelimited_10 > -1
+								&& currentLinetFileInputDelimited_10 > lastLinetFileInputDelimited_10) {
+							break;
+						}
+						outputLinetFileInputDelimited_10++;
+						if (limittFileInputDelimited_10 > 0
+								&& outputLinetFileInputDelimited_10 > limittFileInputDelimited_10) {
+							break;
+						}
 
 						row10 = null;
 
@@ -5825,17 +5961,51 @@ public class ClientAttribute implements TalendJob {
 						row10 = new row10Struct();
 						try {
 
-							int columnIndexWithD_tFileInputDelimited_10 = 0;
+							char fieldSeparator_tFileInputDelimited_10_ListType[] = null;
+							// support passing value (property: Field Separator) by 'context.fs' or
+							// 'globalMap.get("fs")'.
+							if (((String) ";").length() > 0) {
+								fieldSeparator_tFileInputDelimited_10_ListType = ((String) ";").toCharArray();
+							} else {
+								throw new IllegalArgumentException("Field Separator must be assigned a char.");
+							}
+							if (rowtFileInputDelimited_10.length == 1
+									&& ("\015").equals(rowtFileInputDelimited_10[0])) {// empty line when row separator
+																						// is '\n'
 
-							columnIndexWithD_tFileInputDelimited_10 = 0;
+								row10.CODE_FIDELITE = null;
 
-							row10.CODE_FIDELITE = fid_tFileInputDelimited_10
-									.get(columnIndexWithD_tFileInputDelimited_10);
+								row10.LIBELLE_FIDELITE = null;
 
-							columnIndexWithD_tFileInputDelimited_10 = 1;
+							} else {
 
-							row10.LIBELLE_FIDELITE = fid_tFileInputDelimited_10
-									.get(columnIndexWithD_tFileInputDelimited_10);
+								int columnIndexWithD_tFileInputDelimited_10 = 0; // Column Index
+
+								columnIndexWithD_tFileInputDelimited_10 = 0;
+
+								if (columnIndexWithD_tFileInputDelimited_10 < rowtFileInputDelimited_10.length) {
+
+									row10.CODE_FIDELITE = rowtFileInputDelimited_10[columnIndexWithD_tFileInputDelimited_10];
+
+								} else {
+
+									row10.CODE_FIDELITE = null;
+
+								}
+
+								columnIndexWithD_tFileInputDelimited_10 = 1;
+
+								if (columnIndexWithD_tFileInputDelimited_10 < rowtFileInputDelimited_10.length) {
+
+									row10.LIBELLE_FIDELITE = rowtFileInputDelimited_10[columnIndexWithD_tFileInputDelimited_10];
+
+								} else {
+
+									row10.LIBELLE_FIDELITE = null;
+
+								}
+
+							}
 
 							if (rowstate_tFileInputDelimited_10.getException() != null) {
 								throw rowstate_tFileInputDelimited_10.getException();
@@ -5907,8 +6077,8 @@ public class ClientAttribute implements TalendJob {
 								copyOfcopyOfmain_2 = null;
 
 // # Output table : 'copyOfcopyOfmain_2'
-								copyOfcopyOfmain_2_tmp.idfidel = Integer.parseInt(row10.CODE_FIDELITE);
-								copyOfcopyOfmain_2_tmp.libelle = row10.LIBELLE_FIDELITE;
+								copyOfcopyOfmain_2_tmp.idcode_facturation = Integer.parseInt(row10.CODE_FIDELITE);
+								copyOfcopyOfmain_2_tmp.libelle_code_facturation = row10.LIBELLE_FIDELITE;
 								copyOfcopyOfmain_2 = copyOfcopyOfmain_2_tmp;
 // ###############################
 
@@ -5945,12 +6115,12 @@ public class ClientAttribute implements TalendJob {
 								}
 
 								whetherReject_tDBOutput_10 = false;
-								pstmt_tDBOutput_10.setInt(1, copyOfcopyOfmain_2.idfidel);
+								pstmt_tDBOutput_10.setInt(1, copyOfcopyOfmain_2.idcode_facturation);
 
-								if (copyOfcopyOfmain_2.libelle == null) {
+								if (copyOfcopyOfmain_2.libelle_code_facturation == null) {
 									pstmt_tDBOutput_10.setNull(2, java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tDBOutput_10.setString(2, copyOfcopyOfmain_2.libelle);
+									pstmt_tDBOutput_10.setString(2, copyOfcopyOfmain_2.libelle_code_facturation);
 								}
 
 								pstmt_tDBOutput_10.addBatch();
@@ -6056,17 +6226,19 @@ public class ClientAttribute implements TalendJob {
 
 						currentComponent = "tFileInputDelimited_10";
 
+						nb_line_tFileInputDelimited_10++;
 					}
+
 				} finally {
-					if (!((Object) ("C:/DEV/Data/Base Montauban/param/fidelités.csv") instanceof java.io.InputStream)) {
-						if (fid_tFileInputDelimited_10 != null) {
-							fid_tFileInputDelimited_10.close();
+					if (!(filename_tFileInputDelimited_10 instanceof java.io.InputStream)) {
+						if (csvReadertFileInputDelimited_10 != null) {
+							csvReadertFileInputDelimited_10.close();
 						}
 					}
-					if (fid_tFileInputDelimited_10 != null) {
-						globalMap.put("tFileInputDelimited_10_NB_LINE", fid_tFileInputDelimited_10.getRowNumber());
-
+					if (csvReadertFileInputDelimited_10 != null) {
+						globalMap.put("tFileInputDelimited_10_NB_LINE", nb_line_tFileInputDelimited_10);
 					}
+
 				}
 
 				ok_Hash.put("tFileInputDelimited_10", true);
@@ -8139,16 +8311,10 @@ public class ClientAttribute implements TalendJob {
 			return this.mot_court;
 		}
 
-		public String nom;
+		public String nom_client;
 
-		public String getNom() {
-			return this.nom;
-		}
-
-		public String numero_sfac;
-
-		public String getNumero_sfac() {
-			return this.numero_sfac;
+		public String getNom_client() {
+			return this.nom_client;
 		}
 
 		public String numero_compte_compta;
@@ -8181,16 +8347,16 @@ public class ClientAttribute implements TalendJob {
 			return this.idrepresentant;
 		}
 
+		public Integer idcode_facturation;
+
+		public Integer getIdcode_facturation() {
+			return this.idcode_facturation;
+		}
+
 		public Long iddevise;
 
 		public Long getIddevise() {
 			return this.iddevise;
-		}
-
-		public Integer idfidelite;
-
-		public Integer getIdfidelite() {
-			return this.idfidelite;
 		}
 
 		public String idmode_payement;
@@ -8258,15 +8424,14 @@ public class ClientAttribute implements TalendJob {
 			other.code_ape = this.code_ape;
 			other.code_rejet = this.code_rejet;
 			other.mot_court = this.mot_court;
-			other.nom = this.nom;
-			other.numero_sfac = this.numero_sfac;
+			other.nom_client = this.nom_client;
 			other.numero_compte_compta = this.numero_compte_compta;
 			other.numero_identifiant_cee = this.numero_identifiant_cee;
 			other.siret = this.siret;
 			other.idcat = this.idcat;
 			other.idrepresentant = this.idrepresentant;
+			other.idcode_facturation = this.idcode_facturation;
 			other.iddevise = this.iddevise;
-			other.idfidelite = this.idfidelite;
 			other.idmode_payement = this.idmode_payement;
 			other.idqualite = this.idqualite;
 			other.idsecteur = this.idsecteur;
@@ -8347,9 +8512,7 @@ public class ClientAttribute implements TalendJob {
 
 					this.mot_court = readString(dis);
 
-					this.nom = readString(dis);
-
-					this.numero_sfac = readString(dis);
+					this.nom_client = readString(dis);
 
 					this.numero_compte_compta = readString(dis);
 
@@ -8361,14 +8524,14 @@ public class ClientAttribute implements TalendJob {
 
 					this.idrepresentant = readString(dis);
 
+					this.idcode_facturation = readInteger(dis);
+
 					length = dis.readByte();
 					if (length == -1) {
 						this.iddevise = null;
 					} else {
 						this.iddevise = dis.readLong();
 					}
-
-					this.idfidelite = readInteger(dis);
 
 					this.idmode_payement = readString(dis);
 
@@ -8408,11 +8571,7 @@ public class ClientAttribute implements TalendJob {
 
 				// String
 
-				writeString(this.nom, dos);
-
-				// String
-
-				writeString(this.numero_sfac, dos);
+				writeString(this.nom_client, dos);
 
 				// String
 
@@ -8434,6 +8593,10 @@ public class ClientAttribute implements TalendJob {
 
 				writeString(this.idrepresentant, dos);
 
+				// Integer
+
+				writeInteger(this.idcode_facturation, dos);
+
 				// Long
 
 				if (this.iddevise == null) {
@@ -8442,10 +8605,6 @@ public class ClientAttribute implements TalendJob {
 					dos.writeByte(0);
 					dos.writeLong(this.iddevise);
 				}
-
-				// Integer
-
-				writeInteger(this.idfidelite, dos);
 
 				// String
 
@@ -8478,15 +8637,14 @@ public class ClientAttribute implements TalendJob {
 			sb.append(",code_ape=" + code_ape);
 			sb.append(",code_rejet=" + code_rejet);
 			sb.append(",mot_court=" + mot_court);
-			sb.append(",nom=" + nom);
-			sb.append(",numero_sfac=" + numero_sfac);
+			sb.append(",nom_client=" + nom_client);
 			sb.append(",numero_compte_compta=" + numero_compte_compta);
 			sb.append(",numero_identifiant_cee=" + numero_identifiant_cee);
 			sb.append(",siret=" + siret);
 			sb.append(",idcat=" + idcat);
 			sb.append(",idrepresentant=" + idrepresentant);
+			sb.append(",idcode_facturation=" + String.valueOf(idcode_facturation));
 			sb.append(",iddevise=" + String.valueOf(iddevise));
-			sb.append(",idfidelite=" + String.valueOf(idfidelite));
 			sb.append(",idmode_payement=" + idmode_payement);
 			sb.append(",idqualite=" + idqualite);
 			sb.append(",idsecteur=" + idsecteur);
@@ -10401,7 +10559,7 @@ public class ClientAttribute implements TalendJob {
 					stmtClear_tDBOutput_3.executeUpdate("DELETE FROM \"" + tableName_tDBOutput_3 + "\"");
 				}
 				String insert_tDBOutput_3 = "INSERT INTO \"" + tableName_tDBOutput_3
-						+ "\" (\"idcli\",\"code_ape\",\"code_rejet\",\"mot_court\",\"nom\",\"numero_sfac\",\"numero_compte_compta\",\"numero_identifiant_cee\",\"siret\",\"idcat\",\"idrepresentant\",\"iddevise\",\"idfidelite\",\"idmode_payement\",\"idqualite\",\"idsecteur\",\"idtransporteur\") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+						+ "\" (\"idcli\",\"code_ape\",\"code_rejet\",\"mot_court\",\"nom_client\",\"numero_compte_compta\",\"numero_identifiant_cee\",\"siret\",\"idcat\",\"idrepresentant\",\"idcode_facturation\",\"iddevise\",\"idmode_payement\",\"idqualite\",\"idsecteur\",\"idtransporteur\") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 				java.sql.PreparedStatement pstmt_tDBOutput_3 = conn_tDBOutput_3.prepareStatement(insert_tDBOutput_3);
 				resourceMap.put("pstmt_tDBOutput_3", pstmt_tDBOutput_3);
@@ -11116,8 +11274,7 @@ public class ClientAttribute implements TalendJob {
 								copyOfcopyOfcopyOfmain_2_tmp.code_ape = row3.CAPE + row3.CAPE2;
 								copyOfcopyOfcopyOfmain_2_tmp.code_rejet = row3.CREJ;
 								copyOfcopyOfcopyOfmain_2_tmp.mot_court = row3.CMOTCOUR;
-								copyOfcopyOfcopyOfmain_2_tmp.nom = row3.CNOM;
-								copyOfcopyOfcopyOfmain_2_tmp.numero_sfac = row3.CSFAC;
+								copyOfcopyOfcopyOfmain_2_tmp.nom_client = row3.CNOM;
 								copyOfcopyOfcopyOfmain_2_tmp.numero_compte_compta = row3.CCOMPTA;
 								copyOfcopyOfcopyOfmain_2_tmp.numero_identifiant_cee = row3.CNCEE;
 								copyOfcopyOfcopyOfmain_2_tmp.siret = row3.CSIRET;
@@ -11127,9 +11284,9 @@ public class ClientAttribute implements TalendJob {
 												row3.CCAT.isBlank() ? null : row3.CCAT;
 								copyOfcopyOfcopyOfmain_2_tmp.idrepresentant = row3.CCREP.equals("0S") ? null
 										: row3.CCREP;
-								copyOfcopyOfcopyOfmain_2_tmp.iddevise = new Long(1);
-								copyOfcopyOfcopyOfmain_2_tmp.idfidelite = row3.CTAR.equals("0") ? new Integer(1)
+								copyOfcopyOfcopyOfmain_2_tmp.idcode_facturation = row3.CTAR.equals("0") ? new Integer(1)
 										: row3.CTAR.equals("3") ? new Integer(2) : Integer.parseInt(row3.CTAR);
+								copyOfcopyOfcopyOfmain_2_tmp.iddevise = new Long(1);
 								copyOfcopyOfcopyOfmain_2_tmp.idmode_payement = row3.CPAI;
 								copyOfcopyOfcopyOfmain_2_tmp.idqualite = row3.CQUAL.isBlank() ? null : row3.CQUAL;
 								copyOfcopyOfcopyOfmain_2_tmp.idsecteur = new String("A");
@@ -11195,46 +11352,46 @@ public class ClientAttribute implements TalendJob {
 									pstmt_tDBOutput_3.setString(4, copyOfcopyOfcopyOfmain_2.mot_court);
 								}
 
-								if (copyOfcopyOfcopyOfmain_2.nom == null) {
+								if (copyOfcopyOfcopyOfmain_2.nom_client == null) {
 									pstmt_tDBOutput_3.setNull(5, java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tDBOutput_3.setString(5, copyOfcopyOfcopyOfmain_2.nom);
-								}
-
-								if (copyOfcopyOfcopyOfmain_2.numero_sfac == null) {
-									pstmt_tDBOutput_3.setNull(6, java.sql.Types.VARCHAR);
-								} else {
-									pstmt_tDBOutput_3.setString(6, copyOfcopyOfcopyOfmain_2.numero_sfac);
+									pstmt_tDBOutput_3.setString(5, copyOfcopyOfcopyOfmain_2.nom_client);
 								}
 
 								if (copyOfcopyOfcopyOfmain_2.numero_compte_compta == null) {
-									pstmt_tDBOutput_3.setNull(7, java.sql.Types.VARCHAR);
+									pstmt_tDBOutput_3.setNull(6, java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tDBOutput_3.setString(7, copyOfcopyOfcopyOfmain_2.numero_compte_compta);
+									pstmt_tDBOutput_3.setString(6, copyOfcopyOfcopyOfmain_2.numero_compte_compta);
 								}
 
 								if (copyOfcopyOfcopyOfmain_2.numero_identifiant_cee == null) {
-									pstmt_tDBOutput_3.setNull(8, java.sql.Types.VARCHAR);
+									pstmt_tDBOutput_3.setNull(7, java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tDBOutput_3.setString(8, copyOfcopyOfcopyOfmain_2.numero_identifiant_cee);
+									pstmt_tDBOutput_3.setString(7, copyOfcopyOfcopyOfmain_2.numero_identifiant_cee);
 								}
 
 								if (copyOfcopyOfcopyOfmain_2.siret == null) {
-									pstmt_tDBOutput_3.setNull(9, java.sql.Types.VARCHAR);
+									pstmt_tDBOutput_3.setNull(8, java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tDBOutput_3.setString(9, copyOfcopyOfcopyOfmain_2.siret);
+									pstmt_tDBOutput_3.setString(8, copyOfcopyOfcopyOfmain_2.siret);
 								}
 
 								if (copyOfcopyOfcopyOfmain_2.idcat == null) {
-									pstmt_tDBOutput_3.setNull(10, java.sql.Types.VARCHAR);
+									pstmt_tDBOutput_3.setNull(9, java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tDBOutput_3.setString(10, copyOfcopyOfcopyOfmain_2.idcat);
+									pstmt_tDBOutput_3.setString(9, copyOfcopyOfcopyOfmain_2.idcat);
 								}
 
 								if (copyOfcopyOfcopyOfmain_2.idrepresentant == null) {
-									pstmt_tDBOutput_3.setNull(11, java.sql.Types.VARCHAR);
+									pstmt_tDBOutput_3.setNull(10, java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tDBOutput_3.setString(11, copyOfcopyOfcopyOfmain_2.idrepresentant);
+									pstmt_tDBOutput_3.setString(10, copyOfcopyOfcopyOfmain_2.idrepresentant);
+								}
+
+								if (copyOfcopyOfcopyOfmain_2.idcode_facturation == null) {
+									pstmt_tDBOutput_3.setNull(11, java.sql.Types.INTEGER);
+								} else {
+									pstmt_tDBOutput_3.setInt(11, copyOfcopyOfcopyOfmain_2.idcode_facturation);
 								}
 
 								if (copyOfcopyOfcopyOfmain_2.iddevise == null) {
@@ -11243,34 +11400,28 @@ public class ClientAttribute implements TalendJob {
 									pstmt_tDBOutput_3.setLong(12, copyOfcopyOfcopyOfmain_2.iddevise);
 								}
 
-								if (copyOfcopyOfcopyOfmain_2.idfidelite == null) {
-									pstmt_tDBOutput_3.setNull(13, java.sql.Types.INTEGER);
-								} else {
-									pstmt_tDBOutput_3.setInt(13, copyOfcopyOfcopyOfmain_2.idfidelite);
-								}
-
 								if (copyOfcopyOfcopyOfmain_2.idmode_payement == null) {
-									pstmt_tDBOutput_3.setNull(14, java.sql.Types.VARCHAR);
+									pstmt_tDBOutput_3.setNull(13, java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tDBOutput_3.setString(14, copyOfcopyOfcopyOfmain_2.idmode_payement);
+									pstmt_tDBOutput_3.setString(13, copyOfcopyOfcopyOfmain_2.idmode_payement);
 								}
 
 								if (copyOfcopyOfcopyOfmain_2.idqualite == null) {
-									pstmt_tDBOutput_3.setNull(15, java.sql.Types.VARCHAR);
+									pstmt_tDBOutput_3.setNull(14, java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tDBOutput_3.setString(15, copyOfcopyOfcopyOfmain_2.idqualite);
+									pstmt_tDBOutput_3.setString(14, copyOfcopyOfcopyOfmain_2.idqualite);
 								}
 
 								if (copyOfcopyOfcopyOfmain_2.idsecteur == null) {
-									pstmt_tDBOutput_3.setNull(16, java.sql.Types.VARCHAR);
+									pstmt_tDBOutput_3.setNull(15, java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tDBOutput_3.setString(16, copyOfcopyOfcopyOfmain_2.idsecteur);
+									pstmt_tDBOutput_3.setString(15, copyOfcopyOfcopyOfmain_2.idsecteur);
 								}
 
 								if (copyOfcopyOfcopyOfmain_2.idtransporteur == null) {
-									pstmt_tDBOutput_3.setNull(17, java.sql.Types.VARCHAR);
+									pstmt_tDBOutput_3.setNull(16, java.sql.Types.VARCHAR);
 								} else {
-									pstmt_tDBOutput_3.setString(17, copyOfcopyOfcopyOfmain_2.idtransporteur);
+									pstmt_tDBOutput_3.setString(16, copyOfcopyOfcopyOfmain_2.idtransporteur);
 								}
 
 								pstmt_tDBOutput_3.addBatch();
@@ -12232,7 +12383,7 @@ public class ClientAttribute implements TalendJob {
 				String dbUser_tDBConnection_1 = "postgres";
 
 				final String decryptedPassword_tDBConnection_1 = routines.system.PasswordEncryptUtil.decryptPassword(
-						"enc:routine.encryption.key.v1:v7zCUq/7jGdEiKIgPnhfjsBC0mXs7wg4+N/9Qkj5YBvW/HyQoQ==");
+						"enc:routine.encryption.key.v1:PUyIxLHqJoZupelSg6rGqFIRc8/PBVtLdqOE+k80iCMrVHeBZg==");
 				String dbPwd_tDBConnection_1 = decryptedPassword_tDBConnection_1;
 
 				java.sql.Connection conn_tDBConnection_1 = null;
@@ -12748,6 +12899,6 @@ public class ClientAttribute implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 359948 characters generated by Talend Open Studio for Data Integration on the
- * 17 février 2022 à 15:10:22 CET
+ * 367091 characters generated by Talend Open Studio for Data Integration on the
+ * 25 février 2022 à 09:26:11 CET
  ************************************************************************************************/

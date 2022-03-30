@@ -300,7 +300,7 @@
     "version" : "Latest",
     "type" : "routine"
   }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - facture",
+    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - param_client",
     "version" : "Latest",
     "type" : "schema"
   } ]
@@ -405,6 +405,53 @@
     "id" : "_dCKHQDWSEeyIE71ZEeEi5A - commentairefournisseur",
     "version" : "Latest",
     "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_9L4YsJ99EeysRptuj03UiA",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_dCKHQDWSEeyIE71ZEeEi5A",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "DataOperation",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "Mathematical",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "Numeric",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "Relational",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "StringHandling",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "TalendDataGenerator",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "TalendDate",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "TalendString",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "TalendStringUtil",
+    "version" : "Latest",
+    "type" : "routine"
   } ]
 }, {
   "baseItem" : {
@@ -754,14 +801,6 @@
     "id" : "TalendStringUtil",
     "version" : "Latest",
     "type" : "routine"
-  }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - fournisseur",
-    "version" : "Latest",
-    "type" : "schema"
-  }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - paramfournisseur",
-    "version" : "Latest",
-    "type" : "schema"
   } ]
 }, {
   "baseItem" : {
@@ -1220,6 +1259,57 @@
   } ]
 }, {
   "baseItem" : {
+    "id" : "_U5zrUJYiEey-pvUN4HDvwA",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_dCKHQDWSEeyIE71ZEeEi5A",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "DataOperation",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "Mathematical",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "Numeric",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "Relational",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "StringHandling",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "TalendDataGenerator",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "TalendDate",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "TalendString",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "TalendStringUtil",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - client",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
     "id" : "_UJoPEEkUEey1_utWpd5oCQ",
     "version" : "0.1",
     "type" : "job"
@@ -1449,10 +1539,6 @@
     "version" : "Latest",
     "type" : "job"
   }, {
-    "id" : "LOCAL_PROJECT:_oSNjYEkTEey1_utWpd5oCQ",
-    "version" : "Latest",
-    "type" : "job"
-  }, {
     "id" : "LOCAL_PROJECT:_yK6PME3nEeyzaYnLiO2yeA",
     "version" : "Latest",
     "type" : "job"
@@ -1642,19 +1728,11 @@
     "version" : "Latest",
     "type" : "routine"
   }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - article_mot_cle",
-    "version" : "Latest",
-    "type" : "schema"
-  }, {
     "id" : "_dCKHQDWSEeyIE71ZEeEi5A - article_parag",
     "version" : "Latest",
     "type" : "schema"
   }, {
     "id" : "_dCKHQDWSEeyIE71ZEeEi5A - article_titre",
-    "version" : "Latest",
-    "type" : "schema"
-  }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - codebarresupp",
     "version" : "Latest",
     "type" : "schema"
   }, {
@@ -1666,23 +1744,11 @@
     "version" : "Latest",
     "type" : "schema"
   }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - motcle",
-    "version" : "Latest",
-    "type" : "schema"
-  }, {
     "id" : "_dCKHQDWSEeyIE71ZEeEi5A - mouvementstock",
     "version" : "Latest",
     "type" : "schema"
   }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - paragraphe",
-    "version" : "Latest",
-    "type" : "schema"
-  }, {
     "id" : "_dCKHQDWSEeyIE71ZEeEi5A - prixnet",
-    "version" : "Latest",
-    "type" : "schema"
-  }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - titre",
     "version" : "Latest",
     "type" : "schema"
   } ]
@@ -1892,6 +1958,57 @@
   } ]
 }, {
   "baseItem" : {
+    "id" : "_fQEncJYVEey-pvUN4HDvwA",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_dCKHQDWSEeyIE71ZEeEi5A",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "DataOperation",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "Mathematical",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "Numeric",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "Relational",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "StringHandling",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "TalendDataGenerator",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "TalendDate",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "TalendString",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "TalendStringUtil",
+    "version" : "Latest",
+    "type" : "routine"
+  }, {
+    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - contact",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
     "id" : "_fqdJkE3YEeyzaYnLiO2yeA",
     "version" : "0.1",
     "type" : "job"
@@ -1936,6 +2053,10 @@
     "id" : "TalendStringUtil",
     "version" : "Latest",
     "type" : "routine"
+  }, {
+    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - qualite",
+    "version" : "Latest",
+    "type" : "schema"
   } ]
 }, {
   "baseItem" : {
@@ -2650,18 +2771,6 @@
     "id" : "TalendStringUtil",
     "version" : "Latest",
     "type" : "routine"
-  }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - famille",
-    "version" : "Latest",
-    "type" : "schema"
-  }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - rayon",
-    "version" : "Latest",
-    "type" : "schema"
-  }, {
-    "id" : "_dCKHQDWSEeyIE71ZEeEi5A - sous_famille",
-    "version" : "Latest",
-    "type" : "schema"
   } ]
 }, {
   "baseItem" : {
