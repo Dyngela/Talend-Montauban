@@ -1,80 +1,15 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.example.local_project</groupId>
   <artifactId>code.Master</artifactId>
-  <version>7.3.1</version>
+  <version>8.0.1</version>
   <packaging>pom</packaging>
-  <name>LOCAL_PROJECT Codes Master</name>
+  <name>TALEND_MONTAUBAN Codes Master</name>
   <url>http://www.talend.org/</url>
-  <modules>
-    <module>code/routines</module>
-    <module>jobs/process/client_0.1</module>
-    <module>jobs/process/template_0.1</module>
-    <module>jobs/process/adresse_0.1</module>
-    <module>jobs/process/adresselivraison_0.1</module>
-    <module>jobs/process/adresselivraison_transporteur_0.1</module>
-    <module>jobs/process/adresselivraisonzone_0.1</module>
-    <module>jobs/process/article_0.1</module>
-    <module>jobs/process/articlemotcle_0.1</module>
-    <module>jobs/process/articleparagraphe_0.1</module>
-    <module>jobs/process/articletitre_0.1</module>
-    <module>jobs/process/clientadresselivraison_0.1</module>
-    <module>jobs/process/clienttransporteur_0.1</module>
-    <module>jobs/process/codeaffaire_0.1</module>
-    <module>jobs/process/codebarresupp_0.1</module>
-    <module>jobs/process/codecategorie_0.1</module>
-    <module>jobs/process/coderepresentant_0.1</module>
-    <module>jobs/process/codesecteur_0.1</module>
-    <module>jobs/process/codetransporteur_0.1</module>
-    <module>jobs/process/commentairefournisseur_0.1</module>
-    <module>jobs/process/consommation_0.1</module>
-    <module>jobs/process/contact_0.1</module>
-    <module>jobs/process/devise_0.1</module>
-    <module>jobs/process/document_0.1</module>
-    <module>jobs/process/dossier_0.1</module>
-    <module>jobs/process/famille_0.1</module>
-    <module>jobs/process/fournisseur_0.1</module>
-    <module>jobs/process/fournisseurtransporteur_0.1</module>
-    <module>jobs/process/fournisseursecondaire_0.1</module>
-    <module>jobs/process/glossaire_0.1</module>
-    <module>jobs/process/historiqueca_0.1</module>
-    <module>jobs/process/modepayement_0.1</module>
-    <module>jobs/process/motcle_0.1</module>
-    <module>jobs/process/mouvementstock_0.1</module>
-    <module>jobs/process/niveauconsoart_0.1</module>
-    <module>jobs/process/paragraphe_0.1</module>
-    <module>jobs/process/paramclient_0.1</module>
-    <module>jobs/process/paramarticle_0.1</module>
-    <module>jobs/process/paramfournisseur_0.1</module>
-    <module>jobs/process/prixnet_0.1</module>
-    <module>jobs/process/promotion_0.1</module>
-    <module>jobs/process/qualite_0.1</module>
-    <module>jobs/process/rayon_0.1</module>
-    <module>jobs/process/remise_0.1</module>
-    <module>jobs/process/rib_0.1</module>
-    <module>jobs/process/secteurtournee_0.1</module>
-    <module>jobs/process/sousfamille_0.1</module>
-    <module>jobs/process/tarif_0.1</module>
-    <module>jobs/process/titre_0.1</module>
-    <module>jobs/process/tournee_0.1</module>
-    <module>jobs/process/typecontact_0.1</module>
-    <module>jobs/process/variabletemporaire_0.1</module>
-    <module>jobs/process/zone_0.1</module>
-    <module>jobs/process/fidelite_0.1</module>
-    <module>jobs/process/representant_0.1</module>
-    <module>jobs/process/clientattribute_0.1</module>
-    <module>jobs/process/orchestration_0.1</module>
-    <module>jobs/process/afterclient_0.1</module>
-    <module>jobs/process/aftercontact_0.1</module>
-    <module>jobs/process/afterarticle_0.1</module>
-    <module>jobs/process/finaljob_0.1</module>
-    <module>jobs/process/finaljobpart2_0.1</module>
-    <module>jobs/process/sandbox_0.1</module>
-  </modules>
   <properties>
-    <talend.project.name>LOCAL_PROJECT</talend.project.name>
+    <talend.project.name>TALEND_MONTAUBAN</talend.project.name>
     <encoding>UTF-8</encoding>
   </properties>
   <build>
@@ -89,14 +24,44 @@
           <version>3.6.1</version>
           <dependencies>
             <dependency>
+              <groupId>org.apache.maven.shared</groupId>
+              <artifactId>maven-shared-utils</artifactId>
+              <version>3.3.3</version>
+            </dependency>
+            <dependency>
               <groupId>org.eclipse.tycho</groupId>
               <artifactId>tycho-compiler-jdt</artifactId>
-              <version>1.4.0</version>
+              <version>1.6.0</version>
             </dependency>
             <dependency>
               <groupId>org.codehaus.plexus</groupId>
               <artifactId>plexus-utils</artifactId>
               <version>3.0.24</version>
+            </dependency>
+            <dependency>
+              <groupId>commons-io</groupId>
+              <artifactId>commons-io</artifactId>
+              <version>2.8.0</version>
+            </dependency>
+            <dependency>
+              <groupId>org.codehaus.plexus</groupId>
+              <artifactId>plexus-archiver</artifactId>
+              <version>3.6.0</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.maven</groupId>
+              <artifactId>maven-compat</artifactId>
+              <version>3.8.1</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.commons</groupId>
+              <artifactId>commons-compress</artifactId>
+              <version>1.21</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.maven</groupId>
+              <artifactId>maven-core</artifactId>
+              <version>3.8.1</version>
             </dependency>
           </dependencies>
           <configuration>
@@ -114,6 +79,21 @@
               <artifactId>plexus-utils</artifactId>
               <version>3.0.24</version>
             </dependency>
+            <dependency>
+              <groupId>org.apache.maven.shared</groupId>
+              <artifactId>maven-shared-utils</artifactId>
+              <version>3.3.3</version>
+            </dependency>
+            <dependency>
+              <groupId>commons-io</groupId>
+              <artifactId>commons-io</artifactId>
+              <version>2.8.0</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.maven</groupId>
+              <artifactId>maven-core</artifactId>
+              <version>3.8.1</version>
+            </dependency>
           </dependencies>
         </plugin>
         <plugin>
@@ -121,9 +101,39 @@
           <version>3.0.2</version>
           <dependencies>
             <dependency>
+              <groupId>org.apache.maven.shared</groupId>
+              <artifactId>maven-shared-utils</artifactId>
+              <version>3.3.3</version>
+            </dependency>
+            <dependency>
               <groupId>org.codehaus.plexus</groupId>
               <artifactId>plexus-utils</artifactId>
               <version>3.0.24</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.commons</groupId>
+              <artifactId>commons-compress</artifactId>
+              <version>1.21</version>
+            </dependency>
+            <dependency>
+              <groupId>commons-io</groupId>
+              <artifactId>commons-io</artifactId>
+              <version>2.8.0</version>
+            </dependency>
+            <dependency>
+              <groupId>org.codehaus.plexus</groupId>
+              <artifactId>plexus-archiver</artifactId>
+              <version>3.6.0</version>
+            </dependency>
+            <dependency>
+              <groupId>org.codehaus.plexus</groupId>
+              <artifactId>plexus-io</artifactId>
+              <version>3.0.1</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.maven</groupId>
+              <artifactId>maven-core</artifactId>
+              <version>3.8.1</version>
             </dependency>
           </dependencies>
           <configuration>
@@ -137,9 +147,44 @@
           <version>3.0.0</version>
           <dependencies>
             <dependency>
+              <groupId>org.apache.maven.shared</groupId>
+              <artifactId>maven-shared-utils</artifactId>
+              <version>3.3.3</version>
+            </dependency>
+            <dependency>
               <groupId>org.codehaus.plexus</groupId>
               <artifactId>plexus-utils</artifactId>
               <version>3.0.24</version>
+            </dependency>
+            <dependency>
+              <groupId>commons-codec</groupId>
+              <artifactId>commons-codec</artifactId>
+              <version>1.15</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.commons</groupId>
+              <artifactId>commons-compress</artifactId>
+              <version>1.21</version>
+            </dependency>
+            <dependency>
+              <groupId>commons-io</groupId>
+              <artifactId>commons-io</artifactId>
+              <version>2.8.0</version>
+            </dependency>
+            <dependency>
+              <groupId>org.codehaus.plexus</groupId>
+              <artifactId>plexus-archiver</artifactId>
+              <version>3.6.0</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.maven</groupId>
+              <artifactId>maven-compat</artifactId>
+              <version>3.8.1</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.maven</groupId>
+              <artifactId>maven-core</artifactId>
+              <version>3.8.1</version>
             </dependency>
           </dependencies>
         </plugin>
@@ -152,16 +197,26 @@
               <artifactId>plexus-utils</artifactId>
               <version>3.0.24</version>
             </dependency>
+            <dependency>
+              <groupId>junit</groupId>
+              <artifactId>junit</artifactId>
+              <version>4.13.2</version>
+            </dependency>
           </dependencies>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
-          <version>2.5.1</version>
+          <version>2.5.2</version>
           <dependencies>
             <dependency>
               <groupId>org.codehaus.plexus</groupId>
               <artifactId>plexus-utils</artifactId>
               <version>3.0.24</version>
+            </dependency>
+            <dependency>
+              <groupId>commons-codec</groupId>
+              <artifactId>commons-codec</artifactId>
+              <version>1.15</version>
             </dependency>
           </dependencies>
         </plugin>

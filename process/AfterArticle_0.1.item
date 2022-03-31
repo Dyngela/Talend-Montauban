@@ -2,6 +2,7 @@
 <talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMapper="http://www.talend.org/mapper" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default" jobType="Standard">
   <context confirmationNeeded="false" name="Default"/>
   <parameters>
+    <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Info" show="false"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="96" show="false"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="64" show="false"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" value="" show="false"/>
@@ -42,7 +43,7 @@
     <elementParameter field="TEXT" name="PROPERTIES_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:RS/Nk9VyDVF0TSpss02WAXq2zp3u8B2RZhYVJAts" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:Npk2GHefhaia/VwN6kK9scqoKddSudFb1rdsoBE0" show="false"/>
     <elementParameter field="FILE" name="DBFILE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="DBTABLE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="QUERY_CONDITION_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
@@ -77,7 +78,7 @@
     <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:/cRjFuKWZ/IF1cp7CtyRwSDObNF4yiGxcrVZyqFW" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:ds3pOfMw9NActe7aii633Fs3fVFf4w1NewPfrUF9" show="false"/>
     <elementParameter field="FILE" name="DBFILE" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_STATS" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_LOGS" value="&quot;&quot;" show="false"/>
@@ -115,13 +116,13 @@
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" value="_dCKHQDWSEeyIE71ZEeEi5A" show="false"/>
     <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="V9_X"/>
-    <elementParameter field="TEXT" name="HOST" value="&quot;192.168.1.110&quot;"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;localhost&quot;"/>
     <elementParameter field="TEXT" name="TYPE" value="POSTGRESQL" show="false"/>
     <elementParameter field="TEXT" name="PORT" value="&quot;5432&quot;"/>
     <elementParameter field="TEXT" name="DBNAME" value="&quot;syg&quot;"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="USER" value="&quot;postgres&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:1kxiL3WyVbm7LysFAGpZg3k5uh9gYBHCKIiIjlzppBjweRta6Alu"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:ljbMShFPdzBRTTkt2t5Rz2KHs9CS6om6PvDBqy/mjFvT99azEoKt"/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="CHECK" name="USE_SHARED_CONNECTION" value="false"/>
@@ -241,7 +242,7 @@
     <elementParameter field="TEXT" name="TYPE" value="PostgreSQL" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:GkeTVxMgZ4hKluZhyO+Qn/pPdF2C0bNW9Nl8ai/0" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:FiyVe+8RNLtsENhP/ENjuS1HJNv6VKfkqlyFNyT0" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;titre&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="CLEAR"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
@@ -399,7 +400,7 @@
     <elementParameter field="TEXT" name="TYPE" value="PostgreSQL" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:5B4y9wcFfHIfQqCaPWdIHDEDaOVhjZxd5SXWH7pK" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:0p81HD9sNOAFNcY75YupdkXhN58emMSzuSlB1eKF" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;paragraphe&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="CLEAR"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
@@ -522,7 +523,7 @@
     <elementParameter field="TEXT" name="TYPE" value="PostgreSQL" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:ndrg4waZWWp7vTY0NEkrh+1au1wcUD6SZiBNptsJ" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:ZByRehHnKQH4PbuVzI4hvYxFneRg2+MacxnoGUl1" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;article_titre&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="CLEAR"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
@@ -634,7 +635,7 @@
     <elementParameter field="TEXT" name="TYPE" value="PostgreSQL" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:lCMlKqJw2bacgjEjOgJtZ+dNxmxi+2HSJ0BqZAFC" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:yWaTI0CEQR77w9bSHQMmKf8XPQgDmdgIXDPLsyc/" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;article_parag&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="CLEAR"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
@@ -820,7 +821,7 @@
     <elementParameter field="TEXT" name="TYPE" value="PostgreSQL" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:W3Sqxp7dzvBJJKD6CBqn8mQcFr+CMMAoIoLjzO54" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:pRPyuMRgX8mLgG3GOUcOWl2iCxzeqcT7ZV4rLEDn" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;mouvementstock&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="CLEAR"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
@@ -1066,7 +1067,7 @@
     <elementParameter field="TEXT" name="TYPE" value="PostgreSQL" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:fd3n1knObQ1ii1upqOZEsJtRMO5kXv8gwWk0pdBl" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:rg++krhVNa6aiQGNPabDxDZokEfetJzAfR+MYSNI" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;codebarresupp&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="CLEAR"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
@@ -1275,7 +1276,7 @@
     <elementParameter field="TEXT" name="TYPE" value="PostgreSQL" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:F4yTa7tTMfEQXVjT18T9+unoeDnnRkmAcyrEyeS3" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:SxsQ2ACMzpgPbG1KC62NHj2+bFQ3y75CpMGQYD6A" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;prixnet&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="CLEAR"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
@@ -1574,7 +1575,7 @@
     <elementParameter field="TEXT" name="TYPE" value="PostgreSQL" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:dZb0pxEcvX1ScnbkG1GSQP+Sx/PqY7NnjUJY+CTX" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:ACbtrvw+iZIlj6NOewY8B7Dds2xG7qlj34SWlHZd" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;fournisseursecondaire&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="CLEAR"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
@@ -1802,7 +1803,7 @@
     <elementParameter field="TEXT" name="TYPE" value="PostgreSQL" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:X/fA4maFkOOsWA92fZApPx95xDr822uUOmwhU+hB" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:pwLcZuSYx2KaJLqZTi7YrfhZcFDWEIEzvZzRq1io" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;commentairefournisseur&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="CLEAR"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
@@ -1986,7 +1987,7 @@
     <elementParameter field="TEXT" name="TYPE" value="PostgreSQL" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:UCPfpd5kulDfRJlzZcythA5vbgYCQxKP0cTBemkA" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:qY+jCkEMJS24qm/7Cr0qQQYn7msciItpzJfbuO35" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;commentairefournisseur&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="CLEAR"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
